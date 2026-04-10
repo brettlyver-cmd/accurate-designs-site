@@ -221,7 +221,7 @@ const PROJECTS = [
     lens: "Heritage Alignment + Existing Condition Intelligence",
     img: ph2,
     images: [ph2, ph1],
-    imageLabels: ["Outcome", "Existing Condition"],
+    imageLabels: ["Outcome", "Before"],
     challenge:
       "A raised bungalow on a heritage-designated lot could not be expanded horizontally, requiring additional space to be achieved through a sensitive vertical addition.",
     solution:
@@ -836,7 +836,7 @@ function HomePage({ go }) {
                 <HoverImage
                   src={beforeAfterTraditionalToModern}
                   alt="Before and after residential transformation"
-                  ratio="100%"
+                  ratio="2%"
                   filter="grayscale(4%) brightness(0.95)"
                   hoverFilter="grayscale(0) brightness(1)"
                   label="Before + After"
