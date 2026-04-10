@@ -836,7 +836,7 @@ function HomePage({ go }) {
                 <HoverImage
                   src={beforeAfterTraditionalToModern}
                   alt="Before and after residential transformation"
-                  ratio="2%"
+                  ratio="100%"
                   filter="grayscale(4%) brightness(0.95)"
                   hoverFilter="grayscale(0) brightness(1)"
                   label="Before + After"
