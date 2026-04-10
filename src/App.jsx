@@ -321,7 +321,7 @@ function Nav({ page, go }) {
     { id: "services", l: "Services" },
     { id: "portfolio", l: "Portfolio" },
     { id: "process", l: "Process" },
-    { id: "owner-rep", l: "Owner Rep" },
+    { id: "owner-rep", l: "Owner Representation" },
     { id: "about", l: "About" },
     { id: "contact", l: "Contact" },
   ];
@@ -803,15 +803,17 @@ function HomePage({ go }) {
           </F>
           <F delay={0.24}>
             <p style={{ ...sn, fontSize: 15, fontWeight: 400, lineHeight: 1.85, color: "rgba(245,241,235,0.68)", maxWidth: 520 }}>
-              Construction-aware residential design across the Greater Toronto Area. We bring building knowledge into the design process from day one so fewer decisions are left to the job site.
+              Most projects don’t go over budget because of bad decisions. They go over budget because decisions were never fully made.
+              <br /><br />
+              We bring construction thinking into the design process from day one so fewer decisions are left to the job site.
               <br /><br />
               Most of our projects fall between $500K and $3M+ construction budgets.
             </p>
           </F>
           <F delay={0.36}>
             <div style={{ display: "flex", gap: 16, marginTop: 48, flexWrap: "wrap" }}>
-              <Bt onClick={() => go("contact")}>Book a Project Consultation</Bt>
-              <Bt outline light onClick={() => go("portfolio")}>View Our Work</Bt>
+              <Bt onClick={() => go("contact")}>Book a Consultation</Bt>
+              <Bt outline light onClick={() => go("portfolio")}>See Built Projects</Bt>
             </div>
           </F>
         </div>
@@ -907,7 +909,7 @@ function HomePage({ go }) {
                 ratio="68%"
                 filter="grayscale(4%) brightness(0.96)"
                 hoverFilter="grayscale(0) brightness(1)"
-                label="Design + Build"
+                label="Custom Home Design + Build"
               />
             </div>
           </F>
@@ -915,7 +917,7 @@ function HomePage({ go }) {
             <div>
               <Lbl>What We Do</Lbl>
               <div style={{ ...sn, fontSize: 13, color: C.text, marginBottom: 14 }}>
-                We don’t produce drawings. We resolve projects.
+                Most problems don’t show up in design. They show up when the design meets construction.
               </div>
               <Ttl size="clamp(28px,3.5vw,40px)" style={{ marginBottom: 0 }}>
                 Design and build services for custom residential projects.
@@ -951,8 +953,8 @@ function HomePage({ go }) {
           <div style={{ display: "grid", gridTemplateColumns: "1.2fr 1fr", gap: 48, marginTop: 44 }} className="wg">
             <div>
               {[
-                "Homeowners planning a custom home or estate-scale build",
-                "Major additions typically require major structural renovations which makes coordination critical",
+                "Homeowners planning a custom home, estate-scale build, or major renovation",
+                "Major additions typically involve structural reconfiguration, which makes coordination critical",
                 "Projects where zoning, conservation authority, or site complexity requires careful analysis",
                 "Clients who value thorough planning over fast sketches",
               ].map((x, i) => (
@@ -999,7 +1001,7 @@ function HomePage({ go }) {
             ))}
           </div>
           <div style={{ marginTop: 52 }}>
-            <Bt outline light onClick={() => go("portfolio")}>View All Projects</Bt>
+            <Bt outline light onClick={() => go("portfolio")}>See More Projects</Bt>
           </div>
         </div>
       </section>
@@ -1051,7 +1053,7 @@ function HomePage({ go }) {
           ))}
         </div>
         <div style={{ marginTop: 48 }}>
-          <Bt outline onClick={() => go("process")}>See Full Process</Bt>
+          <Bt outline onClick={() => go("process")}>See How It Works</Bt>
         </div>
       </Sec>
 
@@ -1073,7 +1075,7 @@ function HomePage({ go }) {
               <p style={{ ...sn, fontSize: 14, fontWeight: 400, lineHeight: 1.8, color: C.text, maxWidth: 480, margin: "0 auto 24px", textAlign: "center" }}>
                 Which early-stage choices quietly determine 80% of your construction budget — and how to make them with full context before committing to design or construction.
               </p>
-              <Bt outline onClick={() => go("contact")}>Request the Planning Guide</Bt>
+              <Bt outline onClick={() => go("contact")}>Request the Guide</Bt>
             </div>
           </F>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(260px,1fr))", gap: 36 }}>
@@ -1091,7 +1093,7 @@ function HomePage({ go }) {
           </div>
         </div>
         <div style={{ marginTop: 36 }}>
-          <Bt outline onClick={() => go("contact")}>Explore All Planning Resources</Bt>
+          <Bt outline onClick={() => go("contact")}>Get Planning Help</Bt>
         </div>
       </Sec>
 
@@ -1104,7 +1106,7 @@ function HomePage({ go }) {
               <p style={{ ...sn, fontSize: 14, fontWeight: 400, lineHeight: 1.9, color: "rgba(245,241,235,0.45)", marginBottom: 40 }}>
                 An experienced technical advocate who reads drawings, understands construction, and works exclusively in your interest. Available for projects at any stage.
               </p>
-              <Bt outline light onClick={() => go("owner-rep")}>Learn More</Bt>
+              <Bt outline light onClick={() => go("owner-rep")}>See Owner Rep</Bt>
             </div>
           </F>
           <F delay={0.12}>
@@ -1154,8 +1156,8 @@ function HomePage({ go }) {
               A project consultation helps clarify goals, assess feasibility, and outline next steps. No cost, no obligation.
             </p>
             <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
-              <Bt onClick={() => go("contact")}>Book a Project Consultation</Bt>
-              <Bt outline onClick={() => go("contact")}>Request a Feasibility Review</Bt>
+              <Bt onClick={() => go("contact")}>Book a Consultation</Bt>
+              <Bt outline onClick={() => go("contact")}>Request a Review</Bt>
             </div>
           </div>
         </F>
@@ -1173,14 +1175,14 @@ function ServicesPage({ go }) {
       title: "Custom Home Design + Build",
       body: "The same team that designs the home oversees the build. Decisions carry through to the site without reinterpretation or gaps between what was drawn and what gets built.",
       outcome: "The result is a home that matches the original intent, built on a validated budget, with fewer change orders.",
-      cta: "Book a Project Consultation",
+      cta: "Book a Consultation",
     },
     {
       label: "Additions + Renovations",
       title: "Major Additions + Renovations",
       body: "Existing buildings carry hidden constraints such as foundation capacity, load paths through older framing, systems that weren’t designed to be extended. We resolve those conditions in the drawings before work begins.",
       outcome: "When the walls come down, the builder is working from a set of drawings that already accounts for what was behind them.",
-      cta: "Book a Project Consultation",
+      cta: "Book a Consultation",
     },
     {
       label: "Permit Documentation",
@@ -1194,7 +1196,7 @@ function ServicesPage({ go }) {
       title: "Pre-Design Feasibility",
       body: "Before committing to design, you need to know what your lot actually allows, what the code requires, and what the project will realistically cost. This is especially important when zoning, conservation authority, or site conditions affect what can be built.",
       outcome: "A feasibility review is typically completed within 1–2 weeks depending on available information. This step identifies constraints early, confirms what’s possible on your property, and prevents time being spent in the wrong direction.",
-      cta: "Request a Feasibility Review",
+      cta: "Request a Review",
     },
   ];
 
@@ -1207,9 +1209,9 @@ function ServicesPage({ go }) {
             <Ttl light>Services</Ttl>
           </F>
           <F delay={0.1}>
-            <Bd light max={620}>We design and plan custom homes, major renovations, and additions with construction in mind from day one. The goal is simple: eliminate uncertainty before it reaches the site.</Bd>
+            <Bd light max={620}>Most projects don’t fail because of design quality. They fail because critical decisions were never fully resolved.</Bd>
             <Bd light max={620} style={{ marginTop: 18, marginLeft: "auto", marginRight: "auto" }}>
-              Our role is to identify and resolve issues on paper before they become costly changes on site. Every project is approached with the same objective: fewer surprises, clearer direction, and a smoother build.
+              We design and plan custom homes, major renovations, and additions so those decisions are made before construction begins.
             </Bd>
           </F>
         </div>
@@ -1217,7 +1219,7 @@ function ServicesPage({ go }) {
 
       <div style={{ maxWidth: 960, margin: "0 auto", padding: "0 40px" }}>
         <p style={{ ...sn, fontSize: 15, fontWeight: 400, color: C.text, textAlign: "center", maxWidth: 560, margin: "34px auto 0", lineHeight: 1.85 }}>
-          Most projects don’t fail because of design. They fail because critical decisions were never fully resolved.
+          Most projects don’t fail because of design. They fail because no one took responsibility for resolving the hard decisions early.
         </p>
         <div style={{ borderTop: `1px solid ${C.faint}`, margin: "48px auto 0", maxWidth: 680 }} />
       </div>
@@ -1295,7 +1297,7 @@ function ServicesPage({ go }) {
           <p style={{ ...sn, fontSize: 14, fontWeight: 400, color: "rgba(245,241,235,0.35)", maxWidth: 400, margin: "0 auto 40px" }}>
             A short conversation will help clarify the right path forward.
           </p>
-          <Bt onClick={() => go("contact")}>Book a Project Consultation</Bt>
+          <Bt onClick={() => go("contact")}>Book a Consultation</Bt>
         </div>
       </section>
 
@@ -1365,7 +1367,7 @@ function PortfolioPage({ go }) {
           <p style={{ ...sn, fontSize: 14, fontWeight: 400, color: "rgba(245,241,235,0.4)", maxWidth: 460, margin: "0 auto 36px", lineHeight: 1.85 }}>
             We'll assess feasibility and outline a clear path forward.
           </p>
-          <Bt onClick={() => go("contact")}>Book a Project Consultation</Bt>
+          <Bt onClick={() => go("contact")}>Book a Consultation</Bt>
         </div>
       </section>
 
@@ -1460,7 +1462,7 @@ function ProcessPage({ go }) {
           <div style={{ ...sf, fontSize: 22, fontStyle: "italic", fontWeight: 400, color: "rgba(245,241,235,0.85)", maxWidth: 600, margin: "0 auto 28px", lineHeight: 1.6, opacity: 0.85 }}>
             "If a decision is not made on paper, it will be made on site."
           </div>
-          <Bt onClick={() => go("contact")} style={{ padding: "16px 34px", fontSize: 12, letterSpacing: 1.6 }}>Request a Feasibility Review</Bt>
+          <Bt onClick={() => go("contact")} style={{ padding: "16px 34px", fontSize: 12, letterSpacing: 1.6 }}>Request a Review</Bt>
         </div>
       </section>
 
@@ -1504,6 +1506,9 @@ function OwnerRepPage({ go }) {
           <Bd max={620} style={{ lineHeight: 1.75, textAlign: "center", margin: "0 auto" }}>
             Most custom residential projects involve capable architects, designers, and builders. Problems rarely come from a lack of talent. They come from gaps between decisions, assumptions, and accountability.
           </Bd>
+          <p style={{ ...sn, fontSize: 14.5, lineHeight: 1.75, color: C.text, maxWidth: 620, margin: "12px auto 0", textAlign: "center" }}>
+            And when those gaps aren’t addressed early, they show up as change orders, delays, and decisions made under pressure.
+          </p>
         </F>
         <F delay={0.08}>
           <Bd max={620} style={{ margin: "6px auto 0", lineHeight: 1.75, textAlign: "center" }}>
@@ -1658,7 +1663,7 @@ function OwnerRepPage({ go }) {
         <p style={{ ...sn, fontSize: 14, color: "rgba(245,241,235,0.4)", maxWidth: 420, margin: "0 auto 16px" }}>
           Available for select projects where clarity, coordination, and cost control are critical.
         </p>
-        <Bt onClick={() => go("contact")} style={{ padding: "18px 48px" }}>Request a Consultation</Bt>
+        <Bt onClick={() => go("contact")} style={{ padding: "18px 48px" }}>Book a Consultation</Bt>
       </section>
 
       <style>{`@media(max-width:860px){.orstk,.orwg,.orwi{grid-template-columns:1fr!important}}`}</style>
@@ -1735,7 +1740,7 @@ function AboutPage({ go }) {
           </Bd>
         </F>
         <F delay={0.08} style={{ display: "flex", justifyContent: "center" }}>
-          <div style={{ ...sn, fontSize: 15, fontWeight: 500, color: C.black, marginTop: 24, textAlign: "center" }}>— Brett Lyver, Founder + Principal Designer</div>
+          <div style={{ ...sn, fontSize: 15, fontWeight: 500, color: C.black, marginTop: 24, textAlign: "center" }}>— Brett Lyver, Founder + Principal</div>
         </F>
       </Sec>
 
@@ -1769,7 +1774,7 @@ function AboutPage({ go }) {
         <div style={{ maxWidth: 940, margin: "0 auto" }}>
           <Ttl light size="clamp(26px,3vw,36px)">Ready to discuss your project?</Ttl>
           <div style={{ marginTop: 36 }}>
-            <Bt onClick={() => go("contact")}>Book a Project Consultation</Bt>
+            <Bt onClick={() => go("contact")}>Book a Consultation</Bt>
           </div>
         </div>
       </section>
@@ -1791,7 +1796,7 @@ function ContactPage() {
         <div style={{ position: "relative", maxWidth: 1040, margin: "0 auto" }}>
           <F>
             <Lbl light>Begin Here</Lbl>
-            <Ttl light>Book a Project Consultation</Ttl>
+            <Ttl light>Book a Consultation</Ttl>
           </F>
           <F delay={0.1}>
             <Bd light max={620} style={{ margin: "0 auto", textAlign: "center", lineHeight: 1.8 }}>
@@ -1805,6 +1810,8 @@ function ContactPage() {
               <br />
               <br />
               If we’re not the right fit, we’ll tell you.
+              <br /><br />
+              Most clients reach out after something has already gone wrong. This is where you prevent that.
             </Bd>
           </F>
         </div>
@@ -1828,19 +1835,33 @@ function ContactPage() {
                 </div>
                 <Inp label="Email *" type="email" />
                 <Inp label="Phone" type="tel" />
-                <Sel label="Project Type" options={["Select...", "Custom Home (New Build)", "Major Addition", "Major Renovation", "Feasibility / Planning", "Owner Representation", "Other"]} />
-                <Sel label="Service Needed" options={["Select...", "Full Design-Build", "Design + Permit Drawings", "Permit Drawings Only", "Owner Representation", "Feasibility Review", "Not Sure Yet"]} />
-                <Inp label="Project Location" />
-                <Sel label="Estimated Budget Range" options={["Select...", "Under $500K", "$500K – $1M", "$1M – $3M", "$3M – $5M", "$5M – $10M", "$10M+", "Not Sure Yet"]} />
-                <Sel label="Target Start Timeline" options={["Select...", "Within 3 months", "3–6 months", "6–12 months", "12+ months", "Already in progress"]} />
-                <Sel label="Drawing Status" options={["Select...", "Starting from scratch", "Conceptual / sketch stage", "Design development", "Permit-ready or permitted", "Have drawings — need revisions"]} />
-                <Sel label="Builder Status" options={["Select...", "No builder yet", "Evaluating builders", "Builder selected — not signed", "Builder under contract", "Want Accurate Designs to build", "Not applicable"]} />
+                <Sel label="Project Type *" options={["Select...", "Custom Home (New Build)", "Major Addition", "Major Renovation", "Feasibility / Planning", "Owner Representation", "Other"]} />
+                <Sel label="Service Needed *" options={["Select...", "Full Design-Build", "Design + Permit Drawings", "Permit Drawings Only", "Owner Representation", "Feasibility Review", "Not Sure Yet"]} />
+                <Inp label="Project Location *" />
+                <Sel label="Estimated Budget Range *" options={["Select...", "Under $500K", "$500K – $1M", "$1M – $3M", "$3M – $5M", "$5M – $10M", "$10M+", "Not Sure Yet"]} />
+                <Sel label="Target Start Timeline *" options={["Select...", "Within 3 months", "3–6 months", "6–12 months", "12+ months", "Already in progress"]} />
+                <Sel label="Current Drawing Status" options={["Select...", "Starting from scratch", "Conceptual / sketch stage", "Design development", "Permit-ready or permitted", "Have drawings — need revisions"]} />
+                <Sel label="Current Builder Status" options={["Select...", "No builder yet", "Evaluating builders", "Builder selected — not signed", "Builder under contract", "Want Accurate Designs to build", "Not applicable"]} />
                 <Sel label="How Did You Hear About Us?" options={["Select...", "Referral", "Builder / Trade", "Google Search", "Instagram", "Facebook", "LinkedIn", "YouTube", "Repeat Client", "Other"]} />
-                <Inp label="Project Overview" textarea />
+                <Inp label="Project Overview *" textarea />
                 <p style={{ ...sn, fontSize: 11, fontWeight: 400, color: C.smoke, marginBottom: 32, letterSpacing: 0.3, lineHeight: 1.7 }}>
-                  Every inquiry is reviewed personally by our team.
+                  Every inquiry is reviewed personally. We typically reply within one business day.
                 </p>
-                <Bt onClick={() => setSent(true)} style={{ width: "100%", marginTop: 20, padding: "18px 0" }}>Submit Project Inquiry</Bt>
+                <Bt
+  onClick={() => {
+    setSent(true);
+    if (window.gtag) {
+      window.gtag('event', 'generate_lead', {
+        event_category: 'engagement',
+        event_label: 'contact_form',
+        value: 1
+      });
+    }
+  }}
+  style={{ width: "100%", marginTop: 20, padding: "18px 0" }}
+>
+  Send Inquiry
+</Bt>
               </>
             )}
           </div>
@@ -1916,7 +1937,7 @@ function Footer({ go }) {
           </div>
           <div>
             <div style={{ ...sn, fontSize: 9, fontWeight: 500, letterSpacing: 3, color: "rgba(201,106,43,0.78)", marginBottom: 20, textTransform: "uppercase" }}>Navigate</div>
-            {[{ id: "services", l: "Services" }, { id: "portfolio", l: "Portfolio" }, { id: "process", l: "Process" }, { id: "owner-rep", l: "Owner Rep" }, { id: "about", l: "About" }, { id: "contact", l: "Contact" }].map((p) => (
+            {[{ id: "services", l: "Services" }, { id: "portfolio", l: "Portfolio" }, { id: "process", l: "Process" }, { id: "owner-rep", l: "Owner Representation" }, { id: "about", l: "About" }, { id: "contact", l: "Contact" }].map((p) => (
               <div
                 key={p.id}
                 onClick={() => go(p.id)}
@@ -1930,7 +1951,7 @@ function Footer({ go }) {
           </div>
           <div>
             <div style={{ ...sn, fontSize: 9, fontWeight: 500, letterSpacing: 3, color: "rgba(201,106,43,0.78)", marginBottom: 20, textTransform: "uppercase" }}>Services</div>
-            {[{ id: "services", l: "Design + Build" }, { id: "owner-rep", l: "Owner Representation" }, { id: "services", l: "Permit-Ready Documentation" }, { id: "services", l: "Feasibility Review" }].map((s, i) => (
+            {[{ id: "services", l: "Custom Home Design + Build" }, { id: "owner-rep", l: "Owner Representation" }, { id: "services", l: "Permit-Ready Documentation" }, { id: "services", l: "Feasibility Review" }].map((s, i) => (
               <div
                 key={i}
                 onClick={() => go(s.id)}
@@ -1954,12 +1975,12 @@ function Footer({ go }) {
               {CONTACT_PHONE}
             </div>
             <div style={{ ...sn, fontSize: 11, fontWeight: 400, color: "rgba(245,241,235,0.55)", marginTop: 18, lineHeight: 1.6, fontStyle: "italic" }}>
-              Consultation · Feasibility · Representation
+              Consultations · Feasibility · Owner Representation
             </div>
           </div>
         </div>
         <div style={{ borderTop: "1px solid rgba(245,241,235,0.08)", paddingTop: 36, display: "flex", justifyContent: "space-between", flexWrap: "wrap", gap: 16, alignItems: "center" }}>
-          <span style={{ ...sn, fontSize: 11, fontWeight: 400, color: "rgba(245,241,235,0.58)" }}>© 2026 Accurate Designs Inc.</span>
+          <span style={{ ...sn, fontSize: 11, fontWeight: 400, color: "rgba(245,241,235,0.58)" }}>© 2025 Accurate Designs Inc.</span>
           <span style={{ ...sf, fontSize: 12, fontWeight: 400, fontStyle: "italic", color: "rgba(245,241,235,0.52)", letterSpacing: 0.5 }}>Resolve complexity before it reaches the site.</span>
         </div>
       </div>
