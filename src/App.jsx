@@ -801,12 +801,12 @@ function HomePage({ go }) {
             <Lbl light>Custom Homes · Additions · Major Renovations</Lbl>
           </F>
           <F delay={0.12}>
-            <h1 style={{ ...sf, fontSize: "clamp(32px,5.5vw,64px)", fontWeight: 400, color: C.cream, lineHeight: 1.1, marginBottom: 32, maxWidth: 780 }}>
+            <h1 style={{ ...sf, fontSize: "clamp(32px,5.5vw,64px)", fontWeight: 400, color: C.cream, lineHeight: 1.1, marginBottom: 32, maxWidth: 840}}>
               We design homes that are resolved on paper before they cost you on site.
             </h1>
           </F>
           <F delay={0.24}>
-            <p style={{ ...sn, fontSize: 15, fontWeight: 400, lineHeight: 1.85, color: "rgba(245,241,235,0.68)", maxWidth: 520 }}>
+            <p style={{ ...sn, fontSize: 15, fontWeight: 400, lineHeight: 1.85, color: "rgba(245,241,235,0.68)", maxWidth:600}}>
               Projects don’t move off course because of one decision. They shift when important decisions remain unresolved.
               <br /><br />
               We bring design, structure, cost, and construction thinking together from day one so the project moves forward with greater clarity.
@@ -1044,7 +1044,7 @@ function HomePage({ go }) {
 
       <Sec py={56}>
         <F>
-          <div style={{ maxWidth: 720, margin: "0 auto", textAlign: "center" }}>
+          <div style={{ maxWidth: 920, margin: "0 auto", textAlign: "center" }}>
             <div style={{ ...sn, fontSize: 9, fontWeight: 500, letterSpacing: 3, color: C.orange, marginBottom: 20, textTransform: "uppercase" }}>Smooth Permit Experience</div>
             <p style={{ ...sf, fontSize: "clamp(19px,2.5vw,26px)", fontStyle: "italic", fontWeight: 400, color: C.smoke, lineHeight: 1.55, marginBottom: 28, textAlign: "center", maxWidth: 780, marginLeft: "auto", marginRight: "auto" }}>
               "Brett walked us through the entire process and designed exactly what we envisioned. The permit process was a breeze."
@@ -1373,71 +1373,7 @@ function PortfolioPage({ go }) {
         </div>
       </section>
 
-      <Sec py={88} bg={C.cream} wide>
-        <div style={{ maxWidth: 1100, margin: "0 auto" }}>
-          <div style={{ textAlign: "center", marginBottom: 52 }}>
-            <Lbl>Selected Work</Lbl>
-            <Ttl size="clamp(26px,3vw,34px)">Work defined by decisions made early, not adjusted during construction.</Ttl>
-          </div>
-          {[
-            {
-              project: PROJECTS.find((p) => p.id === "country-heights-estate"),
-              copy: "An estate-scale home guided by early regulatory alignment and a clear design direction.",
-            },
-            {
-              project: PROJECTS.find((p) => p.id === "narrow-toronto-lot"),
-              copy: "A tightly constrained urban build resolved through disciplined shoring, sequencing, and clean construction planning.",
-            },
-          ].map(({ project, copy }, i) => (
-            <F key={project.id} delay={i * 0.06}>
-              <div
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "1.18fr 0.82fr",
-                  gap: 48,
-                  alignItems: "center",
-                  marginBottom: i === 0 ? 56 : 0,
-                  paddingBottom: i === 0 ? 56 : 0,
-                  borderBottom: i === 0 ? `1px solid ${C.faint}` : "none",
-                }}
-                className="pfg"
-                onMouseEnter={(e) => {
-                  const img = e.currentTarget.querySelector("img");
-                  if (img) img.style.transform = "scale(1.02)";
-                }}
-                onMouseLeave={(e) => {
-                  const img = e.currentTarget.querySelector("img");
-                  if (img) img.style.transform = "scale(1)";
-                }}
-              >
-                <HoverImage
-                  src={project.images?.[0] || project.img}
-                  alt={project.name}
-                  ratio="62%"
-                  filter="grayscale(8%) brightness(0.93)"
-                  hoverFilter="grayscale(0) brightness(1)"
-                  label="Selected Work"
-                />
-                <div style={{ textAlign: "left" }}>
-                  <div style={{ ...sn, fontSize: 9.5, fontWeight: 500, letterSpacing: 3, color: C.orange, marginBottom: 12, textTransform: "uppercase" }}>
-                    {project.location} · {project.type}
-                  </div>
-                  <h3
-                    style={{ ...sf, fontSize: "clamp(24px,2.8vw,32px)", color: C.black, marginBottom: 14, lineHeight: 1.18, transition: "color 0.3s ease" }}
-                    onMouseEnter={(e)=>e.target.style.color=C.orange}
-                    onMouseLeave={(e)=>e.target.style.color=C.black}
-                  >
-                    {project.name}
-                  </h3>
-                  <p style={{ ...sn, fontSize: 15, lineHeight: 1.85, color: C.text, marginBottom: 0, maxWidth: 420 }}>
-                    {copy}
-                  </p>
-                </div>
-              </div>
-            </F>
-          ))}
-        </div>
-      </Sec>
+      
 
       <section style={{ background: C.warm, padding: "96px 40px 64px" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto" }}>
@@ -1615,7 +1551,7 @@ function OwnerRepPage({ go }) {
               "Clear decisions",
               "Aligned expectations",
               "Fewer surprises",
-              "Continuity from planning through construction",
+              "Continuity throughout",
             ].map((item, i) => (
               <F key={i} delay={i * 0.05}>
                 <div style={{ borderTop: `1px solid ${C.faint}`, paddingTop: 18, textAlign: "center" }}>
@@ -1673,15 +1609,17 @@ function OwnerRepPage({ go }) {
       <Sec py={96} bg={C.warm}>
         <F>
           <div style={{ marginBottom: 18 }}><Lbl>The gap</Lbl></div>
-          <Ttl size="clamp(26px,3vw,34px)" style={{ marginBottom: 10 }}>The homeowner is often the only one expected to connect the pieces.</Ttl>
+          <Ttl size="clamp(26px,3vw,34px)" style={{ marginBottom: 10, maxWidth: 760, marginLeft: "auto", marginRight: "auto" }}>
+  The homeowner is often the only one expected to connect the pieces
+</Ttl>
         </F>
         <F delay={0.08}>
-          <Bd max={680} style={{ lineHeight: 1.75, textAlign: "center", margin: "0 auto" }}>
+          <Bd max={550} style={{ lineHeight: 1.75, textAlign: "center", margin: "0 auto" }}>
             The designer is responsible for design intent. The builder is responsible for construction. Each operates within their own scope.
           </Bd>
         </F>
         <F delay={0.12}>
-          <Bd max={620} style={{ margin: "6px auto 0", lineHeight: 1.75, textAlign: "center" }}>
+          <Bd max={500} style={{ margin: "6px auto 0", lineHeight: 1.75, textAlign: "center" }}>
             What's missing is someone who understands both and ensures that decisions, documentation, and execution remain aligned with the homeowner's best interest at every stage.
           </Bd>
         </F>
@@ -1828,11 +1766,11 @@ function AboutPage({ go }) {
             Design
           </div>
 
-          <div style={{...sf,fontSize:"clamp(22px,2.6vw,30px)",lineHeight:1.5,color:C.black,marginBottom:18}}>
-            Design is not a separate layer. It is the result of decisions made correctly.
-          </div>
+          <div style={{...sf,fontSize:"clamp(22px,2.6vw,30px)",lineHeight:1.5,color:C.black,marginBottom:18,maxWidth:650,marginLeft:"auto",marginRight:"auto"}}>
+  Design is not a separate layer. It is the result of decisions made correctly.
+</div>
 
-          <div style={{...sn,fontSize:15,lineHeight:1.85,color:C.smoke}}>
+<div style={{...sn,fontSize:15,lineHeight:1.85,color:C.smoke,maxWidth:700,marginLeft:"auto",marginRight:"auto"}}>
             Structure, layout, budget, code, and construction logic are resolved together. When those variables align early, the design becomes clearer, more disciplined, and more buildable.
             <br /><br />
             This is where design moves from preference to precision.
@@ -1918,7 +1856,7 @@ function AboutPage({ go }) {
             <F key={i} delay={i * 0.06}>
               <div style={{ borderTop: `1px solid ${C.faint}`, padding: "44px 0", textAlign: "center" }}>
                 <div style={{ ...sn, fontSize: 9, fontWeight: 500, letterSpacing: 2.5, color: C.orange, marginBottom: 12, textTransform: "uppercase", textAlign: "center" }}>{t.label}</div>
-                <p style={{ ...sf, fontSize: "clamp(18px,2vw,23px)", fontStyle: "italic", fontWeight: 400, color: C.smoke, lineHeight: 1.6, marginBottom: 14, maxWidth: 780, marginLeft: "auto", marginRight: "auto", textAlign: "center" }}>{t.text}</p>
+                <p style={{ ...sf, fontSize: "clamp(18px,2vw,23px)", fontStyle: "italic", fontWeight: 400, color: C.smoke, lineHeight: 1.6, marginBottom: 14, maxWidth: 880, marginLeft: "auto", marginRight: "auto", textAlign: "center" }}>{t.text}</p>
                 <div style={{ ...sn, fontSize: 12, fontWeight: 500, color: C.black, textAlign: "center" }}>{t.author}</div>
                 <div style={{ ...sn, fontSize: 11, fontWeight: 400, color: C.text, textAlign: "center" }}>{t.location}</div>
               </div>
