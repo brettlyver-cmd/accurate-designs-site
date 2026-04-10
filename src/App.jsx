@@ -189,11 +189,11 @@ const PROJECTS = [
     images: [ch1, ch2, ch3],
     imageLabels: ["Outcome", "Constraint", "Exterior"],
     challenge:
-      "The project required major design decisions to be made before municipal regulations were finalized, creating risk to both approvals and the integrity of the design.",
+      "The project moved into design before municipal regulations were fully confirmed, so approvals and design intent had to stay aligned as requirements evolved.",
     solution:
-      "We analyzed surrounding context and historical regulations to move forward with confidence, allowing the design to proceed without delay while remaining aligned with likely zoning outcomes.",
+      "We studied surrounding context and historic policy patterns early, allowing the design to move forward with a clear direction while staying aligned with likely zoning outcomes.",
     result:
-      "Only minor revisions were required once regulations were confirmed, preserving the original design and saving approximately four months while meeting strict environmental control requirements.",
+      "When regulations were finalized, only minor revisions were needed. The original design remained intact, approvals stayed on track, and roughly four months were preserved.",
   },
   {
     id: "expansive-glazing",
@@ -206,11 +206,11 @@ const PROJECTS = [
     images: [eg1, eg2],
     imageLabels: ["Outcome", "Connection"],
     challenge:
-      "The goal was uninterrupted glass and a direct visual connection to the backyard, requiring careful coordination of structure, mechanical systems, and building code constraints.",
+      "The goal was expansive glazing with a direct visual connection to the backyard, while structure, mechanical systems, and code requirements all had to stay aligned.",
     solution:
-      "We engineered structural spans to minimize obstructions, coordinated mechanical systems for performance, and integrated custom glazing assemblies early to satisfy code requirements.",
+      "We coordinated long spans, glazing assemblies, and mechanical routes early so the design could stay open without compromising performance or compliance.",
     result:
-      "The home delivers clean sightlines, strong indoor-outdoor connection, and clear supervision of the pool area, turning a technical constraint into a defining feature.",
+      "The finished home delivers clean sightlines, strong indoor-outdoor continuity, and clear supervision of the pool area.",
   },
   {
     id: "protected-heritage-bungalow",
@@ -223,11 +223,11 @@ const PROJECTS = [
     images: [ph2, ph1],
     imageLabels: ["Outcome", "Before"],
     challenge:
-      "A raised bungalow on a heritage-designated lot could not be expanded horizontally, requiring additional space to be achieved through a sensitive vertical addition.",
+      "A raised bungalow on a heritage-designated lot could not expand outward, so additional space had to come through a carefully integrated second storey.",
     solution:
-      "We designed the second storey to align with heritage guidelines while thoroughly documenting existing conditions to coordinate structure and systems before construction.",
+      "We shaped the addition to satisfy heritage expectations while documenting existing conditions early enough to coordinate structure and systems with confidence.",
     result:
-      "The home was transformed into a cohesive two-storey residence that meets heritage requirements while providing meaningful additional living space.",
+      "The home now reads as a cohesive two-storey residence, with added living space achieved in a way that respects the site.",
   },
   {
     id: "narrow-toronto-lot",
@@ -240,11 +240,11 @@ const PROJECTS = [
     images: [nt2, nt1],
     imageLabels: ["Outcome", "Shoring Strategy"],
     challenge:
-      "A tightly constrained urban lot with adjacent structures required excavation and foundation work to be completed with virtually no margin for error.",
+      "A narrow urban lot beside existing structures required excavation and foundation work to be planned with exceptional precision.",
     solution:
-      "Full shoring systems were installed and construction sequencing was tightly controlled to maintain stability of neighboring properties throughout the process.",
+      "We coordinated full shoring and a disciplined construction sequence early, protecting adjacent properties while keeping the project moving cleanly.",
     result:
-      "The project was completed safely and precisely, delivering a well-integrated home while protecting surrounding structures at every stage.",
+      "The home was delivered safely and precisely, with the new build integrated confidently into a tightly constrained site.",
   },
 ];
 
@@ -710,7 +710,11 @@ function PInfo({ p }) {
       >
         {p.lens}
       </div>
-      <h3 style={{ ...sf, fontSize: "clamp(24px,2.8vw,32px)", color: C.black, marginBottom: 8, lineHeight: 1.15, textAlign: "left" }}>
+      <h3
+        style={{ ...sf, fontSize: "clamp(24px,2.8vw,32px)", color: C.black, marginBottom: 8, lineHeight: 1.15, textAlign: "left", transition: "color 0.3s ease" }}
+        onMouseEnter={(e)=>e.target.style.color=C.orange}
+        onMouseLeave={(e)=>e.target.style.color=C.black}
+      >
         {p.name}
       </h3>
       <div
@@ -719,9 +723,9 @@ function PInfo({ p }) {
           fontSize: 11,
           fontWeight: 400,
           color: C.text,
-          marginBottom: 26,
+          marginBottom: 22,
           display: "flex",
-          gap: 12,
+          gap: 10,
           flexWrap: "wrap",
           textAlign: "left",
         }}
@@ -733,15 +737,15 @@ function PInfo({ p }) {
         <span>{p.sqft} sf</span>
       </div>
       {[
-        { l: "Challenge", v: p.challenge },
-        { l: "Approach", v: p.solution },
-        { l: "Result", v: p.result },
+        { l: "Context", v: p.challenge },
+        { l: "Resolution", v: p.solution },
+        { l: "Outcome", v: p.result },
       ].map((r, j) => (
-        <div key={j} style={{ marginBottom: 18, textAlign: "left" }}>
-          <div style={{ ...sn, fontSize: 9.5, fontWeight: 600, letterSpacing: 2, color: C.smoke, marginBottom: 7, textTransform: "uppercase", textAlign: "left" }}>
+        <div key={j} style={{ marginBottom: 14, textAlign: "left" }}>
+          <div style={{ ...sn, fontSize: 9.5, fontWeight: 600, letterSpacing: 2, color: C.smoke, marginBottom: 6, textTransform: "uppercase", textAlign: "left" }}>
             {r.l}
           </div>
-          <p style={{ ...sn, fontSize: 15, fontWeight: 400, lineHeight: 1.75, color: C.text, maxWidth: 540, margin: 0, textAlign: "left" }}>
+          <p style={{ ...sn, fontSize: 14.5, fontWeight: 400, lineHeight: 1.7, color: C.text, maxWidth: 520, margin: 0, textAlign: "left" }}>
             {r.v}
           </p>
         </div>
@@ -803,9 +807,9 @@ function HomePage({ go }) {
           </F>
           <F delay={0.24}>
             <p style={{ ...sn, fontSize: 15, fontWeight: 400, lineHeight: 1.85, color: "rgba(245,241,235,0.68)", maxWidth: 520 }}>
-              Most projects don’t go over budget because of bad decisions. They go over budget because decisions were never fully made.
+              Projects don’t move off course because of one decision. They shift when important decisions remain unresolved.
               <br /><br />
-              We bring construction thinking into the design process from day one so fewer decisions are left to the job site.
+              We bring design, structure, cost, and construction thinking together from day one so the project moves forward with greater clarity.
               <br /><br />
               Most of our projects fall between $500K and $3M+ construction budgets.
             </p>
@@ -818,6 +822,22 @@ function HomePage({ go }) {
           </F>
         </div>
       </section>
+
+      <Sec py={88} bg={C.warm}>
+        <div style={{maxWidth:900,margin:"0 auto",textAlign:"center"}}>
+          <div style={{...sn,fontSize:10,letterSpacing:3,textTransform:"uppercase",color:C.orange,marginBottom:14}}>
+            What this looks like when it’s done right
+          </div>
+
+          <div style={{...sf,fontSize:"clamp(22px,2.6vw,30px)",lineHeight:1.5,color:C.black,marginBottom:22}}>
+            A better design. A cleaner build. Fewer decisions left to the site.
+          </div>
+
+          <div style={{...sn,fontSize:15,lineHeight:1.9,color:C.smoke,maxWidth:760,margin:"0 auto"}}>
+            When structure, layout, code, cost, and construction sequencing are resolved early, the project moves forward with clarity. The result is not just fewer surprises — it is a better home.
+          </div>
+        </div>
+      </Sec>
 
       <Sec py={96} bg={C.warm} wide>
         <div style={{ display: "grid", gridTemplateColumns: "0.88fr 1.12fr", gap: 48, alignItems: "center" }} className="trg">
@@ -854,7 +874,7 @@ function HomePage({ go }) {
       <Sec py={120}>
         <F>
           <Lbl>Why It Matters</Lbl>
-          <Ttl style={{ letterSpacing: 0.2 }}>The most expensive decisions are the ones made too late.</Ttl>
+          <Ttl style={{ letterSpacing: 0.2 }}>The outcome is shaped by when decisions are made — not just which ones.</Ttl>
         </F>
         <F delay={0.08}>
           <p style={{ ...sn, fontSize: 15, fontWeight: 400, lineHeight: 1.8, color: C.text, maxWidth: 640, margin: "0 auto", textAlign: "center", letterSpacing: 0.15 }}>
@@ -899,6 +919,22 @@ function HomePage({ go }) {
         </div>
       </Sec>
 
+      <Sec py={88}>
+        <div style={{maxWidth:820,margin:"0 auto",textAlign:"center"}}>
+          <div style={{...sn,fontSize:10,letterSpacing:3,textTransform:"uppercase",color:C.orange,marginBottom:14}}>
+            Design Outcome
+          </div>
+
+          <div style={{...sf,fontSize:"clamp(22px,2.6vw,30px)",lineHeight:1.5,color:C.black,marginBottom:22}}>
+            When the right decisions are made early, the design becomes clear.
+          </div>
+
+          <div style={{...sn,fontSize:15,lineHeight:1.85,color:C.smoke}}>
+            Not forced. Not decorative. A result of structure, proportion, and use being resolved together.
+          </div>
+        </div>
+      </Sec>
+
       <Sec py={96} bg="#F3EFE8">
         <div style={{ display: "grid", gridTemplateColumns: "520px 1fr", gap: 48, alignItems: "center", marginBottom: 52 }} className="wdh">
           <F delay={0.08}>
@@ -917,7 +953,7 @@ function HomePage({ go }) {
             <div>
               <Lbl>What We Do</Lbl>
               <div style={{ ...sn, fontSize: 13, color: C.text, marginBottom: 14 }}>
-                Most problems don’t show up in design. They show up when the design meets construction.
+                Project quality is shaped by how clearly design and construction are aligned before work begins.
               </div>
               <Ttl size="clamp(28px,3.5vw,40px)" style={{ marginBottom: 0 }}>
                 Design and build services for custom residential projects.
@@ -1149,7 +1185,7 @@ function HomePage({ go }) {
           <div style={{ textAlign: "center", maxWidth: 940, margin: "0 auto" }}>
             <Lbl>Next Step</Lbl>
 <div style={{ ...sf, fontSize: "clamp(18px,2.2vw,24px)", fontStyle: "italic", color: C.smoke, lineHeight: 1.55, maxWidth: 760, margin: "0 auto 20px" }}>
-  Most projects don’t fail because of poor design or poor construction. They fail in the space between them.
+  The quality of the outcome is determined by what gets resolved before construction begins.
 </div>
             <Ttl size="clamp(26px,3.5vw,40px)">Planning a custom home, addition, or renovation?</Ttl>
             <p style={{ ...sn, fontSize: 15, fontWeight: 400, color: C.text, lineHeight: 1.8, marginBottom: 44, maxWidth: 620, marginLeft: "auto", marginRight: "auto" }}>
@@ -1174,7 +1210,7 @@ function ServicesPage({ go }) {
       label: "Design-Build",
       title: "Custom Home Design + Build",
       body: "The same team that designs the home oversees the build. Decisions carry through to the site without reinterpretation or gaps between what was drawn and what gets built.",
-      outcome: "The result is a home that matches the original intent, built on a validated budget, with fewer change orders.",
+      outcome: "The result is a home that carries its original intent through construction, without compromise.",
       cta: "Book a Consultation",
     },
     {
@@ -1209,7 +1245,7 @@ function ServicesPage({ go }) {
             <Ttl light>Services</Ttl>
           </F>
           <F delay={0.1}>
-            <Bd light max={620}>Most projects don’t fail because of design quality. They fail because critical decisions were never fully resolved.</Bd>
+            <Bd light max={620}>Projects are shaped by how early the important decisions are resolved.</Bd>
             <Bd light max={620} style={{ marginTop: 18, marginLeft: "auto", marginRight: "auto" }}>
               We design and plan custom homes, major renovations, and additions so those decisions are made before construction begins.
             </Bd>
@@ -1219,7 +1255,7 @@ function ServicesPage({ go }) {
 
       <div style={{ maxWidth: 960, margin: "0 auto", padding: "0 40px" }}>
         <p style={{ ...sn, fontSize: 15, fontWeight: 400, color: C.text, textAlign: "center", maxWidth: 560, margin: "34px auto 0", lineHeight: 1.85 }}>
-          Most projects don’t fail because of design. They fail because no one took responsibility for resolving the hard decisions early.
+          Projects are shaped by decisions made early — by how clearly they are resolved, documented, and carried into construction.
         </p>
         <div style={{ borderTop: `1px solid ${C.faint}`, margin: "48px auto 0", maxWidth: 680 }} />
       </div>
@@ -1242,7 +1278,7 @@ function ServicesPage({ go }) {
           <div style={{ maxWidth: 760, margin: "0 auto 60px", paddingLeft: 18, boxSizing: "border-box" }}>
             {[
               "You’re planning a custom home or major renovation and want it done properly from the start",
-              "You want to avoid costly changes during construction",
+              "You want to reduce mid-construction revisions through better planning",
               "You’re mid-project and need a clear, unbiased second opinion",
               "You want a complete, coordinated permit package before building begins",
             ].map((x, i) => (
@@ -1330,12 +1366,78 @@ function PortfolioPage({ go }) {
           <F delay={0.1}>
             <div style={{ maxWidth: 760, margin: "0 auto", textAlign: "center" }}>
               <Bd light max={760} style={{ margin: "0 auto", textAlign: "center" }}>
-                A focused selection of case studies showing how technical decisions, site constraints, and early coordination shape approvals, cost, and construction outcomes.
+                A curated selection of built work showing how early decisions shape clarity, construction, and the finished result.
               </Bd>
             </div>
           </F>
         </div>
       </section>
+
+      <Sec py={88} bg={C.cream} wide>
+        <div style={{ maxWidth: 1100, margin: "0 auto" }}>
+          <div style={{ textAlign: "center", marginBottom: 52 }}>
+            <Lbl>Selected Work</Lbl>
+            <Ttl size="clamp(26px,3vw,34px)">Work defined by decisions made early, not adjusted during construction.</Ttl>
+          </div>
+          {[
+            {
+              project: PROJECTS.find((p) => p.id === "country-heights-estate"),
+              copy: "An estate-scale home guided by early regulatory alignment and a clear design direction.",
+            },
+            {
+              project: PROJECTS.find((p) => p.id === "narrow-toronto-lot"),
+              copy: "A tightly constrained urban build resolved through disciplined shoring, sequencing, and clean construction planning.",
+            },
+          ].map(({ project, copy }, i) => (
+            <F key={project.id} delay={i * 0.06}>
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "1.18fr 0.82fr",
+                  gap: 48,
+                  alignItems: "center",
+                  marginBottom: i === 0 ? 56 : 0,
+                  paddingBottom: i === 0 ? 56 : 0,
+                  borderBottom: i === 0 ? `1px solid ${C.faint}` : "none",
+                }}
+                className="pfg"
+                onMouseEnter={(e) => {
+                  const img = e.currentTarget.querySelector("img");
+                  if (img) img.style.transform = "scale(1.02)";
+                }}
+                onMouseLeave={(e) => {
+                  const img = e.currentTarget.querySelector("img");
+                  if (img) img.style.transform = "scale(1)";
+                }}
+              >
+                <HoverImage
+                  src={project.images?.[0] || project.img}
+                  alt={project.name}
+                  ratio="62%"
+                  filter="grayscale(8%) brightness(0.93)"
+                  hoverFilter="grayscale(0) brightness(1)"
+                  label="Selected Work"
+                />
+                <div style={{ textAlign: "left" }}>
+                  <div style={{ ...sn, fontSize: 9.5, fontWeight: 500, letterSpacing: 3, color: C.orange, marginBottom: 12, textTransform: "uppercase" }}>
+                    {project.location} · {project.type}
+                  </div>
+                  <h3
+                    style={{ ...sf, fontSize: "clamp(24px,2.8vw,32px)", color: C.black, marginBottom: 14, lineHeight: 1.18, transition: "color 0.3s ease" }}
+                    onMouseEnter={(e)=>e.target.style.color=C.orange}
+                    onMouseLeave={(e)=>e.target.style.color=C.black}
+                  >
+                    {project.name}
+                  </h3>
+                  <p style={{ ...sn, fontSize: 15, lineHeight: 1.85, color: C.text, marginBottom: 0, maxWidth: 420 }}>
+                    {copy}
+                  </p>
+                </div>
+              </div>
+            </F>
+          ))}
+        </div>
+      </Sec>
 
       <section style={{ background: C.warm, padding: "96px 40px 64px" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto" }}>
@@ -1361,6 +1463,14 @@ function PortfolioPage({ go }) {
         </div>
       </section>
 
+      <Sec py={88} bg={C.warm}>
+        <div style={{ maxWidth: 760, margin: "0 auto", textAlign: "center" }}>
+          <div style={{ ...sf, fontSize: "clamp(22px,2.4vw,30px)", lineHeight: 1.5, color: C.black }}>
+            Every project begins the same way — by resolving what others leave open.
+          </div>
+        </div>
+      </Sec>
+
       <section style={{ background: C.deep, padding: "108px 40px", textAlign: "center" }}>
         <div style={{ maxWidth: 940, margin: "0 auto" }}>
           <Ttl light size="clamp(26px,3vw,36px)">Have a project in mind?</Ttl>
@@ -1371,7 +1481,7 @@ function PortfolioPage({ go }) {
         </div>
       </section>
 
-      <style>{`@media(max-width:860px){.pg{grid-template-columns:1fr!important}}`}</style>
+      <style>{`@media(max-width:860px){.pg,.pfg{grid-template-columns:1fr!important}}`}</style>
     </>
   );
 }
@@ -1387,7 +1497,7 @@ function ProcessPage({ go }) {
           </F>
           <F delay={0.1}>
             <Bd light max={620} style={{ margin: "0 auto", textAlign: "center", lineHeight: 1.75 }}>
-              Each phase resolves complexity before it reaches the next so decisions are deliberate, documentation is thorough, and the project stays on track.
+              Each phase is designed to bring the project into sharper alignment, so by the time construction begins the work is clear, coordinated, and ready to execute.
             </Bd>
           </F>
           <F delay={0.14}>
@@ -1457,6 +1567,14 @@ function ProcessPage({ go }) {
         </div>
       </Sec>
 
+      <Sec py={72} bg="#F3EFE8">
+        <div style={{ maxWidth: 760, margin: "0 auto", textAlign: "center" }}>
+          <div style={{ ...sf, fontSize: "clamp(22px,2.4vw,30px)", lineHeight: 1.5, color: C.black }}>
+            By the time construction begins, the project is no longer being interpreted. It’s being executed.
+          </div>
+        </div>
+      </Sec>
+
       <section style={{ background: C.deep, padding: "108px 40px", textAlign: "center" }}>
         <div style={{ maxWidth: 940, margin: "0 auto" }}>
           <div style={{ ...sf, fontSize: 22, fontStyle: "italic", fontWeight: 400, color: "rgba(245,241,235,0.85)", maxWidth: 600, margin: "0 auto 28px", lineHeight: 1.6, opacity: 0.85 }}>
@@ -1490,6 +1608,27 @@ function OwnerRepPage({ go }) {
         </div>
       </section>
 
+      <Sec py={72} bg={C.warm}>
+        <div style={{ maxWidth: 980, margin: "0 auto" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(4,minmax(0,1fr))", gap: 28 }} className="orbf">
+            {[
+              "Clear decisions",
+              "Aligned expectations",
+              "Fewer surprises",
+              "Continuity from planning through construction",
+            ].map((item, i) => (
+              <F key={i} delay={i * 0.05}>
+                <div style={{ borderTop: `1px solid ${C.faint}`, paddingTop: 18, textAlign: "center" }}>
+                  <div style={{ ...sn, fontSize: 11, fontWeight: 500, letterSpacing: 2.4, textTransform: "uppercase", color: C.text, lineHeight: 1.7 }}>
+                    {item}
+                  </div>
+                </div>
+              </F>
+            ))}
+          </div>
+        </div>
+      </Sec>
+
       <Sec py={96}>
         <F>
           <Ttl size="clamp(26px,3vw,34px)">Why this exists</Ttl>
@@ -1504,15 +1643,15 @@ function OwnerRepPage({ go }) {
             />
           </div>
           <Bd max={620} style={{ lineHeight: 1.75, textAlign: "center", margin: "0 auto" }}>
-            Most custom residential projects involve capable architects, designers, and builders. Problems rarely come from a lack of talent. They come from gaps between decisions, assumptions, and accountability.
+            Custom residential projects often involve capable professionals working from different priorities. As drawings, budgets, and site conditions move from one stage to the next, decisions can lose alignment.
           </Bd>
           <p style={{ ...sn, fontSize: 14.5, lineHeight: 1.75, color: C.text, maxWidth: 620, margin: "12px auto 0", textAlign: "center" }}>
-            And when those gaps aren’t addressed early, they show up as change orders, delays, and decisions made under pressure.
+            When that continuity is not maintained early, expectations separate and the homeowner is left interpreting information that should already have been resolved.
           </p>
         </F>
         <F delay={0.08}>
           <Bd max={620} style={{ margin: "6px auto 0", lineHeight: 1.75, textAlign: "center" }}>
-            Drawings are interpreted differently. Budgets are built on allowances. Site conditions introduce variables. Over time, small misalignments compound into delays, cost overruns, and decisions made under pressure.
+            Drawings are read differently. Budgets are built on allowances. Site conditions introduce new variables. Over time, clarity can soften unless someone is tracking how each decision affects the whole project.
           </Bd>
         </F>
       </Sec>
@@ -1534,7 +1673,7 @@ function OwnerRepPage({ go }) {
       <Sec py={96} bg={C.warm}>
         <F>
           <div style={{ marginBottom: 18 }}><Lbl>The gap</Lbl></div>
-          <Ttl size="clamp(26px,3vw,34px)" style={{ marginBottom: 10 }}>No one is fully representing the homeowner</Ttl>
+          <Ttl size="clamp(26px,3vw,34px)" style={{ marginBottom: 10 }}>The homeowner is often the only one expected to connect the pieces.</Ttl>
         </F>
         <F delay={0.08}>
           <Bd max={680} style={{ lineHeight: 1.75, textAlign: "center", margin: "0 auto" }}>
@@ -1657,7 +1796,7 @@ function OwnerRepPage({ go }) {
 
       <section style={{ background: C.deep, padding: "96px 40px", textAlign: "center" }}>
         <div style={{ ...sf, fontSize: "clamp(18px,2.2vw,24px)", fontStyle: "italic", fontWeight: 400, color: "rgba(245,241,235,0.78)", lineHeight: 1.55, maxWidth: 760, margin: "0 auto 20px" }}>
-  The value is not more opinions. It’s having one technically informed advocate who sees the gaps before they cost you.
+  The value is not more opinions. It’s having one technically informed advocate who keeps the project aligned from decision to execution.
 </div>
 <Ttl light size="clamp(26px,3vw,36px)" style={{ marginBottom: 10, letterSpacing: -0.2 }}>Need an experienced advocate on your project?</Ttl>
         <p style={{ ...sn, fontSize: 14, color: "rgba(245,241,235,0.4)", maxWidth: 420, margin: "0 auto 16px" }}>
@@ -1666,7 +1805,7 @@ function OwnerRepPage({ go }) {
         <Bt onClick={() => go("contact")} style={{ padding: "18px 48px" }}>Book a Consultation</Bt>
       </section>
 
-      <style>{`@media(max-width:860px){.orstk,.orwg,.orwi{grid-template-columns:1fr!important}}`}</style>
+      <style>{`@media(max-width:860px){.orbf,.orstk{grid-template-columns:1fr!important}.orwg{grid-template-columns:1fr!important}.orwi{grid-template-columns:1fr!important}}`}</style>
     </>
   );
 }
@@ -1683,14 +1822,32 @@ function AboutPage({ go }) {
         </div>
       </section>
 
+      <Sec py={72}>
+        <div style={{maxWidth:860,margin:"0 auto",textAlign:"center"}}>
+          <div style={{...sn,fontSize:10,letterSpacing:3,textTransform:"uppercase",color:C.orange,marginBottom:12}}>
+            Design
+          </div>
+
+          <div style={{...sf,fontSize:"clamp(22px,2.6vw,30px)",lineHeight:1.5,color:C.black,marginBottom:18}}>
+            Design is not a separate layer. It is the result of decisions made correctly.
+          </div>
+
+          <div style={{...sn,fontSize:15,lineHeight:1.85,color:C.smoke}}>
+            Structure, layout, budget, code, and construction logic are resolved together. When those variables align early, the design becomes clearer, more disciplined, and more buildable.
+            <br /><br />
+            This is where design moves from preference to precision.
+          </div>
+        </div>
+      </Sec>
+
       <Sec py={96}>
         <F style={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center" }}>
           <div style={{ ...sn, fontSize: 9.5, fontWeight: 500, letterSpacing: 3.5, textTransform: "uppercase", color: C.orange, marginBottom: 20 }}>Why Accurate Designs Exists</div>
           <div style={{ ...sf, fontSize: "clamp(22px,3vw,30px)", color: C.black, lineHeight: 1.4, marginBottom: 28, maxWidth: 820, textAlign: "center", marginLeft: "auto", marginRight: "auto" }}>
-            Too many residential projects are going over budget, not because of bad design, but because critical decisions are being deferred to construction.
+            Residential projects are shaped by the quality of the decisions made before construction begins.
           </div>
           <Bd max={660} style={{ textAlign: "center", margin: "0 auto" }}>
-            Accurate Designs was founded in 2000 to close that gap. The premise was straightforward: if zoning, structure, mechanical systems, and budget are coordinated during design, the project runs more smoothly and costs less to build.
+            Accurate Designs was founded in 2000 to bring structure, layout, budget, code, and construction logic into the design process early. When those variables are aligned on paper, the project moves with more clarity and the design holds its integrity.
           </Bd>
         </F>
       </Sec>
@@ -1809,9 +1966,9 @@ function ContactPage() {
               No cost. No obligation. Just clarity.
               <br />
               <br />
-              If we’re not the right fit, we’ll tell you.
+              If we’re not the right fit, we’ll be direct about it.
               <br /><br />
-              Most clients reach out after something has already gone wrong. This is where you prevent that.
+              Most successful projects begin with clarity before construction starts.
             </Bd>
           </F>
         </div>
