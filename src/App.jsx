@@ -180,7 +180,7 @@ function HoverImage({
 const PROJECTS = [
   {
     id: "country-heights-estate",
-    name: "Country Heights Estate",
+    name: "Courtyard Residence",
     location: "Richmond Hill",
     sqft: "10,000",
     type: "Custom Home",
@@ -188,16 +188,12 @@ const PROJECTS = [
     img: ch1,
     images: [ch1, ch2, ch3],
     imageLabels: ["Outcome", "Constraint", "Exterior"],
-    challenge:
-      "The project moved into design before municipal regulations were fully confirmed, so approvals and design intent had to stay aligned as requirements evolved.",
-    solution:
-      "We studied surrounding context and historic policy patterns early, allowing the design to move forward with a clear direction while staying aligned with likely zoning outcomes.",
-    result:
-      "When regulations were finalized, only minor revisions were needed. The original design remained intact, approvals stayed on track, and roughly four months were preserved.",
+    desc:
+      "A courtyard-form residence that transforms a constrained lot into a private, light-filled retreat. The L-shaped plan balances openness with enclosure, creating a seamless dialogue between architecture and landscape.",
   },
   {
     id: "expansive-glazing",
-    name: "Expansive Glazing",
+    name: "Escarpment Edge Residence",
     location: "Oakville",
     sqft: "4,000",
     type: "Custom Home",
@@ -205,16 +201,12 @@ const PROJECTS = [
     img: eg1,
     images: [eg1, eg2],
     imageLabels: ["Outcome", "Connection"],
-    challenge:
-      "The goal was expansive glazing with a direct visual connection to the backyard, while structure, mechanical systems, and code requirements all had to stay aligned.",
-    solution:
-      "We coordinated long spans, glazing assemblies, and mechanical routes early so the design could stay open without compromising performance or compliance.",
-    result:
-      "The finished home delivers clean sightlines, strong indoor-outdoor continuity, and clear supervision of the pool area.",
+    desc:
+      "Positioned along the Niagara Escarpment, this home frames panoramic views while respecting the natural terrain. Clean lines and expansive glazing connect interior spaces to the surrounding environment.",
   },
   {
     id: "protected-heritage-bungalow",
-    name: "Protected Heritage Bungalow",
+    name: "Urban Infill Residence",
     location: "Richmond Hill",
     sqft: "2,500",
     type: "Renovation + Second Storey Addition",
@@ -222,16 +214,12 @@ const PROJECTS = [
     img: ph2,
     images: [ph2, ph1],
     imageLabels: ["Outcome", "Before"],
-    challenge:
-      "A raised bungalow on a heritage-designated lot could not expand outward, so additional space had to come through a carefully integrated second storey.",
-    solution:
-      "We shaped the addition to satisfy heritage expectations while documenting existing conditions early enough to coordinate structure and systems with confidence.",
-    result:
-      "The home now reads as a cohesive two-storey residence, with added living space achieved in a way that respects the site.",
+    desc:
+      "Designed for a narrow urban lot, this residence maximizes space and natural light through thoughtful massing and vertical organization, proving that constraints can inspire refined architectural solutions.",
   },
   {
     id: "narrow-toronto-lot",
-    name: "Narrow Toronto Lot",
+    name: "Waterfront Modern Retreat",
     location: "Toronto",
     sqft: "2,800",
     type: "Custom Home + Legal Basement Apartment",
@@ -239,14 +227,11 @@ const PROJECTS = [
     img: nt2,
     images: [nt2, nt1],
     imageLabels: ["Outcome", "Shoring Strategy"],
-    challenge:
-      "A narrow urban lot beside existing structures required excavation and foundation work to be planned with exceptional precision.",
-    solution:
-      "We coordinated full shoring and a disciplined construction sequence early, protecting adjacent properties while keeping the project moving cleanly.",
-    result:
-      "The home was delivered safely and precisely, with the new build integrated confidently into a tightly constrained site.",
+    desc:
+      "A contemporary lakeside retreat designed to embrace its setting through expansive glazing, sheltered outdoor living spaces, and a seamless connection between interior comfort and the natural landscape.",
   },
 ];
+
 
 const PROCESS_STEPS = [
   {
@@ -736,20 +721,14 @@ function PInfo({ p }) {
         <span style={{ color: C.stone }}>·</span>
         <span>{p.sqft} sf</span>
       </div>
-      {[
-        { l: "Context", v: p.challenge },
-        { l: "Resolution", v: p.solution },
-        { l: "Outcome", v: p.result },
-      ].map((r, j) => (
-        <div key={j} style={{ marginBottom: 14, textAlign: "left" }}>
-          <div style={{ ...sn, fontSize: 9.5, fontWeight: 600, letterSpacing: 2, color: C.smoke, marginBottom: 6, textTransform: "uppercase", textAlign: "left" }}>
-            {r.l}
-          </div>
-          <p style={{ ...sn, fontSize: 14.5, fontWeight: 400, lineHeight: 1.7, color: C.text, maxWidth: 520, margin: 0, textAlign: "left" }}>
-            {r.v}
-          </p>
+      <div style={{ marginBottom: 14, textAlign: "left" }}>
+        <div style={{ ...sn, fontSize: 9.5, fontWeight: 600, letterSpacing: 2, color: C.smoke, marginBottom: 6, textTransform: "uppercase", textAlign: "left" }}>
+          Design Narrative
         </div>
-      ))}
+        <p style={{ ...sn, fontSize: 14.5, fontWeight: 400, lineHeight: 1.7, color: C.text, maxWidth: 520, margin: 0, textAlign: "left" }}>
+          {p.desc}
+        </p>
+      </div>
     </div>
   );
 }
@@ -1030,7 +1009,7 @@ function HomePage({ go }) {
                       <span style={{ ...sf, fontSize: 17, fontWeight: 400, color: C.cream }}>{p.name}</span>
                       <span style={{ ...sn, fontSize: 11, fontWeight: 400, color: "rgba(245,241,235,0.25)" }}>{p.sqft} sf</span>
                     </div>
-                    <p style={{ ...sn, fontSize: 12, fontWeight: 400, lineHeight: 1.6, color: "rgba(245,241,235,0.3)" }}>{p.challenge.substring(0, 100)}...</p>
+                    <p style={{ ...sn, fontSize: 12, fontWeight: 400, lineHeight: 1.6, color: "rgba(245,241,235,0.3)" }}>{p.desc}</p>
                   </div>
                 </div>
               </F>
