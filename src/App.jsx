@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
-import heroModernDusk from "./assets/hero-modern-dusk.jpg";
+import heroModernDusk from "./assets/Landing-page-image-1.jpg";
 import beforeAfterTraditionalToModern from "./assets/before-after-traditional-to-modern.jpg";
 import processExistingHouse from "./assets/process-existing-house.jpg";
 import processFramingInsulation from "./assets/process-framing-insulation.png";
@@ -775,28 +775,29 @@ function HomePage({ go }) {
           />
         </div>
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top,rgba(8,8,8,0.94) 0%,rgba(30,28,24,0.5) 46%,rgba(8,8,8,0.16) 100%)" }} />
-        <div style={{ position: "relative", zIndex: 2, maxWidth: 1100, width: "100%", margin: "0 auto", padding: "0 40px 100px" }}>
+        <div style={{ position: "relative", zIndex: 2, maxWidth: 900, width: "100%", margin: "0 auto", padding: "0 20px 100px", textAlign: "center" }}>
           <F>
             <Lbl light>Custom Homes · Additions · Major Renovations</Lbl>
           </F>
           <F delay={0.12}>
-            <h1 style={{ ...sf, fontSize: "clamp(32px,5.5vw,64px)", fontWeight: 400, color: C.cream, lineHeight: 1.1, marginBottom: 32, maxWidth: 840}}>
-              We design homes that are resolved on paper before they cost you on site.
+            <h1 style={{ ...sf, fontSize: "clamp(32px,5.5vw,64px)", fontWeight: 400, color: C.cream, lineHeight: 1.1, marginBottom: 32, maxWidth: 900}}>
+              Homes that feel exceptional long before they’re built.
             </h1>
           </F>
           <F delay={0.24}>
-            <p style={{ ...sn, fontSize: 15, fontWeight: 400, lineHeight: 1.85, color: "rgba(245,241,235,0.68)", maxWidth:600}}>
-              Projects don’t move off course because of one decision. They shift when important decisions remain unresolved.
-              <br /><br />
-              We bring design, structure, cost, and construction thinking together from day one so the project moves forward with greater clarity.
-              <br /><br />
-              Most of our projects fall between $500K and $3M+ construction budgets.
+            <p style={{ ...sn, fontSize: 20, fontWeight: 400, lineHeight: 1.85, color: "rgba(245,241,235,0.68)", maxWidth:820, margin: "0 auto"}}>
+              <div style={{ marginBottom: 10 }}>
+  Designed with clarity. Detailed with intent. Executed without compromise.
+</div>
+<div style={{ marginBottom: 10 }}>
+  Where architecture, construction, and cost are aligned from the very beginning.
+</div>
             </p>
           </F>
           <F delay={0.36}>
-            <div style={{ display: "flex", gap: 16, marginTop: 48, flexWrap: "wrap" }}>
-              <Bt onClick={() => go("contact")}>Book a Consultation</Bt>
-              <Bt outline light onClick={() => go("portfolio")}>See Built Projects</Bt>
+            <div style={{ display: "flex", gap: 16, marginTop: 48, justifyContent: "center", flexWrap: "wrap" }}>
+              <Bt onClick={() => go("contact")}>Begin with a Conversation</Bt>
+              <Bt outline light onClick={() => go("portfolio")}>View Built Projects</Bt>
             </div>
           </F>
         </div>
