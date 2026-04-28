@@ -160,13 +160,19 @@ function HoverImage({
             position: "absolute",
             top: 16,
             left: 16,
-            fontSize: 9,
-            fontWeight: 500,
-            letterSpacing: 2.4,
+
+            // 🔥 FIXED SIZE (THIS is what you needed)
+            fontSize: 16,
+            fontWeight: 600,
+            letterSpacing: 2.6,
+
             textTransform: "uppercase",
             color: labelDark ? C.black : C.cream,
-            background: labelDark ? "rgba(245,241,235,0.88)" : "rgba(8,8,8,0.45)",
-            padding: "8px 10px",
+            background: labelDark
+              ? "rgba(245,241,235,0.88)"
+              : "rgba(8,8,8,0.45)",
+
+            padding: "12px 16px",
             backdropFilter: "blur(10px)",
           }}
         >
@@ -189,7 +195,7 @@ const PROJECTS = [
     images: [ch1, ch2, ch3],
     imageLabels: ["Outcome", "Constraint", "Exterior"],
     desc:
-      "A courtyard-form residence that transforms a constrained lot into a private, light-filled retreat. The L-shaped plan balances openness with enclosure, creating a seamless dialogue between architecture and landscape.",
+      "A courtyard-form residence that transforms a constrained lot into a private, light-filled retreat. The Porte-cochere allows vehicular access while maintaining privacy, creating a seamless dialogue between architecture and landscape.",
   },
   {
     id: "expansive-glazing",
@@ -438,17 +444,18 @@ function Sec({ children, bg, py = 140, wide }) {
   );
 }
 
-function Lbl({ children, light }) {
+function Lbl({ children, light, style = {} }) {
   return (
     <div
       style={{
         ...sn,
-        fontSize: 9.5,
+        fontSize: 11.5,
         fontWeight: 500,
         letterSpacing: 3.5,
         textTransform: "uppercase",
         color: light ? "rgba(245,241,235,0.55)" : C.orange,
         marginBottom: 20,
+        ...style,
       }}
     >
       {children}
@@ -507,7 +514,7 @@ function Bt({ children, onClick, outline, light, style: s }) {
     transition: "all 0.4s",
     border: `1px solid ${dk ? "rgba(255,255,255,0.15)" : outline ? "rgba(201,106,43,0.35)" : C.orange}`,
     background: outline ? "transparent" : C.orange,
-    color: dk ? "rgba(255,255,255,0.45)" : outline ? C.orange : C.cream,
+    color: dk ? "rgba(255,255,255,0.75)" : outline ? C.orange : C.cream,
     ...s,
   };
 
@@ -532,6 +539,8 @@ function Bt({ children, onClick, outline, light, style: s }) {
 }
 
 function Inp({ label, type = "text", textarea }) {
+  const fieldName = label.replace(" *", "");
+
   const b = {
     ...sn,
     width: "100%",
@@ -553,7 +562,7 @@ function Inp({ label, type = "text", textarea }) {
       <label
         style={{
           ...sn,
-          fontSize: 9.5,
+          fontSize: 11.5,
           fontWeight: 500,
           letterSpacing: 2.5,
           textTransform: "uppercase",
@@ -566,6 +575,7 @@ function Inp({ label, type = "text", textarea }) {
       </label>
       {textarea ? (
         <textarea
+          name={fieldName}
           rows={3}
           style={{ ...b, resize: "none", fontFamily: "'Montserrat',sans-serif" }}
           onFocus={(e) => (e.target.style.borderBottomColor = C.orange)}
@@ -573,6 +583,7 @@ function Inp({ label, type = "text", textarea }) {
         />
       ) : (
         <input
+          name={fieldName}
           type={type}
           style={b}
           onFocus={(e) => (e.target.style.borderBottomColor = C.orange)}
@@ -584,12 +595,14 @@ function Inp({ label, type = "text", textarea }) {
 }
 
 function Sel({ label, options }) {
+  const fieldName = label.replace(" *", "");
+
   return (
     <div style={{ marginBottom: 42 }}>
       <label
         style={{
           ...sn,
-          fontSize: 9.5,
+          fontSize: 11.5,
           fontWeight: 500,
           letterSpacing: 2.5,
           textTransform: "uppercase",
@@ -601,6 +614,7 @@ function Sel({ label, options }) {
         {label}
       </label>
       <select
+        name={fieldName}
         style={{
           ...sn,
           width: "100%",
@@ -661,7 +675,7 @@ function Stats({ light }) {
             <div
               style={{
                 ...sn,
-                fontSize: 9.5,
+                fontSize: 11.5,
                 fontWeight: 400,
                 letterSpacing: 2.5,
                 textTransform: "uppercase",
@@ -683,7 +697,7 @@ function PInfo({ p }) {
       <div
         style={{
           ...sn,
-          fontSize: 9,
+          fontSize: 12,
           fontWeight: 500,
           letterSpacing: 4,
           color: C.orange,
@@ -722,7 +736,7 @@ function PInfo({ p }) {
         <span>{p.sqft} sf</span>
       </div>
       <div style={{ marginBottom: 14, textAlign: "left" }}>
-        <div style={{ ...sn, fontSize: 9.5, fontWeight: 600, letterSpacing: 2, color: C.smoke, marginBottom: 6, textTransform: "uppercase", textAlign: "left" }}>
+        <div style={{ ...sn, fontSize: 11.5, fontWeight: 600, letterSpacing: 2, color: C.smoke, marginBottom: 6, textTransform: "uppercase", textAlign: "left" }}>
           Design Narrative
         </div>
         <p style={{ ...sn, fontSize: 14.5, fontWeight: 400, lineHeight: 1.7, color: C.text, maxWidth: 520, margin: 0, textAlign: "left" }}>
@@ -771,11 +785,11 @@ function HomePage({ go }) {
           <img
             src={heroModernDusk}
             alt="Contemporary custom home at dusk"
-            style={{ width: "100%", height: "100%", objectFit: "cover", filter: "grayscale(10%) brightness(0.50) saturate(1.05)" }}
+            style={{ width: "100%", height: "100%", objectFit: "cover", filter: "grayscale(6%) brightness(0.80) contrast(1.08) sepia(0.06)" }}
           />
         </div>
-        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top,rgba(8,8,8,0.94) 0%,rgba(30,28,24,0.5) 46%,rgba(8,8,8,0.16) 100%)" }} />
-        <div style={{ position: "relative", zIndex: 2, maxWidth: 900, width: "100%", margin: "0 auto", padding: "0 20px 100px", textAlign: "center" }}>
+        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(8,8,8,0.92) 0%, rgba(8,8,8,0.72) 35%, rgba(8,8,8,0.45) 60%, rgba(8,8,8,0.28) 78%, rgba(8,8,8,0.38) 100%)" }} />
+        <div style={{ position: "relative", zIndex: 2, maxWidth: 900, width: "100%", margin: "0 auto", padding: "0 20px 140px", textAlign: "center" }}>
           <F>
             <Lbl light>Custom Homes · Additions · Major Renovations</Lbl>
           </F>
@@ -785,14 +799,14 @@ function HomePage({ go }) {
             </h1>
           </F>
           <F delay={0.24}>
-            <p style={{ ...sn, fontSize: 20, fontWeight: 400, lineHeight: 1.85, color: "rgba(245,241,235,0.68)", maxWidth:820, margin: "0 auto"}}>
+            <div style={{ ...sn, fontSize: 20, fontWeight: 400, lineHeight: 1.85, color: "rgba(245,241,235,0.82)", maxWidth: 820, margin: "0 auto" }}>
               <div style={{ marginBottom: 10 }}>
   Designed with clarity. Detailed with intent. Executed without compromise.
 </div>
-<div style={{ marginBottom: 10 }}>
+<div>
   Where architecture, construction, and cost are aligned from the very beginning.
 </div>
-            </p>
+            </div>
           </F>
           <F delay={0.36}>
             <div style={{ display: "flex", gap: 16, marginTop: 48, justifyContent: "center", flexWrap: "wrap" }}>
@@ -803,14 +817,15 @@ function HomePage({ go }) {
         </div>
       </section>
 
-      <Sec py={88} bg={C.warm}>
+      <Sec py={110} bg={C.warm} data-section="what-happens-next">
         <div style={{maxWidth:900,margin:"0 auto",textAlign:"center"}}>
-          <div style={{...sn,fontSize:10,letterSpacing:3,textTransform:"uppercase",color:C.orange,marginBottom:14}}>
+          <div style={{...sn,fontSize:12,letterSpacing:3,textTransform:"uppercase",color:C.orange,marginBottom:14}}>
             What this looks like when it’s done right
           </div>
 
           <div style={{...sf,fontSize:"clamp(22px,2.6vw,30px)",lineHeight:1.5,color:C.black,marginBottom:22}}>
-            A better design. A cleaner build. Fewer decisions left to the site.
+            A better design. A cleaner build.<br/>
+            Fewer decisions left to the site.
           </div>
 
           <div style={{...sn,fontSize:15,lineHeight:1.9,color:C.smoke,maxWidth:760,margin:"0 auto"}}>
@@ -823,7 +838,7 @@ function HomePage({ go }) {
         <div style={{ display: "grid", gridTemplateColumns: "0.88fr 1.12fr", gap: 48, alignItems: "center" }} className="trg">
           <F>
             <div style={{ maxWidth: 420 }}>
-              <Lbl>Transformation</Lbl>
+              <Lbl style={{ fontSize: 12 }}>Transformation</Lbl>
               <Ttl size="clamp(28px,3.6vw,44px)">Every project starts with constraints.</Ttl>
               <Bd max={420} style={{ marginBottom: 0 }}>
                 The outcome is determined by how early they’re resolved.
@@ -846,15 +861,63 @@ function HomePage({ go }) {
           </F>
         </div>
       </Sec>
+      <Sec py={88} bg={C.warm}>
+  <div style={{ maxWidth: 920, margin: "0 auto", textAlign: "center" }}>
+    <div style={{ ...sn, fontSize: 12, letterSpacing: 3, textTransform: "uppercase", color: C.orange, marginBottom: 16 }}>
+      What happens next
+    </div>
 
-      <Sec py={64} bg="#F3EFE8">
+    <div style={{ ...sf, fontSize: "clamp(24px,2.8vw,34px)", lineHeight: 1.42, color: C.black, marginBottom: 24 }}>
+      The feeling draws you in. The process makes it buildable.
+    </div>
+
+    <div style={{ ...sn, fontSize: 15.5, lineHeight: 1.9, color: C.smoke, maxWidth: 760, margin: "0 auto" }}>
+      Beautiful homes do not come from design alone. They come from resolving proportion, structure, budget, code, and construction logic early enough that the finished home still feels like the original vision.
+    </div>
+  </div>
+</Sec>
+<Sec py={64} bg="#F3EFE8" data-section="credibility-strip">
+  <div style={{ maxWidth: 1000, margin: "0 auto" }}>
+    <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap:60 }}>
+      
+      <div style={{ textAlign: "center" }}>
+        <div style={{ ...sf, fontSize: 19.5, fontWeight: 500, marginBottom: 10 }}>
+          Fewer Surprises
+        </div>
+        <div style={{ ...sn, fontSize: 14.5, lineHeight: 1.8, color: C.smoke }}>
+          Decisions are resolved early, so the build does not drift under pressure.
+        </div>
+      </div>
+
+      <div style={{ textAlign: "center" }}>
+        <div style={{ ...sf, fontSize: 19.5, fontWeight: 500, marginBottom: 10 }}>
+          Cleaner Builds
+        </div>
+        <div style={{ ...sn, fontSize: 14.5, lineHeight: 1.8, color: C.smoke }}>
+          Structure, layout, and sequencing are coordinated before construction begins.
+        </div>
+      </div>
+
+      <div style={{ textAlign: "center" }}>
+        <div style={{ ...sf, fontSize: 19.5, fontWeight: 500, marginBottom: 10 }}>
+          Better Outcomes
+        </div>
+        <div style={{ ...sn, fontSize: 14.5, lineHeight: 1.8, color: C.smoke }}>
+          The finished home reflects the original vision — not compromises made on site.
+        </div>
+      </div>
+
+    </div>
+  </div>
+</Sec>
+      <Sec py={64} bg="#F3EFE8" data-section="stats">
         <Stats />
       </Sec>
 
       <Sec py={120}>
         <F>
-          <Lbl>Why It Matters</Lbl>
-          <Ttl style={{ letterSpacing: 0.2 }}>The outcome is shaped by when decisions are made — not just which ones.</Ttl>
+        <Lbl style={{ fontSize: 12 }}>Why It Matters</Lbl>
+          <Ttl style={{ letterSpacing: 0.2 }}>The outcome is shaped by when decisions are made, not just which ones.</Ttl>
         </F>
         <F delay={0.08}>
           <p style={{ ...sn, fontSize: 15, fontWeight: 400, lineHeight: 1.8, color: C.text, maxWidth: 640, margin: "0 auto", textAlign: "center", letterSpacing: 0.15 }}>
@@ -901,7 +964,7 @@ function HomePage({ go }) {
 
       <Sec py={88}>
         <div style={{maxWidth:820,margin:"0 auto",textAlign:"center"}}>
-          <div style={{...sn,fontSize:10,letterSpacing:3,textTransform:"uppercase",color:C.orange,marginBottom:14}}>
+          <div style={{...sn,fontSize:12,letterSpacing:3,textTransform:"uppercase",color:C.orange,marginBottom:14}}>
             Design Outcome
           </div>
 
@@ -931,7 +994,7 @@ function HomePage({ go }) {
           </F>
           <F>
             <div>
-              <Lbl>What We Do</Lbl>
+              <Lbl style={{ fontSize: 12 }}>What We Do</Lbl>
               <div style={{ ...sn, fontSize: 13, color: C.text, marginBottom: 14 }}>
                 Project quality is shaped by how clearly design and construction are aligned before work begins.
               </div>
@@ -964,7 +1027,7 @@ function HomePage({ go }) {
 
       <Sec py={96}>
         <F>
-          <Lbl>Who We Work With</Lbl>
+          <Lbl style={{ fontSize: 12 }}>Who We Work With</Lbl>
           <Ttl size="clamp(26px,3.2vw,36px)">We're the right fit when the details matter.</Ttl>
           <div style={{ display: "grid", gridTemplateColumns: "1.2fr 1fr", gap: 48, marginTop: 44 }} className="wg">
             <div>
@@ -992,7 +1055,7 @@ function HomePage({ go }) {
       <section style={{ background: C.black, padding: "140px 40px" }}>
         <div style={{ maxWidth: 1240, margin: "0 auto" }}>
           <F>
-            <Lbl light>Selected Work</Lbl>
+          <Lbl style={{ fontSize: 12 }}>Selected Work</Lbl>
           </F>
           <F delay={0.08}>
             <Ttl light>Featured Projects</Ttl>
@@ -1003,12 +1066,12 @@ function HomePage({ go }) {
                 <div style={{ cursor: "pointer" }} onClick={() => go("portfolio")}>
                   <HoverImage src={p.img} alt={p.name} ratio="75%" filter="grayscale(14%) brightness(0.84)" hoverFilter="grayscale(0) brightness(1)" />
                   <div style={{ padding: "22px 0 0" }}>
-                    <div style={{ ...sn, fontSize: 9, fontWeight: 500, letterSpacing: 3, color: C.orange, marginBottom: 10, textTransform: "uppercase", opacity: 0.8 }}>
+                    <div style={{ ...sn, fontSize: 12, fontWeight: 500, letterSpacing: 3, color: C.orange, marginBottom: 10, textTransform: "uppercase", opacity: 0.8 }}>
                       {p.lens}
                     </div>
                     <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 6 }}>
                       <span style={{ ...sf, fontSize: 17, fontWeight: 400, color: C.cream }}>{p.name}</span>
-                      <span style={{ ...sn, fontSize: 11, fontWeight: 400, color: "rgba(245,241,235,0.25)" }}>{p.sqft} sf</span>
+                      <span style={{ ...sn, fontSize: 12, fontWeight: 400, color: "rgba(245,241,235,0.25)" }}>{p.sqft} sf</span>
                     </div>
                     <p style={{ ...sn, fontSize: 12, fontWeight: 400, lineHeight: 1.6, color: "rgba(245,241,235,0.3)" }}>{p.desc}</p>
                   </div>
@@ -1025,7 +1088,7 @@ function HomePage({ go }) {
       <Sec py={56}>
         <F>
           <div style={{ maxWidth: 920, margin: "0 auto", textAlign: "center" }}>
-            <div style={{ ...sn, fontSize: 9, fontWeight: 500, letterSpacing: 3, color: C.orange, marginBottom: 20, textTransform: "uppercase" }}>Smooth Permit Experience</div>
+            <div style={{ ...sn, fontSize: 12, fontWeight: 500, letterSpacing: 3, color: C.orange, marginBottom: 20, textTransform: "uppercase" }}>Smooth Permit Experience</div>
             <p style={{ ...sf, fontSize: "clamp(19px,2.5vw,26px)", fontStyle: "italic", fontWeight: 400, color: C.smoke, lineHeight: 1.55, marginBottom: 28, textAlign: "center", maxWidth: 780, marginLeft: "auto", marginRight: "auto" }}>
               "Brett walked us through the entire process and designed exactly what we envisioned. The permit process was a breeze."
             </p>
@@ -1086,7 +1149,7 @@ function HomePage({ go }) {
         <div style={{ marginTop: 56 }}>
           <F>
             <div style={{ background: C.warm, padding: "48px 44px", borderLeft: `3px solid ${C.orange}`, marginBottom: 40 }}>
-              <div style={{ ...sn, fontSize: 9, fontWeight: 500, letterSpacing: 3, color: C.orange, marginBottom: 14, textTransform: "uppercase" }}>Featured Resource</div>
+              <div style={{ ...sn, fontSize: 12, fontWeight: 500, letterSpacing: 3, color: C.orange, marginBottom: 14, textTransform: "uppercase" }}>Featured Resource</div>
               <h3 style={{ ...sf, fontSize: "clamp(22px,2.5vw,28px)", fontWeight: 400, color: C.black, lineHeight: 1.25, marginBottom: 14 }}>The Decisions That Lock In Cost</h3>
               <p style={{ ...sn, fontSize: 14, fontWeight: 400, lineHeight: 1.8, color: C.text, maxWidth: 480, margin: "0 auto 24px", textAlign: "center" }}>
                 Which early-stage choices quietly determine 80% of your construction budget — and how to make them with full context before committing to design or construction.
@@ -1742,7 +1805,7 @@ function AboutPage({ go }) {
 
       <Sec py={72}>
         <div style={{maxWidth:860,margin:"0 auto",textAlign:"center"}}>
-          <div style={{...sn,fontSize:10,letterSpacing:3,textTransform:"uppercase",color:C.orange,marginBottom:12}}>
+          <div style={{...sn,fontSize:12,letterSpacing:3,textTransform:"uppercase",color:C.orange,marginBottom:12}}>
             Design
           </div>
 
@@ -1760,7 +1823,7 @@ function AboutPage({ go }) {
 
       <Sec py={96}>
         <F style={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center" }}>
-          <div style={{ ...sn, fontSize: 9.5, fontWeight: 500, letterSpacing: 3.5, textTransform: "uppercase", color: C.orange, marginBottom: 20 }}>Why Accurate Designs Exists</div>
+          <div style={{ ...sn, fontSize: 11.5, fontWeight: 500, letterSpacing: 3.5, textTransform: "uppercase", color: C.orange, marginBottom: 20 }}>Why Accurate Designs Exists</div>
           <div style={{ ...sf, fontSize: "clamp(22px,3vw,30px)", color: C.black, lineHeight: 1.4, marginBottom: 28, maxWidth: 820, textAlign: "center", marginLeft: "auto", marginRight: "auto" }}>
             Residential projects are shaped by the quality of the decisions made before construction begins.
           </div>
@@ -1795,7 +1858,7 @@ function AboutPage({ go }) {
           </div>
         </F>
         <F style={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center" }}>
-          <div style={{ ...sn, fontSize: 9.5, fontWeight: 500, letterSpacing: 3.5, textTransform: "uppercase", color: C.orange, marginBottom: 20 }}>How Brett Works</div>
+          <div style={{ ...sn, fontSize: 11.5, fontWeight: 500, letterSpacing: 3.5, textTransform: "uppercase", color: C.orange, marginBottom: 20 }}>How Brett Works</div>
           <Bd max={820} style={{ textAlign: "center", margin: "0 auto" }}>
             Over 500+ residential projects, from modest renovations to $20M+ estates. Brett has developed a consistent approach: coordinate every system on paper, anticipate construction realities during design, and produce documentation thorough enough that the builder’s job is to execute, not interpret.
           </Bd>
@@ -1809,7 +1872,7 @@ function AboutPage({ go }) {
 
       <Sec py={96}>
         <F style={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center" }}>
-          <div style={{ ...sn, fontSize: 9.5, fontWeight: 500, letterSpacing: 3.5, textTransform: "uppercase", color: C.orange, marginBottom: 20 }}>Where We're Going</div>
+          <div style={{ ...sn, fontSize: 11.5, fontWeight: 500, letterSpacing: 3.5, textTransform: "uppercase", color: C.orange, marginBottom: 20 }}>Where We're Going</div>
           <Bd max={740} style={{ textAlign: "center", margin: "0 auto" }}>
             Accurate Designs is expanding into a family-operated firm. Brett's wife brings VP-level corporate communications expertise to client experience and business operations. Their two sons are learning the practice, the next generation of a firm built on getting the details right.
           </Bd>
@@ -1835,7 +1898,7 @@ function AboutPage({ go }) {
           {TEST.map((t, i) => (
             <F key={i} delay={i * 0.06}>
               <div style={{ borderTop: `1px solid ${C.faint}`, padding: "44px 0", textAlign: "center" }}>
-                <div style={{ ...sn, fontSize: 9, fontWeight: 500, letterSpacing: 2.5, color: C.orange, marginBottom: 12, textTransform: "uppercase", textAlign: "center" }}>{t.label}</div>
+                <div style={{ ...sn, fontSize: 12, fontWeight: 500, letterSpacing: 2.5, color: C.orange, marginBottom: 12, textTransform: "uppercase", textAlign: "center" }}>{t.label}</div>
                 <p style={{ ...sf, fontSize: "clamp(18px,2vw,23px)", fontStyle: "italic", fontWeight: 400, color: C.smoke, lineHeight: 1.6, marginBottom: 14, maxWidth: 880, marginLeft: "auto", marginRight: "auto", textAlign: "center" }}>{t.text}</p>
                 <div style={{ ...sn, fontSize: 12, fontWeight: 500, color: C.black, textAlign: "center" }}>{t.author}</div>
                 <div style={{ ...sn, fontSize: 11, fontWeight: 400, color: C.text, textAlign: "center" }}>{t.location}</div>
@@ -1923,13 +1986,29 @@ function ContactPage() {
                   Every inquiry is reviewed personally. We typically reply within one business day.
                 </p>
                 <Bt
-  onClick={() => {
+  onClick={async () => {
+    const formData = new FormData();
+
+    document.querySelectorAll("input, textarea, select").forEach((field) => {
+      const label = field.closest("div")?.querySelector("label")?.textContent || field.name || "Field";
+      formData.append(label.replace(" *", ""), field.value);
+    });
+
+    await fetch("https://formspree.io/f/xdayrzaw", {
+      method: "POST",
+      body: formData,
+      headers: {
+        Accept: "application/json",
+      },
+    });
+
     setSent(true);
+
     if (window.gtag) {
-      window.gtag('event', 'generate_lead', {
-        event_category: 'engagement',
-        event_label: 'contact_form',
-        value: 1
+      window.gtag("event", "generate_lead", {
+        event_category: "engagement",
+        event_label: "contact_form",
+        value: 1,
       });
     }
   }}
@@ -1968,13 +2047,13 @@ function ContactPage() {
             <div style={{ borderTop: `1px solid ${C.faint}`, paddingTop: 32, marginTop: 24, marginBottom: 32, textAlign: "center" }}>
               {[{ l: "Email", v: CONTACT_EMAIL }, { l: "Phone", v: CONTACT_PHONE }, { l: "Office", v: OFFICE_ADDRESS }].map((c, i) => (
                 <div key={i} style={{ marginBottom: 32 }}>
-                  <div style={{ ...sn, fontSize: 9.5, fontWeight: 500, letterSpacing: 2.5, textTransform: "uppercase", color: C.text, marginBottom: 5 }}>{c.l}</div>
+                  <div style={{ ...sn, fontSize: 11.5, fontWeight: 500, letterSpacing: 2.5, textTransform: "uppercase", color: C.text, marginBottom: 5 }}>{c.l}</div>
                   <div style={{ ...sn, fontSize: 14, fontWeight: 400, color: C.black, whiteSpace: "pre-line", lineHeight: 1.6 }}>{c.v}</div>
                 </div>
               ))}
             </div>
             <div style={{ borderTop: `1px solid ${C.faint}`, paddingTop: 28 }}>
-              <div style={{ ...sn, fontSize: 9.5, fontWeight: 500, letterSpacing: 2.5, textTransform: "uppercase", color: C.text, marginBottom: 10 }}>Service Area</div>
+              <div style={{ ...sn, fontSize: 11.5, fontWeight: 500, letterSpacing: 2.5, textTransform: "uppercase", color: C.text, marginBottom: 10 }}>Service Area</div>
               <p style={{ ...sn, fontSize: 15, fontWeight: 400, lineHeight: 1.75, color: C.text }}>
                 Greater Toronto Area including Milton, Oakville, Burlington, Mississauga, and Toronto. Muskoka, Niagara, and extended regions considered case-by-case.
               </p>
@@ -2004,14 +2083,14 @@ function Footer({ go }) {
           <div>
             <div style={{ display: "flex", alignItems: "center", gap: 14, marginBottom: 24 }}>
               <img src="/Logo.png" alt="Accurate Designs" style={{ height: 40, width: "auto", display: "block" }} />
-              <span style={{ ...sn, fontSize: 9, fontWeight: 400, letterSpacing: 4, color: "rgba(245,241,235,0.62)", textTransform: "uppercase" }}></span>
+              <span style={{ ...sn, fontSize: 12, fontWeight: 400, letterSpacing: 4, color: "rgba(245,241,235,0.62)", textTransform: "uppercase" }}></span>
             </div>
             <p style={{ ...sn, fontSize: 12, fontWeight: 400, color: "rgba(245,241,235,0.72)", lineHeight: 1.75, maxWidth: 220 }}>
               Construction-aware residential design since 2000.
             </p>
           </div>
           <div>
-            <div style={{ ...sn, fontSize: 9, fontWeight: 500, letterSpacing: 3, color: "rgba(201,106,43,0.78)", marginBottom: 20, textTransform: "uppercase" }}>Navigate</div>
+            <div style={{ ...sn, fontSize: 12, fontWeight: 500, letterSpacing: 3, color: "rgba(201,106,43,0.78)", marginBottom: 20, textTransform: "uppercase" }}>Navigate</div>
             {[{ id: "services", l: "Services" }, { id: "portfolio", l: "Portfolio" }, { id: "process", l: "Process" }, { id: "owner-rep", l: "Owner Representation" }, { id: "about", l: "About" }, { id: "contact", l: "Contact" }].map((p) => (
               <div
                 key={p.id}
@@ -2025,7 +2104,7 @@ function Footer({ go }) {
             ))}
           </div>
           <div>
-            <div style={{ ...sn, fontSize: 9, fontWeight: 500, letterSpacing: 3, color: "rgba(201,106,43,0.78)", marginBottom: 20, textTransform: "uppercase" }}>Services</div>
+            <div style={{ ...sn, fontSize: 12, fontWeight: 500, letterSpacing: 3, color: "rgba(201,106,43,0.78)", marginBottom: 20, textTransform: "uppercase" }}>Services</div>
             {[{ id: "services", l: "Custom Home Design + Build" }, { id: "owner-rep", l: "Owner Representation" }, { id: "services", l: "Permit-Ready Documentation" }, { id: "services", l: "Feasibility Review" }].map((s, i) => (
               <div
                 key={i}
@@ -2039,7 +2118,7 @@ function Footer({ go }) {
             ))}
           </div>
           <div>
-            <div style={{ ...sn, fontSize: 9, fontWeight: 500, letterSpacing: 3, color: "rgba(201,106,43,0.78)", marginBottom: 20, textTransform: "uppercase" }}>Contact</div>
+            <div style={{ ...sn, fontSize: 12, fontWeight: 500, letterSpacing: 3, color: "rgba(201,106,43,0.78)", marginBottom: 20, textTransform: "uppercase" }}>Contact</div>
             <div style={{ ...sn, fontSize: 12, fontWeight: 400, color: "rgba(245,241,235,0.72)", lineHeight: 1.8 }}>
               Accurate Designs Inc.
               <br />
