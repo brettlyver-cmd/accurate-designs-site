@@ -823,7 +823,7 @@ function HomePage({ go }) {
           </div>
 
           <div style={{...sn,fontSize:15,lineHeight:1.9,color:C.smoke,maxWidth:760,margin:"0 auto"}}>
-            When structure, layout, code, cost, and construction sequencing are resolved early, the project moves forward with clarity. The result is not just fewer surprises — it is a better home.
+            When structure, layout, code, cost, and construction sequencing are resolved early, the project moves forward with clarity. The result is not just fewer surprises, it is a better home.
           </div>
         </div>
       </Sec>
@@ -897,7 +897,7 @@ function HomePage({ go }) {
           Better Outcomes
         </div>
         <div style={{ ...sn, fontSize: 14.5, lineHeight: 1.8, color: C.smoke }}>
-          The finished home reflects the original vision — not compromises made on site.
+          The finished home reflects the original vision, not compromises made on site.
         </div>
       </div>
 
@@ -915,7 +915,7 @@ function HomePage({ go }) {
         </F>
         <F delay={0.08}>
           <p style={{ ...sn, fontSize: 15, fontWeight: 400, lineHeight: 1.8, color: C.text, maxWidth: 640, margin: "0 auto", textAlign: "center", letterSpacing: 0.15 }}>
-            When zoning, structure, mechanical systems, and budget are coordinated during design, not after, projects cost less to build, permit faster, and produce better outcomes. That coordination is the foundation of everything we do.
+            When zoning, structure, mechanical systems and budget are coordinated during design - not after - projects cost less to build, they obtain permits faster and produce better outcomes. That coordination is the foundation of everything we do.
           </p>
         </F>
         <F delay={0.12}>
@@ -935,7 +935,7 @@ function HomePage({ go }) {
           {[
             {
               t: "Construction-Aware Design",
-              b: "Every drawing is developed with buildability in mind. We coordinate structure, mechanical, and architectural systems during design — so the builder receives instructions, not questions.",
+              b: "Every drawing is developed with buildability in mind. We coordinate structure, mechanical, and architectural systems during design so the builder receives instructions, not questions.",
             },
             {
               t: "Fewer Surprises Later",
@@ -1059,12 +1059,13 @@ function HomePage({ go }) {
               <F key={p.id} delay={i * 0.1}>
                 <div style={{ cursor: "pointer" }} onClick={() => go("portfolio")}>
                   <HoverImage src={p.img} alt={p.name} ratio="75%" filter="grayscale(14%) brightness(0.84)" hoverFilter="grayscale(0) brightness(1)" />
-                  <div style={{ padding: "22px 0 0" }}>
-                    <div style={{ ...sn, fontSize: 9, fontWeight: 500, letterSpacing: 3, color: C.orange, marginBottom: 10, textTransform: "uppercase", opacity: 0.8 }}>
+                  <div style={{ padding: "22px 0 0", textAlign: "center" }}>
+                    <div style={{ ...sn, fontSize: 12, fontWeight: 500, letterSpacing: 3, color: C.orange, marginBottom: 10, textTransform: "uppercase", opacity: 0.8 }}>
                       {p.lens}
                     </div>
-                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 6 }}>
+                    <div style={{ display: "flex", justifyContent: "center", alignItems: "baseline", gap: 12, marginBottom: 6 }}>
                       <span style={{ ...sf, fontSize: 17, fontWeight: 400, color: C.cream }}>{p.name}</span>
+                      <span style={{ color: "rgba(245,241,235,0.2)" }}>·</span>
                       <span style={{ ...sn, fontSize: 12, fontWeight: 400, color: "rgba(245,241,235,0.25)" }}>{p.sqft} sf</span>
                     </div>
                     <p style={{ ...sn, fontSize: 12, fontWeight: 400, lineHeight: 1.6, color: "rgba(245,241,235,0.3)" }}>{p.desc}</p>
