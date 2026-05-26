@@ -2145,10 +2145,26 @@ function Footer({ go }) {
 }
 
 export default function App() {
-  const [page, setPage] = useState("home");
+  const [page, setPage] = useState(() => {
+    const path = window.location.pathname.replace("/", "");
+    return path || "home";
+  });
+
   const go = useCallback((p) => {
     setPage(p);
+    const url = p === "home" ? "/" : `/${p}`;
+    window.history.pushState({ page: p }, "", url);
     window.scrollTo({ top: 0, behavior: "auto" });
+  }, []);
+
+  useEffect(() => {
+    const onPop = () => {
+      const path = window.location.pathname.replace("/", "");
+      setPage(path || "home");
+      window.scrollTo({ top: 0, behavior: "auto" });
+    };
+    window.addEventListener("popstate", onPop);
+    return () => window.removeEventListener("popstate", onPop);
   }, []);
 
   const pages = {
