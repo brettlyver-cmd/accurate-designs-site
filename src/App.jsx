@@ -378,14 +378,14 @@ function Nav({ page, go }) {
           ))}
         </div>
 
-        <div className="mt" style={{ display: "none", cursor: "pointer", padding: 10 }} onClick={() => setOp(!op)}>
+        <div className="mt" style={{ display: "none", cursor: "pointer", padding: 10, position: "relative", zIndex: 1002, flexShrink: 0 }} onClick={() => setOp(!op)}>
           {[0, 1, 2].map((i) => (
             <div
               key={i}
               style={{
                 width: 22,
                 height: 1.5,
-                background: "rgba(255,255,255,0.5)",
+                background: "#FFFFFF",
                 marginBottom: i < 2 ? 6 : 0,
                 transition: "all 0.3s",
                 ...(op && i === 0 ? { transform: "rotate(45deg) translate(5px,5px)" } : {}),
