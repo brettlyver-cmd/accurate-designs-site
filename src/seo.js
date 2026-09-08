@@ -26,6 +26,16 @@ const ROUTES = {
     description:
       "Pre-design feasibility and lot review for GTA custom homes and major renovations, including zoning, site constraints, approvals and early project alignment.",
   },
+  "/second-storey-addition": {
+    title: "Second-Storey Addition Design GTA | Accurate Designs",
+    description:
+      "Planning a second-storey addition in Toronto or the GTA? Accurate Designs coordinates zoning, existing structure, systems and permit requirements before construction.",
+  },
+  "/committee-of-adjustment": {
+    title: "Committee of Adjustment & Minor Variance GTA | Accurate Designs",
+    description:
+      "Residential design and planning for GTA projects that may require Committee of Adjustment or minor variance approval, with zoning and design issues resolved early.",
+  },
   "/portfolio": {
     title: "Custom Home Portfolio | Accurate Designs",
     description:
