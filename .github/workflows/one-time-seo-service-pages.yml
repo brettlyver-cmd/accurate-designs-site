@@ -1,0 +1,42 @@
+name: One-time SEO service pages
+
+on:
+  push:
+    branches:
+      - seo-service-pages
+
+permissions:
+  contents: write
+
+jobs:
+  build-pages:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: seo-service-pages
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Apply service page patch
+        run: python scripts/one_time_seo_service_pages.py
+      - name: Verify new routes and SEO
+        run: |
+          grep -q 'function SearchServicePage' src/App.jsx
+          grep -q 'custom-home-design-build' src/App.jsx
+          grep -q 'major-additions-renovations' src/App.jsx
+          grep -q 'pre-design-feasibility' src/App.jsx
+          grep -q 'custom-home-design-build' src/seo.js
+          grep -q 'major-additions-renovations' public/sitemap.xml
+      - name: Build site
+        run: |
+          npm ci
+          npm run build
+      - name: Commit page changes if needed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/App.jsx src/seo.js public/sitemap.xml
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "Add high-intent residential service pages"
+          git push origin seo-service-pages
