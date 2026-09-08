@@ -1,0 +1,36 @@
+name: One-time image optimization
+
+on:
+  push:
+    branches:
+      - image-optimization-pass
+
+permissions:
+  contents: write
+
+jobs:
+  optimize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: image-optimization-pass
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Pillow
+        run: pip install pillow
+      - name: Optimize large imported images
+        run: python scripts/one_time_image_optimize.py
+      - name: Build site
+        run: |
+          npm ci
+          npm run build
+      - name: Commit optimized assets
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/App.jsx src/assets
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "Optimize large site images for web delivery"
+          git push origin image-optimization-pass
