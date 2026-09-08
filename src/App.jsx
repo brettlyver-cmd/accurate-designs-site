@@ -433,9 +433,9 @@ function Nav({ page, go }) {
   );
 }
 
-function Sec({ children, bg, py = 140, wide }) {
+function Sec({ children, bg, py = 140, wide, className }) {
   return (
-    <section style={{ background: bg || C.cream, padding: `${py}px 40px` }}>
+    <section className={className} style={{ background: bg || C.cream, padding: `${py}px 40px` }}>
       <div style={{ maxWidth: wide ? 1120 : 960, margin: "0 auto" }}>{children}</div>
     </section>
   );
@@ -856,7 +856,7 @@ function HomePage({ go }) {
         </div>
       </section>
 
-      <Sec py={110} bg={C.warm} data-section="what-happens-next">
+      <Sec className="home-proof-intro" py={110} bg={C.warm}>
         <div style={{maxWidth:900,margin:"0 auto",textAlign:"center"}}>
           <div style={{...sn,fontSize:12,letterSpacing:3,textTransform:"uppercase",color:C.orange,marginBottom:14}}>
             What this looks like when it’s done right
@@ -873,7 +873,7 @@ function HomePage({ go }) {
         </div>
       </Sec>
 
-      <Sec py={96} bg={C.warm} wide>
+      <Sec className="home-transformation" py={96} bg={C.warm} wide>
         <div style={{ display: "grid", gridTemplateColumns: "0.88fr 1.12fr", gap: 48, alignItems: "center" }} className="trg">
           <F>
             <div style={{ maxWidth: 420 }}>
@@ -900,7 +900,7 @@ function HomePage({ go }) {
           </F>
         </div>
       </Sec>
-      <Sec py={88} bg={C.warm}>
+      <Sec className="home-process-bridge" py={88} bg={C.warm}>
   <div style={{ maxWidth: 920, margin: "0 auto", textAlign: "center" }}>
     <div style={{ ...sn, fontSize: 12, letterSpacing: 3, textTransform: "uppercase", color: C.orange, marginBottom: 16 }}>
       What happens next
@@ -915,7 +915,7 @@ function HomePage({ go }) {
     </div>
   </div>
 </Sec>
-<Sec py={64} bg="#F3EFE8" data-section="credibility-strip">
+<Sec className="home-credibility" py={64} bg="#F3EFE8">
   <div style={{ maxWidth: 1000, margin: "0 auto" }}>
     <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap:60 }}>
       
@@ -949,11 +949,11 @@ function HomePage({ go }) {
     </div>
   </div>
 </Sec>
-      <Sec py={64} bg="#F3EFE8" data-section="stats">
+      <Sec className="home-stats" py={64} bg="#F3EFE8">
         <Stats />
       </Sec>
 
-      <Sec py={120}>
+      <Sec className="home-why" py={120}>
         <F>
         <Lbl style={{ fontSize: 12 }}>Why It Matters</Lbl>
           <Ttl style={{ letterSpacing: 0.2 }}>The outcome is shaped by when decisions are made, not just which ones.</Ttl>
@@ -1001,7 +1001,7 @@ function HomePage({ go }) {
         </div>
       </Sec>
 
-      <Sec py={88}>
+      <Sec className="home-design-outcome" py={88}>
         <div style={{maxWidth:820,margin:"0 auto",textAlign:"center"}}>
           <div style={{...sn,fontSize:12,letterSpacing:3,textTransform:"uppercase",color:C.orange,marginBottom:14}}>
             Design Outcome
@@ -1017,7 +1017,7 @@ function HomePage({ go }) {
         </div>
       </Sec>
 
-      <Sec py={96} bg="#F3EFE8">
+      <Sec className="home-services" py={96} bg="#F3EFE8">
         <div style={{ display: "grid", gridTemplateColumns: "520px 1fr", gap: 48, alignItems: "center", marginBottom: 52 }} className="wdh">
           <F delay={0.08}>
             <div style={{ maxWidth: 520, margin: 0 }}>
@@ -1064,7 +1064,7 @@ function HomePage({ go }) {
         </div>
       </Sec>
 
-      <Sec py={96}>
+      <Sec className="home-fit" py={96}>
         <F>
           <Lbl style={{ fontSize: 12 }}>Who We Work With</Lbl>
           <Ttl size="clamp(26px,3.2vw,36px)">We're the right fit when the details matter.</Ttl>
@@ -1091,7 +1091,7 @@ function HomePage({ go }) {
         </F>
       </Sec>
 
-      <section style={{ background: C.black, padding: "140px 40px" }}>
+      <section className="home-selected-work" style={{ background: C.black, padding: "140px 40px" }}>
         <div style={{ maxWidth: 1240, margin: "0 auto" }}>
           <F>
           <Lbl style={{ fontSize: 12 }}>Selected Work</Lbl>
@@ -1125,7 +1125,7 @@ function HomePage({ go }) {
         </div>
       </section>
 
-      <Sec py={56}>
+      <Sec className="home-testimonial" py={56}>
         <F>
           <div style={{ maxWidth: 920, margin: "0 auto", textAlign: "center" }}>
             <div style={{ ...sn, fontSize: 9, fontWeight: 500, letterSpacing: 3, color: C.orange, marginBottom: 20, textTransform: "uppercase" }}>Smooth Permit Experience</div>
@@ -1138,7 +1138,7 @@ function HomePage({ go }) {
         </F>
       </Sec>
 
-      <Sec py={96} bg="#F3EFE8">
+      <Sec className="home-how-we-work" py={96} bg="#F3EFE8">
         <F>
           <Lbl>How We Work</Lbl>
           <Ttl size="clamp(28px,3.5vw,40px)">A structured process that resolves complexity early.</Ttl>
@@ -1176,7 +1176,7 @@ function HomePage({ go }) {
         </div>
       </Sec>
 
-      <Sec py={96}>
+      <Sec className="home-learn" py={96}>
         <F>
           <Lbl>Learn with Brett</Lbl>
           <Ttl size="clamp(26px,3.2vw,38px)">Planning insights for homeowners who want to get it right the first time.</Ttl>
@@ -1282,7 +1282,7 @@ function HomePage({ go }) {
         </F>
       </Sec>
 
-      <style>{`@media(max-width:1080px){.wdg,.prv{grid-template-columns:repeat(2,minmax(0,1fr))!important}}@media(max-width:860px){.wg,.og,.trg,.wdh,.midimg{grid-template-columns:1fr!important}.stg,.wdg,.prv{grid-template-columns:1fr!important}.orwg{grid-template-columns:1fr!important}.orwi{grid-template-columns:1fr!important}}`}</style>
+      <style>{`@media(min-width:861px){.home-proof-intro{padding-top:72px!important;padding-bottom:64px!important}.home-transformation{padding-top:56px!important;padding-bottom:56px!important}.home-process-bridge{padding-top:52px!important;padding-bottom:48px!important}.home-credibility{padding-top:44px!important;padding-bottom:40px!important}.home-stats{padding-top:28px!important;padding-bottom:28px!important}.home-stats>div>div{padding-top:40px!important;padding-bottom:40px!important}.home-why{padding-top:72px!important;padding-bottom:68px!important}.home-design-outcome{padding-top:52px!important;padding-bottom:48px!important}.home-services{padding-top:60px!important;padding-bottom:60px!important}.home-fit{padding-top:60px!important;padding-bottom:64px!important}.home-selected-work{padding-top:110px!important;padding-bottom:80px!important}.home-testimonial{padding-top:48px!important;padding-bottom:44px!important}.home-how-we-work{padding-top:64px!important;padding-bottom:60px!important}.home-learn{padding-top:64px!important;padding-bottom:72px!important}}@media(max-width:1080px){.wdg,.prv{grid-template-columns:repeat(2,minmax(0,1fr))!important}}@media(max-width:860px){.wg,.og,.trg,.wdh,.midimg{grid-template-columns:1fr!important}.stg,.wdg,.prv{grid-template-columns:1fr!important}.orwg{grid-template-columns:1fr!important}.orwi{grid-template-columns:1fr!important}}`}</style>
     </>
   );
 }
