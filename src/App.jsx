@@ -536,6 +536,14 @@ function Bt({ children, onClick, outline, light, style: s }) {
 
 function Inp({ label, type = "text", textarea }) {
   const fieldName = label.replace(" *", "");
+  const required = label.endsWith(" *");
+  const fieldId = `field-${fieldName.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`;
+  const autoComplete = {
+    "First Name": "given-name",
+    "Last Name": "family-name",
+    Email: "email",
+    Phone: "tel",
+  }[fieldName];
 
   const b = {
     ...sn,
@@ -556,6 +564,7 @@ function Inp({ label, type = "text", textarea }) {
   return (
     <div style={{ marginBottom: 42 }}>
       <label
+        htmlFor={fieldId}
         style={{
           ...sn,
           fontSize: 9.5,
@@ -571,7 +580,9 @@ function Inp({ label, type = "text", textarea }) {
       </label>
       {textarea ? (
         <textarea
+          id={fieldId}
           name={fieldName}
+          required={required}
           rows={3}
           style={{ ...b, resize: "none", fontFamily: "'Montserrat',sans-serif" }}
           onFocus={(e) => (e.target.style.borderBottomColor = C.orange)}
@@ -579,8 +590,11 @@ function Inp({ label, type = "text", textarea }) {
         />
       ) : (
         <input
+          id={fieldId}
           name={fieldName}
           type={type}
+          required={required}
+          autoComplete={autoComplete}
           style={b}
           onFocus={(e) => (e.target.style.borderBottomColor = C.orange)}
           onBlur={(e) => (e.target.style.borderBottomColor = C.stone)}
@@ -592,10 +606,13 @@ function Inp({ label, type = "text", textarea }) {
 
 function Sel({ label, options }) {
   const fieldName = label.replace(" *", "");
+  const required = label.endsWith(" *");
+  const fieldId = `field-${fieldName.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`;
 
   return (
     <div style={{ marginBottom: 42 }}>
       <label
+        htmlFor={fieldId}
         style={{
           ...sn,
           fontSize: 9.5,
@@ -610,7 +627,10 @@ function Sel({ label, options }) {
         {label}
       </label>
       <select
+        id={fieldId}
         name={fieldName}
+        required={required}
+        defaultValue=""
         style={{
           ...sn,
           width: "100%",
@@ -626,9 +646,14 @@ function Sel({ label, options }) {
           cursor: "pointer",
         }}
       >
-        {options.map((o) => (
-          <option key={o}>{o}</option>
-        ))}
+        {options.map((o, i) => {
+          const placeholder = i === 0 && o === "Select...";
+          return (
+            <option key={o} value={placeholder ? "" : o} disabled={placeholder}>
+              {o}
+            </option>
+          );
+        })}
       </select>
     </div>
   );
@@ -2001,6 +2026,17 @@ function ContactPage() {
                 </p>
                 <Bt
   onClick={async () => {
+    const requiredFields = Array.from(
+      document.querySelectorAll("input[required], textarea[required], select[required]")
+    );
+    const invalidField = requiredFields.find((field) => !field.checkValidity());
+
+    if (invalidField) {
+      invalidField.reportValidity();
+      invalidField.focus();
+      return;
+    }
+
     const formData = new FormData();
 
     document.querySelectorAll("input, textarea, select").forEach((field) => {
