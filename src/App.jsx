@@ -804,10 +804,25 @@ function HomePage({ go }) {
           </F>
           <F delay={0.36}>
             <div style={{ display: "flex", gap: 16, marginTop: 48, justifyContent: "center", flexWrap: "wrap" }}>
-              <Bt onClick={() => go("contact")}>Begin with a Conversation</Bt>
+              <Bt onClick={() => go("contact")}>Book a Project Consultation</Bt>
               <Bt outline light onClick={() => go("portfolio")}>View Built Projects</Bt>
             </div>
           </F>
+        </div>
+      </section>
+
+      <section style={{ background: "#F3EFE8", padding: "28px 40px", borderBottom: `1px solid ${C.faint}` }} data-section="early-trust">
+        <div style={{ maxWidth: 960, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(190px,1fr))", gap: 24, alignItems: "center" }}>
+          {[
+            { n: "25+", l: "Years in Practice" },
+            { n: "500+", l: "Residential Projects" },
+            { n: "Since 2000", l: "Construction-Aware Design" },
+          ].map((item, i) => (
+            <div key={i} style={{ textAlign: "center" }}>
+              <div style={{ ...sf, fontSize: 18, fontWeight: 500, color: C.black, marginBottom: 4 }}>{item.n}</div>
+              <div style={{ ...sn, fontSize: 9.5, fontWeight: 500, letterSpacing: 2.2, textTransform: "uppercase", color: C.muted }}>{item.l}</div>
+            </div>
+          ))}
         </div>
       </section>
 
@@ -1144,12 +1159,12 @@ function HomePage({ go }) {
         <div style={{ marginTop: 56 }}>
           <F>
             <div style={{ background: C.warm, padding: "48px 44px", borderLeft: `3px solid ${C.orange}`, marginBottom: 40 }}>
-              <div style={{ ...sn, fontSize: 9, fontWeight: 500, letterSpacing: 3, color: C.orange, marginBottom: 14, textTransform: "uppercase" }}>Featured Resource</div>
+              <div style={{ ...sn, fontSize: 9, fontWeight: 500, letterSpacing: 3, color: C.orange, marginBottom: 14, textTransform: "uppercase" }}>Planning Insight</div>
               <h3 style={{ ...sf, fontSize: "clamp(22px,2.5vw,28px)", fontWeight: 400, color: C.black, lineHeight: 1.25, marginBottom: 14 }}>The Decisions That Lock In Cost</h3>
               <p style={{ ...sn, fontSize: 14, fontWeight: 400, lineHeight: 1.8, color: C.text, maxWidth: 480, margin: "0 auto 24px", textAlign: "center" }}>
                 Which early-stage choices quietly determine 80% of your construction budget — and how to make them with full context before committing to design or construction.
               </p>
-              <Bt outline onClick={() => go("contact")}>Request the Guide</Bt>
+              <Bt outline onClick={() => go("contact")}>Book a Project Consultation</Bt>
             </div>
           </F>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(260px,1fr))", gap: 36 }}>
@@ -1167,7 +1182,7 @@ function HomePage({ go }) {
           </div>
         </div>
         <div style={{ marginTop: 36 }}>
-          <Bt outline onClick={() => go("contact")}>Get Planning Help</Bt>
+          <Bt outline onClick={() => go("contact")}>Book a Project Consultation</Bt>
         </div>
       </Sec>
 
@@ -1230,8 +1245,8 @@ function HomePage({ go }) {
               A project consultation helps clarify goals, assess feasibility, and outline next steps. No cost, no obligation.
             </p>
             <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
-              <Bt onClick={() => go("contact")}>Book a Consultation</Bt>
-              <Bt outline onClick={() => go("contact")}>Request a Review</Bt>
+              <Bt onClick={() => go("contact")}>Book a Project Consultation</Bt>
+              <Bt outline onClick={() => go("portfolio")}>View Built Projects</Bt>
             </div>
           </div>
         </F>
@@ -1249,28 +1264,28 @@ function ServicesPage({ go }) {
       title: "Custom Home Design + Build",
       body: "The same team that designs the home oversees the build. Decisions carry through to the site without reinterpretation or gaps between what was drawn and what gets built.",
       outcome: "The result is a home that carries its original intent through construction, without compromise.",
-      cta: "Book a Consultation",
+      cta: "Book a Project Consultation",
     },
     {
       label: "Additions + Renovations",
       title: "Major Additions + Renovations",
       body: "Existing buildings carry hidden constraints such as foundation capacity, load paths through older framing, systems that weren’t designed to be extended. We resolve those conditions in the drawings before work begins.",
       outcome: "When the walls come down, the builder is working from a set of drawings that already accounts for what was behind them.",
-      cta: "Book a Consultation",
+      cta: "Book a Project Consultation",
     },
     {
       label: "Permit Documentation",
       title: "Permit-Ready Documentation",
       body: "We prepare complete permit packages including architectural, structural, and mechanical coordinated as a single submission. Drawings are formatted to address what reviewers look for, not just what the code requires.",
       outcome: "Our submissions typically receive 2–3 examiner comments. Many projects receive 10–15 or more. The difference is documentation that resolves questions before they’re asked.",
-      cta: "Request a Quote",
+      cta: "Book a Project Consultation",
     },
     {
       label: "Feasibility + Planning",
       title: "Pre-Design Feasibility",
       body: "Before committing to design, you need to know what your lot actually allows, what the code requires, and what the project will realistically cost. This is especially important when zoning, conservation authority, or site conditions affect what can be built.",
       outcome: "A feasibility review is typically completed within 1–2 weeks depending on available information. This step identifies constraints early, confirms what’s possible on your property, and prevents time being spent in the wrong direction.",
-      cta: "Request a Review",
+      cta: "Book a Project Consultation",
     },
   ];
 
@@ -1371,7 +1386,7 @@ function ServicesPage({ go }) {
           <p style={{ ...sn, fontSize: 14, fontWeight: 400, color: "rgba(245,241,235,0.35)", maxWidth: 400, margin: "0 auto 40px" }}>
             A short conversation will help clarify the right path forward.
           </p>
-          <Bt onClick={() => go("contact")}>Book a Consultation</Bt>
+          <Bt onClick={() => go("contact")}>Book a Project Consultation</Bt>
         </div>
       </section>
 
@@ -1451,7 +1466,7 @@ function PortfolioPage({ go }) {
           <p style={{ ...sn, fontSize: 14, fontWeight: 400, color: "rgba(245,241,235,0.4)", maxWidth: 460, margin: "0 auto 36px", lineHeight: 1.85 }}>
             We'll assess feasibility and outline a clear path forward.
           </p>
-          <Bt onClick={() => go("contact")}>Book a Consultation</Bt>
+          <Bt onClick={() => go("contact")}>Book a Project Consultation</Bt>
         </div>
       </section>
 
@@ -1554,7 +1569,7 @@ function ProcessPage({ go }) {
           <div style={{ ...sf, fontSize: 22, fontStyle: "italic", fontWeight: 400, color: "rgba(245,241,235,0.85)", maxWidth: 600, margin: "0 auto 28px", lineHeight: 1.6, opacity: 0.85 }}>
             "If a decision is not made on paper, it will be made on site."
           </div>
-          <Bt onClick={() => go("contact")} style={{ padding: "16px 34px", fontSize: 12, letterSpacing: 1.6 }}>Request a Review</Bt>
+          <Bt onClick={() => go("contact")} style={{ padding: "16px 34px", fontSize: 12, letterSpacing: 1.6 }}>Book a Project Consultation</Bt>
         </div>
       </section>
 
@@ -1778,7 +1793,7 @@ function OwnerRepPage({ go }) {
         <p style={{ ...sn, fontSize: 14, color: "rgba(245,241,235,0.4)", maxWidth: 420, margin: "0 auto 16px" }}>
           Available for select projects where clarity, coordination, and cost control are critical.
         </p>
-        <Bt onClick={() => go("contact")} style={{ padding: "18px 48px" }}>Book a Consultation</Bt>
+        <Bt onClick={() => go("contact")} style={{ padding: "18px 48px" }}>Book a Project Consultation</Bt>
       </section>
 
       <style>{`@media(max-width:860px){.orbf,.orstk{grid-template-columns:1fr!important}.orwg{grid-template-columns:1fr!important}.orwi{grid-template-columns:1fr!important}}`}</style>
@@ -1907,7 +1922,7 @@ function AboutPage({ go }) {
         <div style={{ maxWidth: 940, margin: "0 auto" }}>
           <Ttl light size="clamp(26px,3vw,36px)">Ready to discuss your project?</Ttl>
           <div style={{ marginTop: 36 }}>
-            <Bt onClick={() => go("contact")}>Book a Consultation</Bt>
+            <Bt onClick={() => go("contact")}>Book a Project Consultation</Bt>
           </div>
         </div>
       </section>
@@ -1929,7 +1944,7 @@ function ContactPage() {
         <div style={{ position: "relative", maxWidth: 1040, margin: "0 auto" }}>
           <F>
             <Lbl light>Begin Here</Lbl>
-            <Ttl light>Book a Consultation</Ttl>
+            <Ttl light>Book a Project Consultation</Ttl>
           </F>
           <F delay={0.1}>
             <Bd light max={620} style={{ margin: "0 auto", textAlign: "center", lineHeight: 1.8 }}>
@@ -2136,7 +2151,7 @@ function Footer({ go }) {
           </div>
         </div>
         <div style={{ borderTop: "1px solid rgba(245,241,235,0.08)", paddingTop: 36, display: "flex", justifyContent: "space-between", flexWrap: "wrap", gap: 16, alignItems: "center" }}>
-          <span style={{ ...sn, fontSize: 11, fontWeight: 400, color: "rgba(245,241,235,0.58)" }}>© 2025 Accurate Designs Inc.</span>
+          <span style={{ ...sn, fontSize: 11, fontWeight: 400, color: "rgba(245,241,235,0.58)" }}>© 2026 Accurate Designs Inc.</span>
           <span style={{ ...sf, fontSize: 12, fontWeight: 400, fontStyle: "italic", color: "rgba(245,241,235,0.52)", letterSpacing: 0.5 }}>Resolve complexity before it reaches the site.</span>
         </div>
       </div>
