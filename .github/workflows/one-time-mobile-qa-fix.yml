@@ -1,0 +1,40 @@
+name: One-time mobile QA fix
+
+on:
+  push:
+    branches:
+      - mobile-qa-fix
+
+permissions:
+  contents: write
+
+jobs:
+  fix-mobile:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: mobile-qa-fix
+
+      - name: Apply mobile QA fixes
+        run: python scripts/one_time_mobile_qa_fix.py
+
+      - name: Verify expected mobile hooks
+        run: |
+          grep -q 'className="nav-logo"' src/App.jsx
+          grep -q 'className="home-hero-content"' src/App.jsx
+          grep -q 'className="contact-hero"' src/App.jsx
+          grep -q '.nav-logo{height:38px!important' src/App.jsx
+          grep -q '.home-hero-copy{font-size:16px!important' src/App.jsx
+
+      - name: Commit fix if needed
+        run: |
+          if git diff --quiet -- src/App.jsx; then
+            echo "No App.jsx changes needed."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/App.jsx
+          git commit -m "Fix mobile header and hero layout"
+          git push origin mobile-qa-fix
