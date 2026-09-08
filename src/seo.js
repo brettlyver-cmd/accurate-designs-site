@@ -11,6 +11,21 @@ const ROUTES = {
     description:
       "Custom home design-build, major additions and renovations, permit-ready documentation and pre-design feasibility services across the Greater Toronto Area.",
   },
+  "/custom-home-design-build": {
+    title: "Custom Home Design + Build GTA | Accurate Designs",
+    description:
+      "Construction-aware custom home design and design-build services across the GTA, with feasibility, coordinated design, permits and build readiness aligned early.",
+  },
+  "/major-additions-renovations": {
+    title: "Major Home Additions & Renovations GTA | Accurate Designs",
+    description:
+      "Design and planning for major home additions, second-storey additions and structural renovations across the GTA, coordinated for permits and construction.",
+  },
+  "/pre-design-feasibility": {
+    title: "Lot & Pre-Design Feasibility GTA | Accurate Designs",
+    description:
+      "Pre-design feasibility and lot review for GTA custom homes and major renovations, including zoning, site constraints, approvals and early project alignment.",
+  },
   "/portfolio": {
     title: "Custom Home Portfolio | Accurate Designs",
     description:
