@@ -1,16 +1,16 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
-import heroModernDusk from "./assets/Landing-page-image-1.jpg";
+import heroModernDusk from "./assets/Landing-page-image-1.webp";
 import beforeAfterTraditionalToModern from "./assets/before-after-traditional-to-modern.jpg";
 import processExistingHouse from "./assets/process-existing-house.jpg";
-import processFramingInsulation from "./assets/process-framing-insulation.png";
+import processFramingInsulation from "./assets/process-framing-insulation.webp";
 import processFoundationPoured from "./assets/process-foundation-poured.jpg";
 import processTradesFeatureWall from "./assets/process-trades-feature-wall.jpg";
-import ownerRepFoundationForms from "./assets/ownerrep-foundation-forms.jpg";
-import ownerRepFoundationForms2 from "./assets/ownerrep-foundation-forms2.jpg";
+import ownerRepFoundationForms from "./assets/ownerrep-foundation-forms.webp";
+import ownerRepFoundationForms2 from "./assets/ownerrep-foundation-forms2.webp";
 import ownerRepFramingWall from "./assets/ownerrep-framing-wall.jpg";
 import ownerRepTradesInstall from "./assets/ownerrep-trades-install.jpg";
-import aboutConstructionSite from "./assets/about-construction-site.jpg";
-import portfolioEstateFrontDusk from "./assets/portfolio-estate-front-dusk.jpg";
+import aboutConstructionSite from "./assets/about-construction-site.webp";
+import portfolioEstateFrontDusk from "./assets/portfolio-estate-front-dusk.webp";
 import portfolioModernFrontDay from "./assets/portfolio-modern-front-day.jpg";
 import portfolioModernRearDusk from "./assets/portfolio-modern-rear-dusk.jpg";
 import portfolioLuxuryLivingRoom from "./assets/portfolio-luxury-living-room.jpg";
@@ -18,32 +18,32 @@ import portfolioLuxuryKitchen from "./assets/portfolio-luxury-kitchen.jpg";
 import portfolioModernBathroom from "./assets/portfolio-modern-bathroom.jpg";
 import portfolioCoveredOutdoorWaterfront from "./assets/portfolio-covered-outdoor-waterfront.jpg";
 import portfolioFoundationFormed from "./assets/portfolio-foundation-formed.jpg";
-import portfolioFoundationPoured from "./assets/portfolio-foundation-poured.jpg";
+import portfolioFoundationPoured from "./assets/portfolio-foundation-poured.webp";
 import portfolioBeforeAfterGreyHouse from "./assets/portfolio-before-after-grey-house.jpg";
 
 
 import ch1 from "./assets/1. Case Study Image 1.jpg";
 import ch2 from "./assets/1. Case Study Image 2.jpg";
-import ch3 from "./assets/1. Case Study Image 3.jpg";
+import ch3 from "./assets/1. Case Study Image 3.webp";
 
-import eg1 from "./assets/2. Case Study Image 1.jpg";
+import eg1 from "./assets/2. Case Study Image 1.webp";
 import eg2 from "./assets/2. Case Study Image 2.jpg";
 
 import ph1 from "./assets/3. Case Study Image 1.jpg";
-import ph2 from "./assets/3. Case Study Image 2.jpg";
+import ph2 from "./assets/3. Case Study Image 2.webp";
 
 import nt1 from "./assets/4. Case Study Image 1.jpg";
-import nt2 from "./assets/4. Case Study Image 2.png";
+import nt2 from "./assets/4. Case Study Image 2.webp";
 import processHero from "./assets/process-foundation-poured.jpg";
-import designBuildImage from "./assets/DesignBuild_1.png";
-import architecturalDrawings from "./assets/Drawings_1.png";
-import processMechanical from "./assets/process-mechanical.jpg";
+import designBuildImage from "./assets/DesignBuild_1.webp";
+import architecturalDrawings from "./assets/Drawings_1.webp";
+import processMechanical from "./assets/process-mechanical.webp";
 import processTechnical from "./assets/process-technical.jpg";
-import ownerRepAuthority from "./assets/ownerrep-authority.jpg";
-import aboutConstructionFoundation from "./assets/about-construction-foundation.jpg";
+import ownerRepAuthority from "./assets/ownerrep-authority.webp";
+import aboutConstructionFoundation from "./assets/about-construction-foundation.webp";
 import aboutConstructionFraming from "./assets/about-construction-framing.jpg";
-import portfolioHeroImage from "./assets/portfolio-hero-image.jpg";
-import contactTrust from "./assets/contact-trust.jpg";
+import portfolioHeroImage from "./assets/portfolio-hero-image.webp";
+import contactTrust from "./assets/contact-trust.webp";
 
 /* ACCURATE DESIGNS site — refined premium layout with Montserrat typography, warm palette, and restrained editorial spacing. */
 const C = {
