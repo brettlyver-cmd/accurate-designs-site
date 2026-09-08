@@ -1,16 +1,33 @@
-# React + Vite
+# Accurate Designs Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Production website for Accurate Designs Inc., built with React and Vite and deployed on Vercel.
 
-Currently, two official plugins are available:
+## Development
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+```bash
+npm install
+npm run dev
+```
 
-## React Compiler
+## Validation
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```bash
+npm run build
+npm run lint
+```
 
-## Expanding the ESLint configuration
+## Deployment
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+The `main` branch is connected to the production Vercel project. Feature work should be completed on a branch and validated through a Vercel preview deployment before merging to `main`.
+
+## Primary routes
+
+- `/`
+- `/services`
+- `/portfolio`
+- `/process`
+- `/owner-rep`
+- `/about`
+- `/contact`
+
+SEO metadata is initialized in `src/seo.js`. Legacy URL redirects and SPA rewrites are configured in `vercel.json`.

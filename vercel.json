@@ -1,0 +1,25 @@
+{
+  "redirects": [
+    {
+      "source": "/work-process",
+      "destination": "/process",
+      "permanent": true
+    },
+    {
+      "source": "/work-process/",
+      "destination": "/process",
+      "permanent": true
+    },
+    {
+      "source": "/projects-item/:path*",
+      "destination": "/portfolio",
+      "permanent": true
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
