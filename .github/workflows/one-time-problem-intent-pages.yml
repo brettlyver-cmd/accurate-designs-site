@@ -1,0 +1,41 @@
+name: One-time problem-intent pages
+
+on:
+  push:
+    branches:
+      - problem-intent-pages
+
+permissions:
+  contents: write
+
+jobs:
+  build-pages:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: problem-intent-pages
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Apply page patch
+        run: python scripts/one_time_problem_intent_pages.py
+      - name: Verify routes and SEO
+        run: |
+          grep -q 'function PlanningQuestionPage' src/App.jsx
+          grep -q 'second-storey-addition' src/App.jsx
+          grep -q 'committee-of-adjustment' src/App.jsx
+          grep -q 'second-storey-addition' src/seo.js
+          grep -q 'committee-of-adjustment' public/sitemap.xml
+      - name: Build site
+        run: |
+          npm ci
+          npm run build
+      - name: Commit page changes if needed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/App.jsx src/seo.js public/sitemap.xml
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "Add second-storey and minor-variance planning pages"
+          git push origin problem-intent-pages
