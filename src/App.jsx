@@ -330,6 +330,7 @@ function Nav({ page, go }) {
       }}
     >
       <div
+        className="nav-shell"
         style={{
           maxWidth: 1240,
           margin: "0 auto",
@@ -345,7 +346,7 @@ function Nav({ page, go }) {
           style={{ cursor: "pointer", display: "flex", alignItems: "center", gap: 16 }}
           onClick={() => nv("home")}
         >
-          <img src="/Logo.png" alt="Accurate Designs" style={{ height: 60, width: "auto", display: "block" }} />
+          <img className="nav-logo" src="/Logo.png" alt="Accurate Designs" style={{ height: 60, width: "auto", display: "block" }} />
         </div>
 
         <div style={{ display: "flex", gap: 36, alignItems: "center" }} className="dn">
@@ -427,7 +428,7 @@ function Nav({ page, go }) {
         </div>
       ) : null}
 
-      <style>{`@media(max-width:860px){.dn{display:none!important}.mt{display:block!important}.mm{display:block!important}}@media(max-width:640px){h1{font-size:32px!important}h2{font-size:26px!important}section{padding-left:24px!important;padding-right:24px!important}button{width:100%!important;text-align:center}}`}</style>
+      <style>{`@media(max-width:860px){.dn{display:none!important}.mt{display:block!important}.mm{display:block!important}.nav-shell{padding:0 20px!important;height:72px!important}.nav-logo{height:38px!important;max-width:calc(100vw - 100px)!important}}@media(max-width:640px){h1{font-size:32px!important}h2{font-size:26px!important}section{padding-left:24px!important;padding-right:24px!important}button{width:100%!important;text-align:center}.home-hero{min-height:100svh!important;padding-top:80px!important}.home-hero-content{padding:0 0 56px!important}.home-hero-title{font-size:32px!important;line-height:1.08!important;margin-bottom:24px!important}.home-hero-copy{font-size:16px!important;line-height:1.65!important;max-width:360px!important}.contact-hero{padding-top:112px!important;padding-bottom:64px!important}}`}</style>
     </nav>
   );
 }
@@ -801,7 +802,7 @@ function ProjectGallery({ project }) {
 function HomePage({ go }) {
   return (
     <>
-      <section style={{ position: "relative", minHeight: "100vh", display: "flex", alignItems: "flex-end", background: C.black, overflow: "hidden" }}>
+      <section className="home-hero" style={{ position: "relative", minHeight: "100vh", display: "flex", alignItems: "flex-end", background: C.black, overflow: "hidden" }}>
         <div style={{ position: "absolute", inset: 0 }}>
           <img
             src={heroModernDusk}
@@ -812,17 +813,17 @@ function HomePage({ go }) {
           />
         </div>
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(8,8,8,0.92) 0%, rgba(8,8,8,0.72) 35%, rgba(8,8,8,0.45) 60%, rgba(8,8,8,0.28) 78%, rgba(8,8,8,0.38) 100%)" }} />
-        <div style={{ position: "relative", zIndex: 2, maxWidth: 900, width: "100%", margin: "0 auto", padding: "0 20px 140px", textAlign: "center" }}>
+        <div className="home-hero-content" style={{ position: "relative", zIndex: 2, maxWidth: 900, width: "100%", margin: "0 auto", padding: "0 20px 140px", textAlign: "center" }}>
           <F>
             <Lbl light>Custom Homes · Additions · Major Renovations</Lbl>
           </F>
           <F delay={0.12}>
-            <h1 style={{ ...sf, fontSize: "clamp(32px,5.5vw,64px)", fontWeight: 400, color: C.cream, lineHeight: 1.1, marginBottom: 32, maxWidth: 900}}>
+            <h1 className="home-hero-title" style={{ ...sf, fontSize: "clamp(32px,5.5vw,64px)", fontWeight: 400, color: C.cream, lineHeight: 1.1, marginBottom: 32, maxWidth: 900}}>
               Homes that feel exceptional long before they’re built.
             </h1>
           </F>
           <F delay={0.24}>
-            <div style={{ ...sn, fontSize: 20, fontWeight: 400, lineHeight: 1.85, color: "rgba(245,241,235,0.82)", maxWidth: 820, margin: "0 auto" }}>
+            <div className="home-hero-copy" style={{ ...sn, fontSize: 20, fontWeight: 400, lineHeight: 1.85, color: "rgba(245,241,235,0.82)", maxWidth: 820, margin: "0 auto" }}>
               <div style={{ marginBottom: 10 }}>
   Designed with clarity. Detailed with intent. Executed without compromise.
 </div>
@@ -1966,7 +1967,7 @@ function ContactPage() {
 
   return (
     <>
-      <section style={{ background: C.black, padding: "160px 40px 100px", position: "relative", overflow: "hidden" }}>
+      <section className="contact-hero" style={{ background: C.black, padding: "160px 40px 100px", position: "relative", overflow: "hidden" }}>
         <div style={{ position: "absolute", inset: 0, opacity: 0.06 }}>
           <img src={aboutConstructionSite} alt="Construction site" style={{ width: "100%", height: "100%", objectFit: "cover", filter: "grayscale(100%)" }} />
         </div>
