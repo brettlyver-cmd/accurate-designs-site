@@ -133,6 +133,8 @@ function HoverImage({
         <img
           src={src}
           alt={alt}
+          loading="lazy"
+          decoding="async"
           style={{
             position: "absolute",
             inset: 0,
@@ -779,6 +781,8 @@ function HomePage({ go }) {
           <img
             src={heroModernDusk}
             alt="Contemporary custom home at dusk"
+            fetchPriority="high"
+            decoding="async"
             style={{ width: "100%", height: "100%", objectFit: "cover", filter: "grayscale(6%) brightness(0.80) contrast(1.08) sepia(0.06)" }}
           />
         </div>
