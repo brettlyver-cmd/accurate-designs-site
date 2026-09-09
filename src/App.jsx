@@ -1165,7 +1165,7 @@ function HomePage({ go }) {
         <div style={{ display: "grid", gridTemplateColumns: "repeat(4,minmax(0,1fr))", gap: 32, marginTop: 56 }} className="prv">
           {[
             { n: "01", t: "Discovery + Feasibility", d: "We assess your lot, zoning,\nbudget range, and goals\nbefore design begins." },
-            { n: "02", t: "Design Resolution", d: "We iterate until every decision\nis resolved: structure, systems,\nmaterials, and cost." },
+            { n: "02", t: "Design Resolution", d: "Decisions are resolved.\nSystems and structure align.\nMaterials and cost are set." },
             { n: "03", t: "Permit + Approvals", d: "Complete, coordinated\ndocumentation submitted\nfor efficient review." },
             { n: "04", t: "Build Readiness", d: "Drawings detailed enough\nfor accurate pricing and\nconfident construction." },
           ].map((x, i) => (
