@@ -1206,8 +1206,8 @@ function HomePage({ go }) {
           </F>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(260px,1fr))", gap: 36 }}>
             {[
-              { t: "Before You Sign Anything", d: "What to clarify about scope, budget, and expectations before committing to a design contract or builder agreement." },
-              { t: "What Your Lot Actually Allows", d: "How zoning bylaws, setbacks, easements, and conservation overlays determine what can be built." },
+              { t: "Before You Sign Anything", d: "What to clarify about scope, budget,\nand expectations before signing\na design or builder agreement." },
+              { t: "What Your Lot Actually Allows", d: "How zoning bylaws, setbacks,\neasements, and conservation rules\nshape what can actually be built." },
             ].map((x, i) => (
               <F key={i} delay={i * 0.06}>
                 <div style={{ borderTop: `1px solid ${C.faint}`, paddingTop: 28 }}>
