@@ -1,0 +1,210 @@
+name: Apply Featured Projects correction
+
+on:
+  push:
+    paths:
+      - ".github/workflows/apply-featured-projects-correction.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  correct-featured-projects:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Apply approved Featured Projects content
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+
+          path = Path("src/App.jsx")
+          text = path.read_text(encoding="utf-8")
+
+          projects = r'''const PROJECTS = [
+  {
+    id: "country-heights-estate",
+    name: "Country Heights Estate",
+    location: "Richmond Hill",
+    sqft: "10,000",
+    type: "Custom Home",
+    lens: "Regulatory Foresight + Environmental Stewardship",
+    img: ch1,
+    images: [ch1, ch2, ch3],
+    imageLabels: ["Outcome", "Constraint", "Exterior"],
+    challenge: "This project required early design decisions to be made before municipal regulations were finalized. Delaying would have stalled progress, but moving ahead without a disciplined strategy risked both the approval path and the integrity of the design.",
+    solution: "We studied the surrounding context and historical regulations in detail, allowing the design to proceed with confidence before the final framework was established. When the zoning framework was ultimately confirmed, only minimal revisions were required, preserving both the architectural vision and interior planning. Because the property bordered protected conservation lands, environmental controls were also planned to exacting standards so runoff and sediment would remain fully contained throughout construction.",
+    result: "The project maintained its original design intent from concept through approval, avoided major redesign, and saved the client approximately four months. Site control measures were reviewed and approved prior to construction, allowing the home to proceed responsibly and without compromise.",
+  },
+  {
+    id: "expansive-glazing",
+    name: "Expansive Glazing",
+    location: "Oakville",
+    sqft: "4,000",
+    type: "Custom Home",
+    lens: "Structural Transparency + Indoor-Outdoor Oversight",
+    img: eg1,
+    images: [eg1, eg2],
+    imageLabels: ["Outcome", "Connection"],
+    challenge: "The design intent was clear from the outset: uninterrupted glass, open sightlines, and a direct visual connection between the main living spaces and the backyard. Achieving that level of transparency required careful structural coordination, mechanical planning for large-format glazing, and strict compliance with tempered glass requirements near finished floors.",
+    solution: "We coordinated the structural design to support expansive spans while minimizing visual obstructions, and engineered the mechanical systems to manage heat gain and loss without compromising the architecture. On the second level, fully custom window assemblies were integrated early to satisfy Ontario Building Code tempered glass requirements and avoid revisions during construction. The existing concrete pool, though in disrepair, was retained and used as an organizing element for the plan.",
+    result: "What could have been a constraint became a defining feature of the home. The result is a cohesive indoor-outdoor environment with expansive views, clear supervision of the pool from the Kitchen and Great Room, and a covered patio that supports both family oversight and everyday living.",
+  },
+  {
+    id: "protected-heritage-bungalow",
+    name: "Protected Heritage Bungalow",
+    location: "Richmond Hill",
+    sqft: "2,500",
+    type: "Renovation + Second Storey Addition",
+    lens: "Heritage Alignment + Existing Condition Intelligence",
+    img: ph2,
+    images: [ph2, ph1],
+    imageLabels: ["Outcome", "Before"],
+    challenge: "This project began with a raised bungalow on a lot where zoning restrictions prohibited horizontal expansion, leaving vertical addition as the only viable path forward. Because the home sat within a designated heritage district, the design also had to satisfy strict architectural guidelines while still delivering meaningful additional living space.",
+    solution: "We carefully controlled proportions, rooflines, and exterior detailing so the second storey would feel consistent with both the original home and the surrounding neighbourhood. Extensive documentation of existing conditions was carried out before construction, including attic inspections to confirm framing configurations and selective openings in finished surfaces to verify structural connections and mechanical routing.",
+    result: "The result is a seamless transformation from a constrained bungalow to a fully realized two-storey home, delivering increased living space while satisfying both the homeowner’s objectives and the requirements of the heritage authority.",
+  },
+  {
+    id: "narrow-toronto-lot",
+    name: "Narrow Toronto Lot",
+    location: "Toronto",
+    sqft: "2,800",
+    type: "Custom Home + Legal Basement Apartment",
+    lens: "Urban Infill Precision + Shoring Strategy",
+    img: nt2,
+    images: [nt2, nt1],
+    imageLabels: ["Outcome", "Shoring Strategy"],
+    challenge: "This project was set on a tightly constrained urban infill lot with neighbouring structures in close proximity on both sides. The limited working space required a highly controlled approach from the outset, with virtually no margin for error during excavation and foundation construction.",
+    solution: "To safely facilitate the work, full shoring systems were installed along both property lines. Excavation, support, and forming were sequenced with exacting control so the foundation could be constructed while maintaining the stability of the adjacent buildings and protecting worker safety throughout the process.",
+    result: "Within severe site constraints, precision became the defining requirement. The resulting home was designed to sit comfortably within its established streetscape while the construction process protected the surrounding properties at every stage.",
+  },
+];'''
+
+          text, count = re.subn(
+              r'const PROJECTS = \[\n.*?\n\];\n\n\nconst PROCESS_STEPS',
+              projects + '\n\n\nconst PROCESS_STEPS',
+              text,
+              count=1,
+              flags=re.S,
+          )
+          if count != 1:
+              raise SystemExit(f"Expected to replace one PROJECTS block, replaced {count}")
+
+          pinfo = r'''function PInfo({ p }) {
+  return (
+    <div style={{ paddingTop: 8, textAlign: "left" }}>
+      <div
+        style={{
+          ...sn,
+          fontSize: 9,
+          fontWeight: 500,
+          letterSpacing: 4,
+          color: C.orange,
+          marginBottom: 14,
+          textTransform: "uppercase",
+          opacity: 0.8,
+          textAlign: "left",
+        }}
+      >
+        {p.lens}
+      </div>
+      <h3
+        style={{ ...sf, fontSize: "clamp(24px,2.8vw,32px)", color: C.black, marginBottom: 8, lineHeight: 1.15, textAlign: "left", transition: "color 0.3s ease" }}
+        onMouseEnter={(e)=>e.target.style.color=C.orange}
+        onMouseLeave={(e)=>e.target.style.color=C.black}
+      >
+        {p.name}
+      </h3>
+      <div
+        style={{
+          ...sn,
+          fontSize: 11,
+          fontWeight: 400,
+          color: C.text,
+          marginBottom: 22,
+          display: "flex",
+          gap: 10,
+          flexWrap: "wrap",
+          textAlign: "left",
+        }}
+      >
+        <span>{p.type}</span>
+        <span style={{ color: C.stone }}>·</span>
+        <span>{p.location}</span>
+        <span style={{ color: C.stone }}>·</span>
+        <span>{p.sqft} sf</span>
+      </div>
+      {[
+        { l: "Challenge", v: p.challenge },
+        { l: "Approach", v: p.solution },
+        { l: "Result", v: p.result },
+      ].map((r, j) => (
+        <div key={j} style={{ marginBottom: 16, textAlign: "left" }}>
+          <div style={{ ...sn, fontSize: 9.5, fontWeight: 600, letterSpacing: 2, color: C.smoke, marginBottom: 6, textTransform: "uppercase", textAlign: "left" }}>
+            {r.l}
+          </div>
+          <p style={{ ...sn, fontSize: 14.5, fontWeight: 400, lineHeight: 1.7, color: C.text, maxWidth: 520, margin: 0, textAlign: "left" }}>
+            {r.v}
+          </p>
+        </div>
+      ))}
+    </div>
+  );
+}'''
+
+          text, count = re.subn(
+              r'function PInfo\(\{ p \}\) \{\n.*?\n\}\n\nfunction ProjectGallery',
+              pinfo + '\n\nfunction ProjectGallery',
+              text,
+              count=1,
+              flags=re.S,
+          )
+          if count != 1:
+              raise SystemExit(f"Expected to replace one PInfo block, replaced {count}")
+
+          old_home = '<p style={{ ...sn, fontSize: 12, fontWeight: 400, lineHeight: 1.6, color: "rgba(245,241,235,0.3)" }}>{p.desc}</p>'
+          new_home = '<p style={{ ...sn, fontSize: 12, fontWeight: 400, lineHeight: 1.6, color: "rgba(245,241,235,0.3)" }}>{p.challenge}</p>'
+          if old_home not in text:
+              raise SystemExit("Expected Featured Projects summary paragraph was not found")
+          text = text.replace(old_home, new_home, 1)
+
+          for required in [
+              'name: "Country Heights Estate"',
+              'name: "Expansive Glazing"',
+              'name: "Protected Heritage Bungalow"',
+              'name: "Narrow Toronto Lot"',
+              '{ l: "Challenge", v: p.challenge }',
+              '{ l: "Approach", v: p.solution }',
+              '{ l: "Result", v: p.result }',
+              '{p.challenge}</p>',
+          ]:
+              if required not in text:
+                  raise SystemExit(f"Verification failed: {required}")
+
+          path.write_text(text, encoding="utf-8")
+          PY
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Verify production build
+        run: |
+          npm ci
+          npm run build
+
+      - name: Commit correction and remove one-time workflow
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/App.jsx
+          git rm .github/workflows/apply-featured-projects-correction.yml
+          git commit -m "Correct Featured Projects content"
+          git push
