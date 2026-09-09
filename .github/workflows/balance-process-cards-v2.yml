@@ -1,0 +1,42 @@
+name: Balance homepage process cards v2
+on:
+  push:
+    paths:
+      - '.github/workflows/balance-process-cards-v2.yml'
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: preview-three-column-lines
+      - name: Balance copy
+        shell: python
+        run: |
+          from pathlib import Path
+          p = Path('src/App.jsx')
+          s = p.read_text()
+          replacements = {
+            'd: "We assess your lot, zoning, budget range, and goals before any design work begins."': 'd: "We assess your lot, zoning,\\nbudget range, and goals\\nbefore design begins."',
+            'd: "We iterate until every decision is resolved. Structure, systems, materials, cost."': 'd: "We iterate until every decision\\nis resolved: structure, systems,\\nmaterials, and cost."',
+            'd: "Complete, coordinated documentation submitted for efficient review."': 'd: "Complete, coordinated\\ndocumentation submitted\\nfor efficient review."',
+            'd: "Drawings detailed enough for accurate pricing and confident construction."': 'd: "Drawings detailed enough\\nfor accurate pricing and\\nconfident construction."',
+          }
+          for old, new in replacements.items():
+              if old not in s:
+                  raise SystemExit(f'target not found: {old}')
+              s = s.replace(old, new, 1)
+          p.write_text(s)
+      - name: Install and build
+        run: npm ci && npm run build
+      - name: Commit and clean up workflows
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/App.jsx
+          git rm -f .github/workflows/balance-process-cards-v2.yml
+          git rm -f .github/workflows/balance-process-cards.yml || true
+          git commit -m "Typography: balance homepage process cards"
+          git push origin preview-three-column-lines
