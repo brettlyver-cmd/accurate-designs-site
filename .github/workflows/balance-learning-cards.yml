@@ -1,0 +1,38 @@
+name: Balance planning insight cards
+on:
+  push:
+    branches: [preview-three-column-lines]
+    paths: ['.github/workflows/balance-learning-cards.yml']
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: preview-three-column-lines
+      - name: Update planning card copy
+        shell: python
+        run: |
+          from pathlib import Path
+          p = Path('src/App.jsx')
+          s = p.read_text(encoding='utf-8')
+          old1 = '{ t: "Before You Sign Anything", d: "What to clarify about scope, budget, and expectations before committing to a design contract or builder agreement." }'
+          new1 = '{ t: "Before You Sign Anything", d: "What to clarify about scope, budget,\\nand expectations before signing\\na design or builder agreement." }'
+          old2 = '{ t: "What Your Lot Actually Allows", d: "How zoning bylaws, setbacks, easements, and conservation overlays determine what can be built." }'
+          new2 = '{ t: "What Your Lot Actually Allows", d: "How zoning bylaws, setbacks,\\neasements, and conservation rules\\nshape what can actually be built." }'
+          if old1 not in s or old2 not in s:
+              raise SystemExit('Expected planning card copy not found')
+          s = s.replace(old1, new1).replace(old2, new2)
+          p.write_text(s, encoding='utf-8')
+      - name: Install and build
+        run: npm ci && npm run build
+      - name: Commit and clean up workflow
+        run: |
+          rm .github/workflows/balance-learning-cards.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/App.jsx .github/workflows/balance-learning-cards.yml
+          git commit -m "Typography: balance planning insight cards"
+          git push origin HEAD:preview-three-column-lines
