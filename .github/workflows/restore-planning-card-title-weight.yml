@@ -1,0 +1,41 @@
+name: Restore planning card title weight
+
+on:
+  push:
+    paths:
+      - '.github/workflows/restore-planning-card-title-weight.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: preview-three-column-lines
+      - name: Restore title weight
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('src/App.jsx')
+          s = p.read_text()
+          old = '<h4 style={{ ...sf, fontSize: 16, fontWeight: 400, fontStyle: "italic", color: C.smoke, marginBottom: 10 }}>{x.t}</h4>'
+          new = '<h4 style={{ ...sf, fontSize: 16, fontWeight: 500, fontStyle: "italic", color: C.smoke, marginBottom: 10 }}>{x.t}</h4>'
+          if s.count(old) != 1:
+              raise SystemExit(f'Expected exactly one title style match, found {s.count(old)}')
+          p.write_text(s.replace(old, new))
+          PY
+      - name: Install and build
+        run: |
+          npm ci
+          npm run build
+      - name: Commit and clean up workflow
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          rm .github/workflows/restore-planning-card-title-weight.yml
+          git add src/App.jsx .github/workflows/restore-planning-card-title-weight.yml
+          git commit -m "Typography: restore planning card title weight"
+          git push origin HEAD:preview-three-column-lines
