@@ -1,0 +1,41 @@
+name: Balance homepage process cards
+on:
+  push:
+    paths:
+      - '.github/workflows/balance-process-cards.yml'
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: preview-three-column-lines
+      - name: Balance copy
+        shell: python
+        run: |
+          from pathlib import Path
+          p = Path('src/App.jsx')
+          s = p.read_text()
+          old = '''            { n: "01", t: "Discovery + Feasibility", d: "We assess your lot, zoning, budget range, and goals before any design work begins." },
+            { n: "02", t: "Design Resolution", d: "We iterate until every decision is resolved. Structure, systems, materials, cost." },
+            { n: "03", t: "Permit + Approvals", d: "Complete, coordinated documentation submitted for efficient review." },
+            { n: "04", t: "Build Readiness", d: "Drawings detailed enough for accurate pricing and confident construction." },'''
+          new = '''            { n: "01", t: "Discovery + Feasibility", d: "We assess your lot, zoning,\\nbudget range, and goals\\nbefore design begins." },
+            { n: "02", t: "Design Resolution", d: "We iterate until every decision\\nis resolved: structure, systems,\\nmaterials, and cost." },
+            { n: "03", t: "Permit + Approvals", d: "Complete, coordinated\\ndocumentation submitted\\nfor efficient review." },
+            { n: "04", t: "Build Readiness", d: "Drawings detailed enough\\nfor accurate pricing and\\nconfident construction." },'''
+          if old not in s:
+              raise SystemExit('target block not found')
+          p.write_text(s.replace(old, new, 1))
+      - name: Install and build
+        run: npm ci && npm run build
+      - name: Commit and clean up workflow
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/App.jsx
+          git rm .github/workflows/balance-process-cards.yml
+          git commit -m "Typography: balance homepage process cards"
+          git push origin preview-three-column-lines
