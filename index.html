@@ -12,6 +12,41 @@
       rel="stylesheet"
     />
 
+    <style>
+      img[alt="Before and after residential transformation"] {
+        object-fit: contain !important;
+        object-position: center center !important;
+        background: #f3efe8;
+      }
+
+      div:has(> img[alt="Before and after residential transformation"])::before,
+      div:has(> img[alt="Before and after residential transformation"])::after {
+        position: absolute;
+        left: 16px;
+        z-index: 5;
+        padding: 7px 10px;
+        background: rgba(20, 19, 18, 0.86);
+        color: #f5f1eb;
+        font-family: "Montserrat", sans-serif;
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 2.2px;
+        line-height: 1;
+        text-transform: uppercase;
+        pointer-events: none;
+      }
+
+      div:has(> img[alt="Before and after residential transformation"])::before {
+        content: "Before";
+        top: 16px;
+      }
+
+      div:has(> img[alt="Before and after residential transformation"])::after {
+        content: "After";
+        top: calc(50% + 16px);
+      }
+    </style>
+
     <title>Accurate Designs | Custom Homes, Additions & Major Renovations</title>
     <meta
       name="description"
