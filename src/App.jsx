@@ -1054,7 +1054,7 @@ function HomePage({ go }) {
         <div style={{ display: "grid", gridTemplateColumns: "repeat(4,minmax(0,1fr))", gap: 48, marginTop: 64 }} className="wdg">
           {[
             { t: "Custom Homes", d: "Full architectural design,\npermit documentation,\nand construction services\nfor new custom homes\nacross the GTA." },
-            { t: "Additions + Renovations", d: "Second-storey additions,\nmajor renovations, and\nstructural reconfigurations\nexecuted with the precision\nof a new build." },
+            { t: "Additions + Renovations", d: "Second-storey additions,\nmajor renovations, and\nstructural changes\nplanned with precision\nfor a new build." },
             { t: "Permit Documentation", d: "OBC-compliant architectural, structural, and mechanical drawings coordinated as a single package." },
             { t: "Owner Representation", d: "Independent project oversight for homeowners who want an experienced technical advocate in their corner." },
           ].map((x, i) => (
