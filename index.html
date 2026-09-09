@@ -45,6 +45,16 @@
         content: "After";
         top: calc(50% + 16px);
       }
+
+      .kingsway-timelapse {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: cover;
+        background: #080808;
+      }
     </style>
 
     <title>Accurate Designs | Custom Homes, Additions & Major Renovations</title>
@@ -112,5 +122,66 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+    <script>
+      (() => {
+        const selector = 'img[alt="Before and after residential transformation"]';
+
+        const installKingswayTimelapse = () => {
+          const image = document.querySelector(selector);
+          if (!image) return;
+
+          const frame = image.parentElement;
+          const wrapper = frame?.parentElement;
+          if (!frame) return;
+
+          frame.style.paddingBottom = "56.25%";
+
+          const label = wrapper?.children?.[1];
+          if (label && label.textContent.trim() === "Before + After") {
+            label.textContent = "Kingsway · Build Sequence";
+          }
+
+          const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+          if (prefersReducedMotion) {
+            image.src = "/kingsway-timelapse-poster.jpg";
+            image.alt = "Completed Kingsway custom home";
+            image.style.objectFit = "cover";
+            image.style.objectPosition = "center center";
+            return;
+          }
+
+          const video = document.createElement("video");
+          video.className = "kingsway-timelapse";
+          video.autoplay = true;
+          video.muted = true;
+          video.loop = true;
+          video.playsInline = true;
+          video.preload = "metadata";
+          video.poster = "/kingsway-timelapse-poster.jpg";
+          video.setAttribute("muted", "");
+          video.setAttribute("playsinline", "");
+          video.setAttribute(
+            "aria-label",
+            "Kingsway custom home transformation from existing house through construction to completed residence"
+          );
+
+          const source = document.createElement("source");
+          source.src = "/Kingsway%20timelapse%203.mp4";
+          source.type = "video/mp4";
+          video.appendChild(source);
+
+          image.replaceWith(video);
+          video.play().catch(() => {});
+        };
+
+        installKingswayTimelapse();
+
+        const root = document.getElementById("root");
+        if (root) {
+          const observer = new MutationObserver(installKingswayTimelapse);
+          observer.observe(root, { childList: true, subtree: true });
+        }
+      })();
+    </script>
   </body>
 </html>
