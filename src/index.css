@@ -43,13 +43,17 @@ body {
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
+  text-wrap: pretty;
 }
 
 h1,
-h2 {
+h2,
+h3,
+h4 {
   font-family: var(--heading);
   font-weight: 500;
   color: var(--text-h);
+  text-wrap: balance;
 }
 
 h1 {
