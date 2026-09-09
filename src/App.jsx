@@ -887,7 +887,7 @@ function HomePage({ go }) {
               <Lbl style={{ fontSize: 12 }}>Transformation</Lbl>
               <Ttl size="clamp(28px,3.6vw,44px)">Every project starts with constraints.</Ttl>
               <Bd max={420} style={{ marginBottom: 0 }}>
-                The outcome is determined by how early they’re resolved.
+                The outcome is determined by <span className="desktop-newline">how early they’re resolved.</span>
               </Bd>
             </div>
           </F>
@@ -914,7 +914,7 @@ function HomePage({ go }) {
     </div>
 
     <div style={{ ...sf, fontSize: "clamp(24px,2.8vw,34px)", lineHeight: 1.42, color: C.black, marginBottom: 24 }}>
-      The feeling draws you in. The process makes it buildable.
+      The feeling draws you in. <span className="desktop-newline">The process makes it buildable.</span>
     </div>
 
     <div style={{ ...sn, fontSize: 15.5, lineHeight: 1.9, color: C.smoke, maxWidth: 760, margin: "0 auto" }}>
@@ -1015,7 +1015,7 @@ function HomePage({ go }) {
           </div>
 
           <div style={{...sf,fontSize:"clamp(22px,2.6vw,30px)",lineHeight:1.5,color:C.black,marginBottom:22}}>
-            When the right decisions are made early, the design becomes clear.
+            When the right decisions are made early, <span className="desktop-newline">the design becomes clear.</span>
           </div>
 
           <div style={{...sn,fontSize:15,lineHeight:1.85,color:C.smoke}}>
@@ -1078,14 +1078,14 @@ function HomePage({ go }) {
           <div style={{ display: "grid", gridTemplateColumns: "1.2fr 1fr", gap: 48, marginTop: 44 }} className="wg">
             <div>
               {[
-                "Homeowners planning a custom home, estate-scale build, or major renovation",
-                "Major additions typically involve structural reconfiguration, which makes coordination critical",
-                "Projects where zoning, conservation authority, or site complexity requires careful analysis",
-                "Clients who value thorough planning over fast sketches",
+                "Homeowners planning a custom home, estate-scale\nbuild, or major renovation",
+                "Major additions typically involve structural reconfiguration,\nwhich makes coordination critical",
+                "Projects where zoning, conservation authority,\nor site complexity requires careful analysis",
+                "Clients who value thorough planning\nover fast sketches",
               ].map((x, i) => (
                 <div key={i} style={{ display: "flex", gap: 14, marginBottom: 20, alignItems: "flex-start", textAlign: "left" }}>
                   <span style={{ ...sn, fontSize: 16, color: C.orange, fontWeight: 500, minWidth: 14, lineHeight: 1, paddingTop: 1 }}>•</span>
-                  <span style={{ ...sn, fontSize: 14, fontWeight: 400, color: C.text, lineHeight: 1.7, textAlign: "left" }}>{x}</span>
+                  <span className="desktop-preline" style={{ ...sn, fontSize: 14, fontWeight: 400, color: C.text, lineHeight: 1.7, textAlign: "left" }}>{x}</span>
                 </div>
               ))}
             </div>
@@ -1230,7 +1230,7 @@ function HomePage({ go }) {
               <Lbl light>Independent Advisory</Lbl>
               <Ttl light size="clamp(28px,3.5vw,42px)">Owner Representation</Ttl>
               <p style={{ ...sn, fontSize: 14, fontWeight: 400, lineHeight: 1.9, color: "rgba(245,241,235,0.45)", marginBottom: 40 }}>
-                An experienced technical advocate who reads drawings, understands construction, and works exclusively in your interest. Available for projects at any stage.
+                An experienced technical advocate who reads drawings, understands construction, and works exclusively in your interest. <span className="desktop-newline">Available for projects at any stage.</span>
               </p>
               <Bt outline light onClick={() => go("owner-rep")}>See Owner Rep</Bt>
             </div>
@@ -1279,7 +1279,7 @@ function HomePage({ go }) {
 </div>
             <Ttl size="clamp(26px,3.5vw,40px)">Planning a custom home, addition, or renovation?</Ttl>
             <p style={{ ...sn, fontSize: 15, fontWeight: 400, color: C.text, lineHeight: 1.8, marginBottom: 44, maxWidth: 620, marginLeft: "auto", marginRight: "auto" }}>
-              A project consultation helps clarify goals, assess feasibility, and outline next steps. No cost, no obligation.
+              A project consultation helps clarify goals, assess feasibility, <span className="desktop-newline">and outline next steps. No cost, no obligation.</span>
             </p>
             <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
               <Bt onClick={() => go("contact")}>Book a Project Consultation</Bt>

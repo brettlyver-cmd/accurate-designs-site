@@ -92,3 +92,23 @@ code {
   padding: 4px 8px;
   background: var(--code-bg);
 }
+
+
+/* Intentional desktop line composition */
+.desktop-newline {
+  display: block;
+}
+
+.desktop-preline {
+  white-space: pre-line;
+}
+
+@media (max-width: 860px) {
+  .desktop-newline {
+    display: inline;
+  }
+
+  .desktop-preline {
+    white-space: normal;
+  }
+}
