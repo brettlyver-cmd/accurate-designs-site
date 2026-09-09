@@ -31,6 +31,16 @@
       "permanent": true
     },
     {
+      "source": "/services-item/consultation",
+      "destination": "/contact",
+      "permanent": true
+    },
+    {
+      "source": "/services-item/consultation/",
+      "destination": "/contact",
+      "permanent": true
+    },
+    {
       "source": "/contact-us",
       "destination": "/contact",
       "permanent": true
@@ -68,6 +78,16 @@
     {
       "source": "/about-us/",
       "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/spring-garden",
+      "destination": "/portfolio",
+      "permanent": true
+    },
+    {
+      "source": "/spring-garden/",
+      "destination": "/portfolio",
       "permanent": true
     }
   ],
