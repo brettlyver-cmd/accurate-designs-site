@@ -1,0 +1,46 @@
+name: Remove old before after label
+
+on:
+  push:
+    branches:
+      - preview-three-column-lines
+    paths:
+      - .github/workflows/remove-old-before-after-label.yml
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: preview-three-column-lines
+          fetch-depth: 0
+
+      - name: Remove legacy overlay label
+        shell: python
+        run: |
+          from pathlib import Path
+          p = Path('src/App.jsx')
+          s = p.read_text(encoding='utf-8')
+          target = '                  label="Before + After"\n'
+          if target not in s:
+              raise SystemExit('Expected legacy label line not found')
+          s = s.replace(target, '', 1)
+          p.write_text(s, encoding='utf-8')
+
+      - name: Install and build
+        run: |
+          npm ci
+          npm run build
+
+      - name: Commit change and remove workflow
+        run: |
+          rm .github/workflows/remove-old-before-after-label.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/App.jsx .github/workflows/remove-old-before-after-label.yml
+          git commit -m "Fix: remove duplicate before-after image label"
+          git push origin preview-three-column-lines
