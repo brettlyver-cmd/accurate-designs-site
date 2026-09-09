@@ -1,0 +1,49 @@
+name: Apply three-column line composition
+
+on:
+  push:
+    branches: [preview-three-column-lines]
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: preview-three-column-lines
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - name: Apply exact text composition
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('src/App.jsx')
+          s = p.read_text()
+          replacements = {
+            '          Decisions are resolved early, so the build does not drift under pressure.': '          Decisions are resolved early, <span className="desktop-newline">so the build does not drift</span>{" "}<span className="desktop-newline">under pressure.</span>',
+            '          Structure, layout, and sequencing are coordinated before construction begins.': '          Structure, layout, and sequencing <span className="desktop-newline">are coordinated before</span>{" "}<span className="desktop-newline">construction begins.</span>',
+            '          The finished home reflects the original vision, not compromises made on site.': '          The finished home reflects <span className="desktop-newline">the original vision, not</span>{" "}<span className="desktop-newline">compromises made on site.</span>',
+          }
+          for old, new in replacements.items():
+            if old not in s:
+              raise SystemExit(f'Missing expected text: {old}')
+            s = s.replace(old, new, 1)
+          p.write_text(s)
+          PY
+      - name: Install and build
+        run: |
+          npm ci
+          npm run build
+      - name: Commit fixes and remove temporary workflow
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm .github/workflows/apply-three-column-lines.yml
+          git add src/App.jsx
+          git commit -m "Typography: balance credibility descriptions into three lines"
+          git push origin HEAD:preview-three-column-lines
