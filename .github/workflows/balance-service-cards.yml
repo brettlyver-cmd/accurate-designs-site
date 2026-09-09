@@ -1,0 +1,49 @@
+name: Balance homepage service cards
+on:
+  push:
+    paths:
+      - '.github/workflows/balance-service-cards.yml'
+permissions:
+  contents: write
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: preview-three-column-lines
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Apply exact service card composition
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('src/App.jsx')
+          s = p.read_text()
+          s = s.replace(
+            '{ t: "Custom Homes", d: "Full architectural design, permit documentation, and construction for new builds across the GTA." },',
+            '{ t: "Custom Homes", d: "Full architectural design,\\npermit documentation,\\nand construction services\\nfor new custom homes\\nacross the GTA." },'
+          )
+          s = s.replace(
+            '{ t: "Additions + Renovations", d: "Second-storey additions, major renovations incl. structural reconfigurations with the same precision as a new build." },',
+            '{ t: "Additions + Renovations", d: "Second-storey additions,\\nmajor renovations, and\\nstructural reconfigurations\\nwith the same precision\\nas a new build." },'
+          )
+          s = s.replace(
+            '<p style={{ ...sn, fontSize: 15, fontWeight: 400, lineHeight: 1.75, color: C.text }}>{x.d}</p>',
+            '<p className="desktop-preline" style={{ ...sn, fontSize: 15, fontWeight: 400, lineHeight: 1.75, color: C.text }}>{x.d}</p>'
+          )
+          p.write_text(s)
+          PY
+      - name: Install and build
+        run: |
+          npm ci
+          npm run build
+      - name: Commit fixes and remove temporary workflow
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          rm .github/workflows/balance-service-cards.yml
+          git add src/App.jsx .github/workflows/balance-service-cards.yml
+          git commit -m "Typography: balance homepage service card copy"
+          git push origin preview-three-column-lines
