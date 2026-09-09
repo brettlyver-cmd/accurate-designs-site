@@ -1,0 +1,104 @@
+name: Apply highlighted line breaks
+
+on:
+  push:
+    branches:
+      - highlighted-linebreaks
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: highlighted-linebreaks
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Apply exact typography fixes
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          app = Path('src/App.jsx')
+          s = app.read_text(encoding='utf-8')
+
+          replacements = [
+              (
+                  'The outcome is determined by how early they’re resolved.',
+                  'The outcome is determined by <span className="desktop-newline">how early they’re resolved.</span>'
+              ),
+              (
+                  'The feeling draws you in. The process makes it buildable.',
+                  'The feeling draws you in. <span className="desktop-newline">The process makes it buildable.</span>'
+              ),
+              (
+                  'When the right decisions are made early, the design becomes clear.',
+                  'When the right decisions are made early, <span className="desktop-newline">the design becomes clear.</span>'
+              ),
+              (
+                  '"Homeowners planning a custom home, estate-scale build, or major renovation",',
+                  '"Homeowners planning a custom home, estate-scale\\nbuild, or major renovation",'
+              ),
+              (
+                  '"Major additions typically involve structural reconfiguration, which makes coordination critical",',
+                  '"Major additions typically involve structural reconfiguration,\\nwhich makes coordination critical",'
+              ),
+              (
+                  '"Projects where zoning, conservation authority, or site complexity requires careful analysis",',
+                  '"Projects where zoning, conservation authority,\\nor site complexity requires careful analysis",'
+              ),
+              (
+                  '"Clients who value thorough planning over fast sketches",',
+                  '"Clients who value thorough planning\\nover fast sketches",'
+              ),
+              (
+                  '<span style={{ ...sn, fontSize: 14, fontWeight: 400, color: C.text, lineHeight: 1.7, textAlign: "left" }}>{x}</span>',
+                  '<span className="desktop-preline" style={{ ...sn, fontSize: 14, fontWeight: 400, color: C.text, lineHeight: 1.7, textAlign: "left" }}>{x}</span>'
+              ),
+              (
+                  'An experienced technical advocate who reads drawings, understands construction, and works exclusively in your interest. Available for projects at any stage.',
+                  'An experienced technical advocate who reads drawings, understands construction, and works exclusively in your interest. <span className="desktop-newline">Available for projects at any stage.</span>'
+              ),
+              (
+                  'A project consultation helps clarify goals, assess feasibility, and outline next steps. No cost, no obligation.',
+                  'A project consultation helps clarify goals, assess feasibility, <span className="desktop-newline">and outline next steps. No cost, no obligation.</span>'
+              ),
+          ]
+
+          for old, new in replacements:
+              count = s.count(old)
+              if count != 1:
+                  raise SystemExit(f'Expected exactly one match, found {count}: {old[:100]}')
+              s = s.replace(old, new, 1)
+
+          app.write_text(s, encoding='utf-8')
+
+          css = Path('src/index.css')
+          c = css.read_text(encoding='utf-8')
+          marker = '/* Intentional desktop line composition */'
+          if marker not in c:
+              c += '''\n\n/* Intentional desktop line composition */\n.desktop-newline {\n  display: block;\n}\n\n.desktop-preline {\n  white-space: pre-line;\n}\n\n@media (max-width: 860px) {\n  .desktop-newline {\n    display: inline;\n  }\n\n  .desktop-preline {\n    white-space: normal;\n  }\n}\n'''
+          css.write_text(c, encoding='utf-8')
+          PY
+
+      - name: Install and build
+        run: |
+          npm ci
+          npm run build
+
+      - name: Commit fixes and remove temporary workflow
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm .github/workflows/apply-highlighted-linebreaks.yml
+          git add src/App.jsx src/index.css
+          git commit -m "Typography: apply intentional line breaks"
+          git push origin highlighted-linebreaks
