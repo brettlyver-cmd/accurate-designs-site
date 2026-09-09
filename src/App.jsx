@@ -1164,10 +1164,10 @@ function HomePage({ go }) {
         </F>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(4,minmax(0,1fr))", gap: 32, marginTop: 56 }} className="prv">
           {[
-            { n: "01", t: "Discovery + Feasibility", d: "We assess your lot, zoning, budget range, and goals before any design work begins." },
-            { n: "02", t: "Design Resolution", d: "We iterate until every decision is resolved. Structure, systems, materials, cost." },
-            { n: "03", t: "Permit + Approvals", d: "Complete, coordinated documentation submitted for efficient review." },
-            { n: "04", t: "Build Readiness", d: "Drawings detailed enough for accurate pricing and confident construction." },
+            { n: "01", t: "Discovery + Feasibility", d: "We assess your lot, zoning,\nbudget range, and goals\nbefore design begins." },
+            { n: "02", t: "Design Resolution", d: "We iterate until every decision\nis resolved: structure, systems,\nmaterials, and cost." },
+            { n: "03", t: "Permit + Approvals", d: "Complete, coordinated\ndocumentation submitted\nfor efficient review." },
+            { n: "04", t: "Build Readiness", d: "Drawings detailed enough\nfor accurate pricing and\nconfident construction." },
           ].map((x, i) => (
             <F key={i} delay={i * 0.06}>
               <div>
