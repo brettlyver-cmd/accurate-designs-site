@@ -918,7 +918,7 @@ function HomePage({ go }) {
     </div>
 
     <div style={{ ...sn, fontSize: 15.5, lineHeight: 1.9, color: C.smoke, maxWidth: 760, margin: "0 auto" }}>
-      Beautiful homes do not come from design alone. They come from resolving proportion, structure, budget, code, and construction logic early enough that the finished home still feels like the original vision.
+      Beautiful homes do not come from design alone. They come from resolving proportion, structure, budget, code, and construction logic early enough that <span className="desktop-newline">the finished home still feels like the original vision.</span>
     </div>
   </div>
 </Sec>
