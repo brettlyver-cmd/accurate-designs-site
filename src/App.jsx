@@ -931,7 +931,7 @@ function HomePage({ go }) {
           Fewer Surprises
         </div>
         <div style={{ ...sn, fontSize: 14.5, lineHeight: 1.8, color: C.smoke }}>
-          Decisions are resolved early, so the build does not drift under pressure.
+          Decisions are resolved early, <span className="desktop-newline">so the build does not drift</span>{" "}<span className="desktop-newline">under pressure.</span>
         </div>
       </div>
 
@@ -940,7 +940,7 @@ function HomePage({ go }) {
           Cleaner Builds
         </div>
         <div style={{ ...sn, fontSize: 14.5, lineHeight: 1.8, color: C.smoke }}>
-          Structure, layout, and sequencing are coordinated before construction begins.
+          Structure, layout, and sequencing <span className="desktop-newline">are coordinated before</span>{" "}<span className="desktop-newline">construction begins.</span>
         </div>
       </div>
 
@@ -949,7 +949,7 @@ function HomePage({ go }) {
           Better Outcomes
         </div>
         <div style={{ ...sn, fontSize: 14.5, lineHeight: 1.8, color: C.smoke }}>
-          The finished home reflects the original vision, not compromises made on site.
+          The finished home reflects <span className="desktop-newline">the original vision, not</span>{" "}<span className="desktop-newline">compromises made on site.</span>
         </div>
       </div>
 
