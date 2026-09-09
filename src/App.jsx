@@ -987,7 +987,7 @@ function HomePage({ go }) {
           {[
             {
               t: "Construction-Aware Design",
-              b: "Every drawing is developed with buildability in mind. We coordinate structure, mechanical, and architectural systems during design so the builder receives instructions, not questions.",
+              b: "Every drawing is developed with buildability in mind. We coordinate structure, mechanical, and architectural systems so the builder receives instructions, not questions.",
             },
             {
               t: "Fewer Surprises Later",
