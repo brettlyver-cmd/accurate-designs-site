@@ -1211,7 +1211,7 @@ function HomePage({ go }) {
             ].map((x, i) => (
               <F key={i} delay={i * 0.06}>
                 <div style={{ borderTop: `1px solid ${C.faint}`, paddingTop: 28 }}>
-                  <h4 style={{ ...sf, fontSize: 16, fontWeight: 500, fontStyle: "italic", color: C.smoke, marginBottom: 10 }}>{x.t}</h4>
+                  <h4 style={{ ...sn, fontSize: 15, fontWeight: 500, color: C.black, marginBottom: 10 }}>{x.t}</h4>
                   <p className="desktop-preline" style={{ ...sn, fontSize: 15, fontWeight: 400, lineHeight: 1.75, color: C.text }}>{x.d}</p>
                 </div>
               </F>
