@@ -1053,15 +1053,15 @@ function HomePage({ go }) {
 
         <div style={{ display: "grid", gridTemplateColumns: "repeat(4,minmax(0,1fr))", gap: 48, marginTop: 64 }} className="wdg">
           {[
-            { t: "Custom Homes", d: "Full architectural design, permit documentation, and construction for new builds across the GTA." },
-            { t: "Additions + Renovations", d: "Second-storey additions, major renovations incl. structural reconfigurations with the same precision as a new build." },
+            { t: "Custom Homes", d: "Full architectural design,\npermit documentation,\nand construction services\nfor new custom homes\nacross the GTA." },
+            { t: "Additions + Renovations", d: "Second-storey additions,\nmajor renovations, and\nstructural reconfigurations\nwith the same precision\nas a new build." },
             { t: "Permit Documentation", d: "OBC-compliant architectural, structural, and mechanical drawings coordinated as a single package." },
             { t: "Owner Representation", d: "Independent project oversight for homeowners who want an experienced technical advocate in their corner." },
           ].map((x, i) => (
             <F key={i} delay={i * 0.06}>
               <div style={{ borderTop: `1px solid ${C.faint}`, paddingTop: 28 }}>
                 <h4 style={{ ...sn, fontSize: 14, fontWeight: 500, color: C.black, marginBottom: 10 }}>{x.t}</h4>
-                <p style={{ ...sn, fontSize: 15, fontWeight: 400, lineHeight: 1.75, color: C.text }}>{x.d}</p>
+                <p className="desktop-preline" style={{ ...sn, fontSize: 15, fontWeight: 400, lineHeight: 1.75, color: C.text }}>{x.d}</p>
               </div>
             </F>
           ))}
@@ -1173,7 +1173,7 @@ function HomePage({ go }) {
               <div>
                 <div style={{ ...sf, fontSize: 28, fontWeight: 400, color: C.orange, opacity: 0.35, marginBottom: 14 }}>{x.n}</div>
                 <h4 style={{ ...sn, fontSize: 15, fontWeight: 500, color: C.black, marginBottom: 10 }}>{x.t}</h4>
-                <p style={{ ...sn, fontSize: 15, fontWeight: 400, lineHeight: 1.75, color: C.text }}>{x.d}</p>
+                <p className="desktop-preline" style={{ ...sn, fontSize: 15, fontWeight: 400, lineHeight: 1.75, color: C.text }}>{x.d}</p>
               </div>
             </F>
           ))}
@@ -1212,7 +1212,7 @@ function HomePage({ go }) {
               <F key={i} delay={i * 0.06}>
                 <div style={{ borderTop: `1px solid ${C.faint}`, paddingTop: 28 }}>
                   <h4 style={{ ...sf, fontSize: 16, fontWeight: 400, fontStyle: "italic", color: C.smoke, marginBottom: 10 }}>{x.t}</h4>
-                  <p style={{ ...sn, fontSize: 15, fontWeight: 400, lineHeight: 1.75, color: C.text }}>{x.d}</p>
+                  <p className="desktop-preline" style={{ ...sn, fontSize: 15, fontWeight: 400, lineHeight: 1.75, color: C.text }}>{x.d}</p>
                 </div>
               </F>
             ))}
