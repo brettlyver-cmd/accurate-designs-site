@@ -1,3 +1,4 @@
+// One-time, idempotent source patch for semantic navigation links.
 const fs = require('fs');
 
 const path = 'src/App.jsx';
