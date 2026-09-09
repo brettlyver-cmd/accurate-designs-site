@@ -152,7 +152,6 @@
 
           const video = document.createElement("video");
           video.className = "kingsway-timelapse";
-          video.autoplay = true;
           video.muted = true;
           video.loop = true;
           video.playsInline = true;
@@ -171,7 +170,23 @@
           video.appendChild(source);
 
           image.replaceWith(video);
-          video.play().catch(() => {});
+
+          let hasStarted = false;
+          const playbackObserver = new IntersectionObserver(
+            ([entry]) => {
+              if (entry.isIntersecting && entry.intersectionRatio >= 0.35) {
+                if (!hasStarted) {
+                  try { video.currentTime = 0; } catch (_) {}
+                  hasStarted = true;
+                }
+                video.play().catch(() => {});
+              } else {
+                video.pause();
+              }
+            },
+            { threshold: [0, 0.35, 0.75] }
+          );
+          playbackObserver.observe(video);
         };
 
         installKingswayTimelapse();
