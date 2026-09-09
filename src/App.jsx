@@ -900,7 +900,6 @@ function HomePage({ go }) {
                   ratio="100%"
                   filter="grayscale(4%) brightness(0.95)"
                   hoverFilter="grayscale(0) brightness(1)"
-                  label="Before + After"
                 />
               </div>
             </div>
@@ -918,7 +917,7 @@ function HomePage({ go }) {
     </div>
 
     <div style={{ ...sn, fontSize: 15.5, lineHeight: 1.9, color: C.smoke, maxWidth: 760, margin: "0 auto" }}>
-      Beautiful homes do not come from design alone. They come from resolving proportion, structure, budget, code, and construction logic early enough that the finished home still feels like the original vision.
+      Beautiful homes do not come from design alone. They come from resolving proportion, structure, budget, code, and construction logic early enough that <span className="desktop-newline">the finished home still feels like the original vision.</span>
     </div>
   </div>
 </Sec>
@@ -931,7 +930,7 @@ function HomePage({ go }) {
           Fewer Surprises
         </div>
         <div style={{ ...sn, fontSize: 14.5, lineHeight: 1.8, color: C.smoke }}>
-          Decisions are resolved early, so the build does not drift under pressure.
+          Decisions are resolved early, <span className="desktop-newline">so the build does not drift</span>{" "}<span className="desktop-newline">under pressure.</span>
         </div>
       </div>
 
@@ -940,7 +939,7 @@ function HomePage({ go }) {
           Cleaner Builds
         </div>
         <div style={{ ...sn, fontSize: 14.5, lineHeight: 1.8, color: C.smoke }}>
-          Structure, layout, and sequencing are coordinated before construction begins.
+          Structure, layout, and sequencing <span className="desktop-newline">are coordinated before</span>{" "}<span className="desktop-newline">construction begins.</span>
         </div>
       </div>
 
@@ -949,7 +948,7 @@ function HomePage({ go }) {
           Better Outcomes
         </div>
         <div style={{ ...sn, fontSize: 14.5, lineHeight: 1.8, color: C.smoke }}>
-          The finished home reflects the original vision, not compromises made on site.
+          The finished home reflects <span className="desktop-newline">the original vision, not</span>{" "}<span className="desktop-newline">compromises made on site.</span>
         </div>
       </div>
 
@@ -987,7 +986,7 @@ function HomePage({ go }) {
           {[
             {
               t: "Construction-Aware Design",
-              b: "Every drawing is developed with buildability in mind. We coordinate structure, mechanical, and architectural systems during design so the builder receives instructions, not questions.",
+              b: "Every drawing is developed with buildability in mind. We coordinate structure, mechanical, and architectural systems so the builder receives instructions, not questions.",
             },
             {
               t: "Fewer Surprises Later",
@@ -1053,15 +1052,15 @@ function HomePage({ go }) {
 
         <div style={{ display: "grid", gridTemplateColumns: "repeat(4,minmax(0,1fr))", gap: 48, marginTop: 64 }} className="wdg">
           {[
-            { t: "Custom Homes", d: "Full architectural design, permit documentation, and construction for new builds across the GTA." },
-            { t: "Additions + Renovations", d: "Second-storey additions, major renovations incl. structural reconfigurations with the same precision as a new build." },
+            { t: "Custom Homes", d: "Full architectural design,\npermit documentation,\nand construction services\nfor new custom homes\nacross the GTA." },
+            { t: "Additions + Renovations", d: "Second-storey additions,\nmajor renovations, and\nstructural changes\nplanned with precision\nfor a new build." },
             { t: "Permit Documentation", d: "OBC-compliant architectural, structural, and mechanical drawings coordinated as a single package." },
             { t: "Owner Representation", d: "Independent project oversight for homeowners who want an experienced technical advocate in their corner." },
           ].map((x, i) => (
             <F key={i} delay={i * 0.06}>
               <div style={{ borderTop: `1px solid ${C.faint}`, paddingTop: 28 }}>
                 <h4 style={{ ...sn, fontSize: 14, fontWeight: 500, color: C.black, marginBottom: 10 }}>{x.t}</h4>
-                <p style={{ ...sn, fontSize: 15, fontWeight: 400, lineHeight: 1.75, color: C.text }}>{x.d}</p>
+                <p className="desktop-preline" style={{ ...sn, fontSize: 15, fontWeight: 400, lineHeight: 1.75, color: C.text }}>{x.d}</p>
               </div>
             </F>
           ))}
@@ -1164,16 +1163,16 @@ function HomePage({ go }) {
         </F>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(4,minmax(0,1fr))", gap: 32, marginTop: 56 }} className="prv">
           {[
-            { n: "01", t: "Discovery + Feasibility", d: "We assess your lot, zoning, budget range, and goals before any design work begins." },
-            { n: "02", t: "Design Resolution", d: "We iterate until every decision is resolved. Structure, systems, materials, cost." },
-            { n: "03", t: "Permit + Approvals", d: "Complete, coordinated documentation submitted for efficient review." },
-            { n: "04", t: "Build Readiness", d: "Drawings detailed enough for accurate pricing and confident construction." },
+            { n: "01", t: "Discovery + Feasibility", d: "We assess your lot, zoning,\nbudget range, and goals\nbefore design begins." },
+            { n: "02", t: "Design Resolution", d: "Decisions are resolved.\nStructure and systems align.\nMaterials and cost are set." },
+            { n: "03", t: "Permit + Approvals", d: "Complete, coordinated\ndocumentation submitted\nfor efficient review." },
+            { n: "04", t: "Build Readiness", d: "Drawings detailed enough\nfor accurate pricing and\nconfident construction." },
           ].map((x, i) => (
             <F key={i} delay={i * 0.06}>
               <div>
                 <div style={{ ...sf, fontSize: 28, fontWeight: 400, color: C.orange, opacity: 0.35, marginBottom: 14 }}>{x.n}</div>
                 <h4 style={{ ...sn, fontSize: 15, fontWeight: 500, color: C.black, marginBottom: 10 }}>{x.t}</h4>
-                <p style={{ ...sn, fontSize: 15, fontWeight: 400, lineHeight: 1.75, color: C.text }}>{x.d}</p>
+                <p className="desktop-preline" style={{ ...sn, fontSize: 15, fontWeight: 400, lineHeight: 1.75, color: C.text }}>{x.d}</p>
               </div>
             </F>
           ))}
@@ -1206,13 +1205,13 @@ function HomePage({ go }) {
           </F>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(260px,1fr))", gap: 36 }}>
             {[
-              { t: "Before You Sign Anything", d: "What to clarify about scope, budget, and expectations before committing to a design contract or builder agreement." },
-              { t: "What Your Lot Actually Allows", d: "How zoning bylaws, setbacks, easements, and conservation overlays determine what can be built." },
+              { t: "Before You Sign Anything", d: "What to clarify about scope, budget,\nand expectations before signing\na design or builder agreement." },
+              { t: "What Your Lot Actually Allows", d: "How zoning bylaws, setbacks,\neasements, and conservation rules\nshape what can actually be built." },
             ].map((x, i) => (
               <F key={i} delay={i * 0.06}>
                 <div style={{ borderTop: `1px solid ${C.faint}`, paddingTop: 28 }}>
-                  <h4 style={{ ...sf, fontSize: 16, fontWeight: 400, fontStyle: "italic", color: C.smoke, marginBottom: 10 }}>{x.t}</h4>
-                  <p style={{ ...sn, fontSize: 15, fontWeight: 400, lineHeight: 1.75, color: C.text }}>{x.d}</p>
+                  <h4 style={{ ...sn, fontSize: 15, fontWeight: 500, color: C.black, marginBottom: 10 }}>{x.t}</h4>
+                  <p className="desktop-preline" style={{ ...sn, fontSize: 15, fontWeight: 400, lineHeight: 1.75, color: C.text }}>{x.d}</p>
                 </div>
               </F>
             ))}
