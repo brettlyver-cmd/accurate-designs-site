@@ -342,18 +342,21 @@ function Nav({ page, go }) {
           transition: "height 0.6s",
         }}
       >
-        <div
-          style={{ cursor: "pointer", display: "flex", alignItems: "center", gap: 16 }}
-          onClick={() => nv("home")}
+        <a
+          href="/"
+          style={{ cursor: "pointer", display: "flex", alignItems: "center", gap: 16, textDecoration: "none" }}
+          onClick={(e) => { e.preventDefault(); nv("home"); }}
+          aria-label="Accurate Designs home"
         >
           <img className="nav-logo" src="/Logo.png" alt="Accurate Designs" style={{ height: 60, width: "auto", display: "block" }} />
-        </div>
+        </a>
 
         <div style={{ display: "flex", gap: 36, alignItems: "center" }} className="dn">
           {its.map((i) => (
-            <span
+            <a
               key={i.id}
-              onClick={() => nv(i.id)}
+              href={`/${i.id}`}
+              onClick={(e) => { e.preventDefault(); nv(i.id); }}
               style={{
                 ...sn,
                 fontSize: 11,
@@ -365,16 +368,17 @@ function Nav({ page, go }) {
                 transition: "color 0.4s",
                 paddingBottom: 2,
                 borderBottom: page === i.id ? `1px solid ${C.orange}` : "1px solid transparent",
+                textDecoration: "none",
               }}
               onMouseEnter={(e) => {
-                if (page !== i.id) e.target.style.color = "#ffffff";
+                if (page !== i.id) e.currentTarget.style.color = "#ffffff";
               }}
               onMouseLeave={(e) => {
-                if (page !== i.id) e.target.style.color = "rgba(255,255,255,0.45)";
+                if (page !== i.id) e.currentTarget.style.color = "rgba(255,255,255,0.45)";
               }}
             >
               {i.l}
-            </span>
+            </a>
           ))}
         </div>
 
@@ -408,11 +412,13 @@ function Nav({ page, go }) {
           }}
         >
           {its.map((i) => (
-            <div
+            <a
               key={i.id}
-              onClick={() => nv(i.id)}
+              href={`/${i.id}`}
+              onClick={(e) => { e.preventDefault(); nv(i.id); }}
               style={{
                 ...sn,
+                display: "block",
                 padding: "16px 0",
                 fontSize: 12,
                 letterSpacing: 2.5,
@@ -420,10 +426,11 @@ function Nav({ page, go }) {
                 color: page === i.id ? C.orange : "rgba(255,255,255,0.4)",
                 cursor: "pointer",
                 borderBottom: "1px solid rgba(255,255,255,0.03)",
+                textDecoration: "none",
               }}
             >
               {i.l}
-            </div>
+            </a>
           ))}
         </div>
       ) : null}
@@ -2487,15 +2494,16 @@ function Footer({ go }) {
           <div>
             <div style={{ ...sn, fontSize: 9, fontWeight: 500, letterSpacing: 3, color: "rgba(201,106,43,0.78)", marginBottom: 20, textTransform: "uppercase" }}>Navigate</div>
             {[{ id: "services", l: "Services" }, { id: "portfolio", l: "Portfolio" }, { id: "process", l: "Process" }, { id: "owner-rep", l: "Owner Representation" }, { id: "about", l: "About" }, { id: "contact", l: "Contact" }].map((p) => (
-              <div
+              <a
                 key={p.id}
-                onClick={() => go(p.id)}
-                style={{ ...sn, fontSize: 12, fontWeight: 400, color: "rgba(245,241,235,0.7)", marginBottom: 12, cursor: "pointer", transition: "color 0.3s" }}
-                onMouseEnter={(e) => (e.target.style.color = "rgba(245,241,235,0.95)")}
-                onMouseLeave={(e) => (e.target.style.color = "rgba(245,241,235,0.7)")}
+                href={`/${p.id}`}
+                onClick={(e) => { e.preventDefault(); go(p.id); }}
+                style={{ ...sn, display: "block", textDecoration: "none", fontSize: 12, fontWeight: 400, color: "rgba(245,241,235,0.7)", marginBottom: 12, cursor: "pointer", transition: "color 0.3s" }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = "rgba(245,241,235,0.95)")}
+                onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(245,241,235,0.7)")}
               >
                 {p.l}
-              </div>
+              </a>
             ))}
           </div>
           <div>
