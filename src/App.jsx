@@ -204,7 +204,7 @@ const PROJECTS = [
     img: eg1,
     images: [eg1, eg2],
     imageLabels: ["Outcome", "Connection"],
-    challenge: "The design intent was clear from the outset: uninterrupted glass, open sightlines, and a direct visual connection between the main living spaces and the backyard. Achieving that level of transparency required careful structural coordination, mechanical planning for large-format glazing, and strict compliance with tempered glass requirements near finished floors.",
+    challenge: "The design intent was clear from the outset: uninterrupted glass, open sightlines, and a direct visual connection between the main living spaces and the backyard. Achieving that level of transparency required careful structural coordination, mechanical planning for large-format glazing.",
     solution: "We coordinated the structural design to support expansive spans while minimizing visual obstructions, and engineered the mechanical systems to manage heat gain and loss without compromising the architecture. On the second level, fully custom window assemblies were integrated early to satisfy Ontario Building Code tempered glass requirements and avoid revisions during construction. The existing concrete pool, though in disrepair, was retained and used as an organizing element for the plan.",
     result: "What could have been a constraint became a defining feature of the home. The result is a cohesive indoor-outdoor environment with expansive views, clear supervision of the pool from the Kitchen and Great Room, and a covered patio that supports both family oversight and everyday living.",
   },
@@ -218,7 +218,7 @@ const PROJECTS = [
     img: ph2,
     images: [ph2, ph1],
     imageLabels: ["Outcome", "Before"],
-    challenge: "This project began with a raised bungalow on a lot where zoning restrictions prohibited horizontal expansion, leaving vertical addition as the only viable path forward. Because the home sat within a designated heritage district, the design also had to satisfy strict architectural guidelines while still delivering meaningful additional living space.",
+    challenge: "This project began with a raised bungalow on a lot where zoning restrictions prohibited horizontal expansion, leaving vertical addition as the only viable path forward. Our design also had to satisfy strict heritage districtarchitectural guidelines while still delivering meaningful additional living space.",
     solution: "We carefully controlled proportions, rooflines, and exterior detailing so the second storey would feel consistent with both the original home and the surrounding neighbourhood. Extensive documentation of existing conditions was carried out before construction, including attic inspections to confirm framing configurations and selective openings in finished surfaces to verify structural connections and mechanical routing.",
     result: "The result is a seamless transformation from a constrained bungalow to a fully realized two-storey home, delivering increased living space while satisfying both the homeowner’s objectives and the requirements of the heritage authority.",
   },
@@ -249,7 +249,7 @@ const PROCESS_STEPS = [
   {
     n: "02",
     t: "Design Development",
-    d: "We resolve layout, structure, code compliance, mechanical coordination, and cost alignment through concept, schematic, and detailed design phases. Beam locations coordinate with duct runs, window headers with structural loads, plumbing stacks with usable floor area. The goal: a fully resolved document set with no decisions deferred to the builder.",
+    d: "We resolve layout, structure, code compliance, mechanical coordination, and cost alignment through concept, schematic, and detailed design phases. Beam locations coordinate with duct runs, window headers with structural loads, and plumbing stacks with usable floor area. The goal: a fully resolved document set with no decisions deferred to the builder.",
     img: processFramingInsulation,
   },
   {
@@ -261,7 +261,7 @@ const PROCESS_STEPS = [
   {
     n: "04",
     t: "Build Readiness",
-    d: "We ensure the builder has everything needed to price accurately and build confidently. Drawings answer most questions before they’re asked. Budget is validated against real trade pricing. If we’re providing design-build, our team carries this precision directly through construction.",
+    d: "We ensure the builder has everything needed to price accurately and build confidently. Drawings answer most questions before they’re asked. The budget is validated against current trade pricing. Our design-build propjects carry this precision directly through construction.",
     img: processTradesFeatureWall,
   },
 ];
@@ -893,11 +893,11 @@ function HomePage({ go }) {
       <Sec className="home-transformation" py={96} bg={C.warm} wide>
         <div style={{ display: "grid", gridTemplateColumns: "0.88fr 1.12fr", gap: 48, alignItems: "center" }} className="trg">
           <F>
-            <div style={{ maxWidth: 420 }}>
+            <div style={{ maxWidth: 520 }}>
               <Lbl style={{ fontSize: 12 }}>Transformation</Lbl>
               <Ttl size="clamp(28px,3.6vw,44px)">Every project starts with constraints.</Ttl>
-              <Bd max={420} style={{ marginBottom: 0 }}>
-                The outcome is determined by <span className="desktop-newline">how early they’re resolved.</span>
+              <Bd max={920} style={{ marginBottom: 0 }}>
+                The outcome is determined by how early they’re resolved.
               </Bd>
             </div>
           </F>
@@ -928,7 +928,7 @@ function HomePage({ go }) {
     </div>
 
     <div style={{ ...sn, fontSize: 15.5, lineHeight: 1.9, color: C.smoke, maxWidth: 760, margin: "0 auto" }}>
-      Beautiful homes do not come from design alone. They come from resolving proportion, structure, budget, code, and construction logic early enough that the finished home still feels like the original vision.
+      Beautiful homes do not come from design alone. They come from resolving <span className="desktop-newline">proportion, structure, budget, code, and construction logic early enough</span> that the finished home still feels like the original vision.
     </div>
   </div>
 </Sec>
@@ -941,7 +941,7 @@ function HomePage({ go }) {
           Fewer Surprises
         </div>
         <div style={{ ...sn, fontSize: 14.5, lineHeight: 1.8, color: C.smoke }}>
-          Decisions are resolved early, so the build does not drift under pressure.
+          Decisions are resolved early, so the build does not drift under the pressure of construction.
         </div>
       </div>
 
@@ -997,7 +997,7 @@ function HomePage({ go }) {
           {[
             {
               t: "Construction-Aware Design",
-              b: "Every drawing is developed with buildability in mind. We coordinate structure, mechanical, and architectural systems during design so the builder receives instructions, not questions.",
+              b: "Every drawing is developed with buildability in mind. We coordinate the necessary systems during design so the builder receives instructions, not questions.",
             },
             {
               t: "Fewer Surprises Later",
@@ -1064,9 +1064,9 @@ function HomePage({ go }) {
         <div style={{ display: "grid", gridTemplateColumns: "repeat(4,minmax(0,1fr))", gap: 48, marginTop: 64 }} className="wdg">
           {[
             { t: "Custom Homes", d: "Full architectural design, permit documentation, and construction for new builds across the GTA." },
-            { t: "Additions + Renovations", d: "Second-storey additions, major renovations incl. structural reconfigurations with the same precision as a new build." },
-            { t: "Permit Documentation", d: "OBC-compliant architectural, structural, and mechanical drawings coordinated as a single package." },
-            { t: "Owner Representation", d: "Independent project oversight for homeowners who want an experienced technical advocate in their corner." },
+            { t: "Additions + Renovations", d: "Second-storey additions and major structural renovations with the precision of a new build." },
+            { t: "Permit Documentation", d: "Coordinated, OBC-compliant architectural, structural, & mechanical drawing packages." },
+            { t: "Owner Representation", d: "Independent project oversight for homeowners who want an experienced technical advocate." },
           ].map((x, i) => (
             <F key={i} delay={i * 0.06}>
               <div style={{ borderTop: `1px solid ${C.faint}`, paddingTop: 28 }}>
@@ -1091,7 +1091,7 @@ function HomePage({ go }) {
                 "Homeowners planning a custom home, estate-scale\nbuild, or major renovation",
                 "Major additions typically involve structural reconfiguration,\nwhich makes coordination critical",
                 "Projects where zoning, conservation authority,\nor site complexity requires careful analysis",
-                "Clients who value thorough planning\nover fast sketches",
+                "Clients who value thorough planning over fast sketches",
               ].map((x, i) => (
                 <div key={i} style={{ display: "flex", gap: 14, marginBottom: 20, alignItems: "flex-start", textAlign: "left" }}>
                   <span style={{ ...sn, fontSize: 16, color: C.orange, fontWeight: 500, minWidth: 14, lineHeight: 1, paddingTop: 1 }}>•</span>
@@ -1101,7 +1101,7 @@ function HomePage({ go }) {
             </div>
             <div style={{ borderLeft: `1px solid ${C.faint}`, paddingLeft: 36, display: "flex", alignItems: "center" }}>
               <p style={{ ...sf, fontSize: 16, fontStyle: "italic", color: C.text, lineHeight: 1.7, textAlign: "center" }}>
-                We are not the right choice for permit-only drafting with minimal design coordination. Our value is in the thinking behind the drawings.
+              Your custom home deserves more than just a permit set, it deserves a vision. We are not a volume drafting service; our expertise lies in the critical thinking and coordination that brings a complex renovation or new build to life. If you are looking for an architectural partner to think through every detail of your future home, we are the right fit.
               </p>
             </div>
           </div>
@@ -1144,7 +1144,7 @@ function HomePage({ go }) {
 
       <Sec className="home-testimonial" py={56}>
         <F>
-          <div style={{ maxWidth: 920, margin: "0 auto", textAlign: "center" }}>
+          <div style={{ maxWidth: 600, margin: "0 auto", textAlign: "center" }}>
             <div style={{ ...sn, fontSize: 9, fontWeight: 500, letterSpacing: 3, color: C.orange, marginBottom: 20, textTransform: "uppercase" }}>Smooth Permit Experience</div>
             <p style={{ ...sf, fontSize: "clamp(19px,2.5vw,26px)", fontStyle: "italic", fontWeight: 400, color: C.smoke, lineHeight: 1.55, marginBottom: 28, textAlign: "center", maxWidth: 780, marginLeft: "auto", marginRight: "auto" }}>
               "Brett walked us through the entire process and designed exactly what we envisioned. The permit process was a breeze."
@@ -1176,8 +1176,8 @@ function HomePage({ go }) {
           {[
             { n: "01", t: "Discovery + Feasibility", d: "We assess your lot, zoning, budget range, and goals before any design work begins." },
             { n: "02", t: "Design Resolution", d: "We iterate until every decision is resolved. Structure, systems, materials, cost." },
-            { n: "03", t: "Permit + Approvals", d: "Complete, coordinated documentation submitted for efficient review." },
-            { n: "04", t: "Build Readiness", d: "Drawings detailed enough for accurate pricing and confident construction." },
+            { n: "03", t: "Permit + Approvals", d: "Complete, coordinated documentation submitted resulting in an efficient review process." },
+            { n: "04", t: "Build Readiness", d: "Detailed drawing packages that allow for accurate pricing and confident construction." },
           ].map((x, i) => (
             <F key={i} delay={i * 0.06}>
               <div>
@@ -1209,7 +1209,7 @@ function HomePage({ go }) {
               <div style={{ ...sn, fontSize: 9, fontWeight: 500, letterSpacing: 3, color: C.orange, marginBottom: 14, textTransform: "uppercase" }}>Planning Insight</div>
               <h3 style={{ ...sf, fontSize: "clamp(22px,2.5vw,28px)", fontWeight: 400, color: C.black, lineHeight: 1.25, marginBottom: 14 }}>The Decisions That Lock In Cost</h3>
               <p style={{ ...sn, fontSize: 14, fontWeight: 400, lineHeight: 1.8, color: C.text, maxWidth: 480, margin: "0 auto 24px", textAlign: "center" }}>
-                Which early-stage choices quietly determine 80% of your construction budget — and how to make them with full context before committing to design or construction.
+                Which early-stage choices quietly determine 80% of your construction budget, and how to make them with full context before committing to design or construction.
               </p>
               <Bt outline onClick={() => go("contact")}>Book a Project Consultation</Bt>
             </div>
@@ -1217,11 +1217,11 @@ function HomePage({ go }) {
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(260px,1fr))", gap: 36 }}>
             {[
               { t: "Before You Sign Anything", d: "What to clarify about scope, budget, and expectations before committing to a design contract or builder agreement." },
-              { t: "What Your Lot Actually Allows", d: "How zoning bylaws, setbacks, easements, and conservation overlays determine what can be built." },
+              { t: "What Your Lot Actually Allows", d: "How building codes, zoning bylaws, easements, and conservation requirements determine what can be built on any given lot." },
             ].map((x, i) => (
               <F key={i} delay={i * 0.06}>
                 <div style={{ borderTop: `1px solid ${C.faint}`, paddingTop: 28 }}>
-                  <h4 style={{ ...sf, fontSize: 16, fontWeight: 400, fontStyle: "italic", color: C.smoke, marginBottom: 10 }}>{x.t}</h4>
+                  <h4 style={{ ...sf, fontSize: 16, fontWeight: 500, fontStyle: "italic", color: C.smoke, marginBottom: 10 }}>{x.t}</h4>
                   <p style={{ ...sn, fontSize: 15, fontWeight: 400, lineHeight: 1.75, color: C.text }}>{x.d}</p>
                 </div>
               </F>
@@ -1310,7 +1310,7 @@ function SearchServicePage({ go, kind }) {
     custom: {
       eyebrow: "Custom Home Design + Build",
       title: "Custom Home Design + Build Across the GTA",
-      intro: "A custom home works best when architecture, structure, building systems, cost, permits, and construction are resolved together before work reaches the site.",
+      intro: "A custom home works best when architecture, structure, building systems, budget, permits, and construction are resolved together before work reaches the site.",
       image: portfolioEstateFrontDusk,
       imageAlt: "Completed custom home designed and coordinated by Accurate Designs",
       imageLabel: "Custom Home Design + Build",
@@ -1320,7 +1320,7 @@ function SearchServicePage({ go, kind }) {
         ["Lot + Zoning Feasibility", "Setbacks, lot coverage, height, site conditions, and approval constraints are reviewed before the design is allowed to outrun the property."],
         ["Architecture + Layout", "Proportion, circulation, natural light, views, and day-to-day use are developed together rather than as separate exercises."],
         ["Structure + Building Systems", "Structural, mechanical, plumbing, and architectural decisions are coordinated during design so they do not compete on site."],
-        ["Permit + Build Readiness", "Documentation is developed for municipal review, accurate trade pricing, and confident construction."],
+        ["Permit + Build Readiness", "Our drawings & documentation is developed for municipal review, accurate trade pricing, and confident construction."],
       ],
       steps: [
         ["01", "Discovery + Feasibility", "We review the lot, goals, budget range, zoning, and project constraints before design begins."],
@@ -1489,7 +1489,7 @@ function SearchServicePage({ go, kind }) {
           <div style={{ maxWidth: 760, margin: "0 auto", textAlign: "center" }}>
             <Lbl>Next Step</Lbl>
             <Ttl>Start with the decisions that determine what happens next.</Ttl>
-            <p style={{ ...sn, fontSize: 15, lineHeight: 1.8, color: C.text, maxWidth: 600, margin: "0 auto 36px" }}>A project consultation helps clarify goals, assess fit, and identify the right path forward. No cost. No obligation.</p>
+            <p style={{ ...sn, fontSize: 15, lineHeight: 1.8, color: C.text, maxWidth: 500, margin: "0 auto 36px" }}>A project consultation helps clarify goals, assess fit, and identify the right path forward. No cost. No obligation.</p>
             <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
               <Bt onClick={() => go("contact")}>Book a Project Consultation</Bt>
               <Bt outline onClick={() => go("services")}>View All Services</Bt>
@@ -1534,17 +1534,26 @@ function PlanningQuestionPage({ go, kind }) {
     },
     committee: {
       eyebrow: "Zoning + Approvals",
-      title: "Committee of Adjustment & Minor Variance Planning for GTA Homes",
+      title: (
+        <>
+          Committee of Adjustment
+          <br />
+          & Minor Variance
+          <span style={{ display: "block", marginTop: 34 }}>
+            Planning for GTA Homes
+          </span>
+        </>
+      ),
       intro: "When a residential design cannot comply with a specific zoning standard, the project may require minor variance approval. The approval question should be understood while the design can still respond intelligently to it.",
       image: architecturalDrawings,
       imageAlt: "Residential architectural drawings used to coordinate zoning and approval requirements",
       imageLabel: "Zoning + Design Coordination",
       whyTitle: "A variance should be understood before the design becomes expensive.",
-      whyBody: "Committee of Adjustment is not simply a paperwork step after design. The exact zoning relief, the relationship to the property and neighbourhood, and the reason for the design all affect the approval context. Approval is never guaranteed, so the project should be developed with a clear understanding of where it complies and where it does not.",
+      whyBody: "Committee of Adjustment is not simply a paperwork step after design. The exact zoning relief, the relationship to the property as well as the neighbourhood, and the reason for the design all affect the approval context. Approval is never guaranteed, so the project should be developed with a clear understanding of where it complies and where it does not.",
       points: [
         ["Exact Zoning Relief", "The project first needs a clear zoning review so the specific standard or standards that are not met are understood rather than assumed."],
-        ["Design Context", "The proposed massing, setbacks, height, parking or other requested relief needs to make sense within the site and residential context."],
-        ["Planning Tests", "Minor variance decisions consider whether the variance is minor and desirable and whether it maintains the general intent and purpose of the zoning by-law and Official Plan."],
+        ["Design Context", "The proposed massing, setbacks, building height, parking or other requested relief needs to make sense within the site and residential context."],
+        ["Planning Tests", "Minor variance decisions consider whether the variance is 'minor' & desirable and whether it maintains the general intent and purpose of the zoning by-law & Official Plan."],
         ["Approval Dependency", "The design, permit timing and construction plan should account for the fact that a variance decision is a separate approval and may affect what can move forward."],
       ],
       contextTitle: "Not every custom home or addition needs a variance, and avoiding one is sometimes a design decision.",
@@ -1615,7 +1624,7 @@ function PlanningQuestionPage({ go, kind }) {
       </Sec>
 
       <Sec py={88} bg={C.cream}>
-        <F><div style={{ maxWidth: 760, margin: "0 auto", textAlign: "center" }}><Lbl>Next Step</Lbl><Ttl>Understand the project before committing to the wrong direction.</Ttl><p style={{ ...sn, fontSize: 15, lineHeight: 1.8, color: C.text, maxWidth: 600, margin: "0 auto 36px" }}>A project consultation helps clarify the constraint, assess fit, and identify the right next step. No cost. No obligation.</p><div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}><Bt onClick={() => go("contact")}>Book a Project Consultation</Bt><Bt outline onClick={() => go(d.secondaryRoute)}>{d.secondaryLabel}</Bt></div></div></F>
+        <F><div style={{ maxWidth: 760, margin: "0 auto", textAlign: "center" }}><Lbl>Next Step</Lbl><Ttl>Understand the project before committing to the wrong direction.</Ttl><p style={{ ...sn, fontSize: 15, lineHeight: 1.8, color: C.text, maxWidth: 600, margin: "0 auto 36px" }}>A project consultation helps clarify the constraint, assess fit, and <span className="desktop-newline"></span>identify the right next step. No cost. No obligation.</p><div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}><Bt onClick={() => go("contact")}>Book a Project Consultation</Bt><Bt outline onClick={() => go(d.secondaryRoute)}>{d.secondaryLabel}</Bt></div></div></F>
       </Sec>
 
       <style>{`@media(max-width:860px){.planning-question-overview,.planning-question-grid{grid-template-columns:1fr!important}.planning-question-overview{gap:40px!important}}`}</style>
@@ -1635,14 +1644,14 @@ function ServicesPage({ go }) {
     {
       label: "Additions + Renovations",
       title: "Major Additions + Renovations",
-      body: "Existing buildings carry hidden constraints such as foundation capacity, load paths through older framing, systems that weren’t designed to be extended. We resolve those conditions in the drawings before work begins.",
+      body: "Existing buildings carry hidden constraints such as foundation capacity, load paths through older framing, systems that weren’t designed to be extended. We resolve those conditions in the drawings before the expensive work begins.",
       outcome: "When the walls come down, the builder is working from a set of drawings that already accounts for what was behind them.",
       cta: "Book a Project Consultation",
     },
     {
       label: "Permit Documentation",
       title: "Permit-Ready Documentation",
-      body: "We prepare complete permit packages including architectural, structural, and mechanical coordinated as a single submission. Drawings are formatted to address what reviewers look for, not just what the code requires.",
+      body: "We prepare complete permit packages including architectural, structural, and mechanical coordinated as a single submission. Drawings are formatted to address what municipal plans examiners look for, not just what the code requires.",
       outcome: "Our submissions typically receive 2–3 examiner comments. Many projects receive 10–15 or more. The difference is documentation that resolves questions before they’re asked.",
       cta: "Book a Project Consultation",
     },
@@ -1650,7 +1659,7 @@ function ServicesPage({ go }) {
       label: "Feasibility + Planning",
       title: "Pre-Design Feasibility",
       body: "Before committing to design, you need to know what your lot actually allows, what the code requires, and what the project will realistically cost. This is especially important when zoning, conservation authority, or site conditions affect what can be built.",
-      outcome: "A feasibility review is typically completed within 1–2 weeks depending on available information. This step identifies constraints early, confirms what’s possible on your property, and prevents time being spent in the wrong direction.",
+      outcome: "A feasibility review is typically completed within 1–2 weeks depending on available information. This step identifies constraints early, confirms what’s possible on your property, and prevents time being spent going in the wrong direction.",
       cta: "Book a Project Consultation",
     },
   ];
@@ -1672,19 +1681,12 @@ function ServicesPage({ go }) {
         </div>
       </section>
 
-      <div style={{ maxWidth: 960, margin: "0 auto", padding: "0 40px" }}>
-        <p style={{ ...sn, fontSize: 15, fontWeight: 400, color: C.text, textAlign: "center", maxWidth: 560, margin: "34px auto 0", lineHeight: 1.85 }}>
-          Projects are shaped by decisions made early — by how clearly they are resolved, documented, and carried into construction.
-        </p>
-        <div style={{ borderTop: `1px solid ${C.faint}`, margin: "48px auto 0", maxWidth: 680 }} />
-      </div>
-
       <Sec py={96} bg="#F3EFE8">
         <F>
           <div style={{ textAlign: "center" }}>
             <Lbl>When We’re Most Valuable</Lbl>
           </div>
-          <div style={{ maxWidth: 860, margin: "0 auto 56px" }}>
+          <div style={{ maxWidth: 860, margin: "0 auto 66px" }}>
             <HoverImage
               src={processMechanical}
               alt="Coordinated plumbing and mechanical systems during construction"
@@ -1714,7 +1716,7 @@ function ServicesPage({ go }) {
             <div style={{ display: "grid", gridTemplateColumns: "repeat(3,minmax(0,1fr))", gap: 48, maxWidth: 1100, margin: "0 auto" }} className="wts">
               {[
                 { s: "You’re ready to move forward with a custom home or major renovation", a: "Project Consultation", p: "contact" },
-                { s: "You need clarity before committing to design", a: "Feasibility Review", p: "contact" },
+                { s: "You need clarity before committing to final architectural design", a: "Feasibility Review", p: "contact" },
                 { s: "You’re already in a project and need an unbiased second opinion", a: "Representation Consultation", p: "owner-rep" },
               ].map((r, i) => (
                 <div key={i} style={{ borderTop: `1px solid ${C.faint}`, paddingTop: 24, cursor: "pointer" }} onClick={() => go(r.p)}>
@@ -1767,7 +1769,7 @@ function ServicesPage({ go }) {
       <section style={{ background: C.deep, padding: "100px 40px", textAlign: "center" }}>
         <div style={{ maxWidth: 940, margin: "0 auto" }}>
           <Ttl light size="clamp(26px,3vw,36px)">Not sure where to start?</Ttl>
-          <p style={{ ...sn, fontSize: 14, fontWeight: 400, color: "rgba(245,241,235,0.35)", maxWidth: 400, margin: "0 auto 40px" }}>
+          <p style={{ ...sn, fontSize: 14, fontWeight: 400, color: "rgba(245,241,235,0.35)", maxWidth: 600, margin: "0 auto 40px" }}>
             A short conversation will help clarify the right path forward.
           </p>
           <Bt onClick={() => go("contact")}>Book a Project Consultation</Bt>
@@ -1802,7 +1804,7 @@ function PortfolioPage({ go }) {
           </F>
           <F delay={0.1}>
             <div style={{ maxWidth: 760, margin: "0 auto", textAlign: "center" }}>
-              <Bd light max={760} style={{ margin: "0 auto", textAlign: "center" }}>
+              <Bd light max={500} style={{ margin: "0 auto", textAlign: "center" }}>
                 A curated selection of built work showing how early decisions shape clarity, construction, and the finished result.
               </Bd>
             </div>
@@ -1839,7 +1841,7 @@ function PortfolioPage({ go }) {
       <Sec py={88} bg={C.warm}>
         <div style={{ maxWidth: 760, margin: "0 auto", textAlign: "center" }}>
           <div style={{ ...sf, fontSize: "clamp(22px,2.4vw,30px)", lineHeight: 1.5, color: C.black }}>
-            Every project begins the same way — by resolving what others leave open.
+            Every project begins the same way, <span className="desktop-newline">by resolving what others leave open.</span>
           </div>
         </div>
       </Sec>
@@ -1847,8 +1849,8 @@ function PortfolioPage({ go }) {
       <section style={{ background: C.deep, padding: "108px 40px", textAlign: "center" }}>
         <div style={{ maxWidth: 940, margin: "0 auto" }}>
           <Ttl light size="clamp(26px,3vw,36px)">Have a project in mind?</Ttl>
-          <p style={{ ...sn, fontSize: 14, fontWeight: 400, color: "rgba(245,241,235,0.4)", maxWidth: 460, margin: "0 auto 36px", lineHeight: 1.85 }}>
-            We'll assess feasibility and outline a clear path forward.
+          <p style={{ ...sn, fontSize: 14, fontWeight: 400, color: "rgba(245,241,235,0.4)", maxWidth: 560, margin: "0 auto 36px", lineHeight: 1.85 }}>
+            We'll assess the project's feasibility and outline a clear path forward.
           </p>
           <Bt onClick={() => go("contact")}>Book a Project Consultation</Bt>
         </div>
@@ -1901,19 +1903,6 @@ function ProcessPage({ go }) {
       </section>
 
       <Sec py={0} bg="#F3EFE8">
-        <F>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 40, maxWidth: 960, margin: "0 auto", paddingLeft: 24, paddingRight: 24, paddingTop: 40, paddingBottom: 40, borderTop: `1px solid ${C.faint}` }} className="prb">
-            {["Fewer late-stage decisions", "More accurate pricing", "Smoother permit approvals", "Cleaner builder handoff"].map((b, i) => (
-              <div key={i} style={{ display: "flex", gap: 12, alignItems: "center", textAlign: "center", justifyContent: "center" }}>
-                <span style={{ ...sn, fontSize: 12, color: C.orange, fontWeight: 500 }}>—</span>
-                <span style={{ ...sn, fontSize: 14, fontWeight: 400, lineHeight: 1.7, color: C.text, letterSpacing: 0.2 }}>{b}</span>
-              </div>
-            ))}
-          </div>
-        </F>
-      </Sec>
-
-      <Sec py={0} bg="#F3EFE8">
         <div style={{ maxWidth: 1100, margin: "0 auto", paddingLeft: 24, paddingRight: 24 }}>
           {PROCESS_STEPS.map((s, i) => (
             <F key={i} delay={i * 0.06}>
@@ -1949,7 +1938,7 @@ function ProcessPage({ go }) {
       </Sec>
 
       <section style={{ background: C.deep, padding: "108px 40px", textAlign: "center" }}>
-        <div style={{ maxWidth: 940, margin: "0 auto" }}>
+        <div style={{ maxWidth: 400, margin: "0 auto" }}>
           <div style={{ ...sf, fontSize: 22, fontStyle: "italic", fontWeight: 400, color: "rgba(245,241,235,0.85)", maxWidth: 600, margin: "0 auto 28px", lineHeight: 1.6, opacity: 0.85 }}>
             "If a decision is not made on paper, it will be made on site."
           </div>
@@ -2147,7 +2136,7 @@ function OwnerRepPage({ go }) {
               },
               {
                 t: "Budget + quote validation",
-                d: "Analysis of pricing, allowances, and assumptions to identify risk before committing.",
+                d: "Analysis of pricing, allowances, and assumptions to identify risk before committing to a construction contract.",
               },
               {
                 t: "Team coordination",
@@ -2170,11 +2159,11 @@ function OwnerRepPage({ go }) {
       </Sec>
 
       <section style={{ background: C.deep, padding: "96px 40px", textAlign: "center" }}>
-        <div style={{ ...sf, fontSize: "clamp(18px,2.2vw,24px)", fontStyle: "italic", fontWeight: 400, color: "rgba(245,241,235,0.78)", lineHeight: 1.55, maxWidth: 760, margin: "0 auto 20px" }}>
+        <div style={{ ...sf, fontSize: "clamp(18px,2.2vw,24px)", fontStyle: "italic", fontWeight: 400, color: "rgba(245,241,235,0.78)", lineHeight: 1.55, maxWidth: 960, margin: "0 auto 20px" }}>
   The value is not more opinions. It’s having one technically informed advocate who keeps the project aligned from decision to execution.
 </div>
 <Ttl light size="clamp(26px,3vw,36px)" style={{ marginBottom: 10, letterSpacing: -0.2 }}>Need an experienced advocate on your project?</Ttl>
-        <p style={{ ...sn, fontSize: 14, color: "rgba(245,241,235,0.4)", maxWidth: 420, margin: "0 auto 16px" }}>
+        <p style={{ ...sn, fontSize: 14, color: "rgba(245,241,235,0.4)", maxWidth: 920, margin: "0 auto 16px" }}>
           Available for select projects where clarity, coordination, and cost control are critical.
         </p>
         <Bt onClick={() => go("contact")} style={{ padding: "18px 48px" }}>Book a Project Consultation</Bt>
@@ -2221,8 +2210,8 @@ function AboutPage({ go }) {
           <div style={{ ...sf, fontSize: "clamp(22px,3vw,30px)", color: C.black, lineHeight: 1.4, marginBottom: 28, maxWidth: 820, textAlign: "center", marginLeft: "auto", marginRight: "auto" }}>
             Residential projects are shaped by the quality of the decisions made before construction begins.
           </div>
-          <Bd max={660} style={{ textAlign: "center", margin: "0 auto" }}>
-            Accurate Designs was founded in 2000 to bring structure, layout, budget, code, and construction logic into the design process early. When those variables are aligned on paper, the project moves with more clarity and the design holds its integrity.
+          <Bd max={760} style={{ textAlign: "center", margin: "0 auto" }}>
+            Accurate Designs was founded in 2000 with a goal to bring structure, layout, budget, code, and construction logic into the design process early. When those variables are aligned on paper, the project moves with more clarity and the design holds its integrity.
           </Bd>
         </F>
       </Sec>
@@ -2259,7 +2248,7 @@ function AboutPage({ go }) {
         </F>
         <F delay={0.08} style={{ display: "flex", justifyContent: "center" }}>
           <Bd max={680} style={{ textAlign: "center", margin: "0 auto" }}>
-            The results are measurable. Permit submissions that typically receive 2 - 3 review comments. Builders who report that these are among the most complete drawings they work from. Projects where the design intent carries through to the finished home.
+            The results are measurable. Permit submissions that typically receive 2 - 3 review comments. Builders report that our permit packages are among the most they've ever worked from. Projects where the design intent carries through to the finished home.
           </Bd>
         </F>
       </Sec>
@@ -2325,15 +2314,14 @@ function ContactPage() {
         <div style={{ position: "absolute", inset: 0, opacity: 0.06 }}>
           <img src={aboutConstructionSite} alt="Construction site" style={{ width: "100%", height: "100%", objectFit: "cover", filter: "grayscale(100%)" }} />
         </div>
-        <div style={{ position: "relative", maxWidth: 1040, margin: "0 auto" }}>
+        <div style={{ position: "relative", maxWidth: 640, margin: "0 auto" }}>
           <F>
             <Lbl light>Begin Here</Lbl>
             <Ttl light>Book a Project Consultation</Ttl>
           </F>
           <F delay={0.1}>
             <Bd light max={620} style={{ margin: "0 auto", textAlign: "center", lineHeight: 1.8 }}>
-              A focused conversation about your project, your goals, and the right path forward.
-              <br />
+              A focused conversation about your project, your goals, <span className="desktop-newline">and the right path forward.</span>
               <br />
               We typically work on projects starting at $500K+ construction budgets.
               <br />
