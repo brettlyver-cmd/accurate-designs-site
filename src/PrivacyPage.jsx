@@ -26,7 +26,7 @@ export default function PrivacyPage() {
             Privacy Policy
           </h1>
           <p style={{ ...font, fontSize: 14, fontWeight: 400, color: "rgba(245,241,235,0.68)", lineHeight: 1.8, margin: "22px auto 0" }}>
-            Effective September 10, 2026
+            Effective September 11, 2026
           </p>
         </div>
       </section>
@@ -49,7 +49,7 @@ export default function PrivacyPage() {
               If you contact us by email, telephone, or another channel, we may also retain the information contained in that communication as reasonably necessary to respond and manage the relationship.
             </p>
             <p style={bodyStyle}>
-              Our website also uses standard technical and analytics information such as browser and device information, pages visited, session activity, approximate location derived from network information, and similar website-usage data.
+              If you choose to accept analytics, Google Analytics may collect standard technical and website-usage information such as browser and device information, pages visited, session activity, and approximate geographic information. Analytics does not load when you decline or before you make a choice.
             </p>
           </div>
 
@@ -66,7 +66,7 @@ export default function PrivacyPage() {
           <div style={sectionStyle}>
             <h2 style={headingStyle}>Service Providers and Disclosure</h2>
             <p style={bodyStyle}>
-              We use third-party service providers to operate parts of this website and our business. Website inquiry submissions are processed through Formspree. Website analytics are provided through Google Analytics. Our website is hosted and deployed using third-party web infrastructure. These providers may process information on our behalf in accordance with their own terms, privacy practices, and contractual obligations.
+              We use third-party service providers to operate parts of this website and our business. Website inquiry submissions are processed through Formspree. If you consent to analytics, website analytics are provided through Google Analytics. Our website is hosted and deployed using third-party web infrastructure. These providers may process information on our behalf in accordance with their own terms, privacy practices, and contractual obligations.
             </p>
             <p style={bodyStyle}>
               Some service providers may process or store information outside Canada, where it may be subject to the laws of the jurisdiction in which it is processed. We may also disclose information where reasonably necessary to comply with law, protect our legal rights, investigate misuse or security issues, or complete a business transaction involving the company, subject to applicable law.
@@ -76,10 +76,13 @@ export default function PrivacyPage() {
           <div style={sectionStyle}>
             <h2 style={headingStyle}>Analytics and Cookies</h2>
             <p style={bodyStyle}>
-              We use Google Analytics to understand how visitors use the site and to improve content and performance. Google Analytics may use first-party cookies or similar technologies to distinguish users and sessions and may collect information such as device and browser details, session statistics, pages viewed, and approximate geographic information.
+              Google Analytics is optional on this website. It does not load or send analytics information to Google unless you select “Accept Analytics” in our privacy notice. If you decline, Google Analytics remains disabled.
             </p>
             <p style={bodyStyle}>
-              You can control or delete cookies through your browser settings. Restricting cookies may affect some website measurement but should not prevent you from viewing the core site or contacting us.
+              If you accept, Google Analytics may use first-party cookies or similar technologies to distinguish users and sessions and may collect information such as device and browser details, session statistics, pages viewed, and approximate geographic information. Your analytics choice is stored in your browser for approximately 12 months so we can remember your preference.
+            </p>
+            <p style={bodyStyle}>
+              You can change your choice at any time by selecting “Privacy Settings” in the website footer. If you withdraw consent, we disable further analytics collection and make a reasonable effort to remove Google Analytics cookies associated with this site from your browser.
             </p>
           </div>
 
