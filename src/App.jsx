@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import PrivacyPage from "./PrivacyPage.jsx";
+import CookieConsent, { SETTINGS_EVENT } from "./CookieConsent.jsx";
 import heroModernDusk from "./assets/Landing-page-image-1.webp";
 import beforeAfterTraditionalToModern from "./assets/before-after-traditional-to-modern.jpg";
 import processExistingHouse from "./assets/process-existing-house.jpg";
@@ -2562,6 +2563,13 @@ function Footer({ go }) {
             <a href="/privacy" onClick={(e) => { e.preventDefault(); go("privacy"); }} style={{ ...sn, fontSize: 11, fontWeight: 400, color: "rgba(245,241,235,0.58)", textDecoration: "none" }}>
               Privacy Policy
             </a>
+            <button
+              type="button"
+              onClick={() => window.dispatchEvent(new Event(SETTINGS_EVENT))}
+              style={{ ...sn, padding: 0, border: 0, background: "transparent", fontSize: 11, fontWeight: 400, color: "rgba(245,241,235,0.58)", cursor: "pointer" }}
+            >
+              Privacy Settings
+            </button>
           </div>
           <span style={{ ...sf, fontSize: 12, fontWeight: 400, fontStyle: "italic", color: "rgba(245,241,235,0.52)", letterSpacing: 0.5 }}>Resolve complexity before it reaches the site.</span>
         </div>
@@ -2614,6 +2622,7 @@ export default function App() {
       <Nav page={page} go={go} />
       {pages[page] || pages.home}
       <Footer go={go} />
+      <CookieConsent />
     </div>
   );
 }
