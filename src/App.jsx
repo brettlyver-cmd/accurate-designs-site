@@ -2388,7 +2388,7 @@ function ContactPage() {
       }
     });
 
-    const response = await fetch("https://formspree.io/f/xdayrzaw", {
+    const response = await fetch("https://formspree.io/f/xljezpyq", {
       method: "POST",
       body: formData,
       headers: {
