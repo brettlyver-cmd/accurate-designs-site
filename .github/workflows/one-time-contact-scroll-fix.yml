@@ -1,0 +1,53 @@
+name: One-time contact confirmation scroll fix
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/one-time-contact-scroll-fix.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  fix-contact-scroll:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Add confirmation scroll behavior
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          path = Path("src/App.jsx")
+          text = path.read_text(encoding="utf-8")
+
+          old_state = '''function ContactPage() {\n  const [sent, setSent] = useState(false);\n\n  return ('''
+          new_state = '''function ContactPage() {\n  const [sent, setSent] = useState(false);\n\n  useEffect(() => {\n    if (!sent) return;\n    requestAnimationFrame(() => {\n      document.querySelector(".contact-confirmation-section")?.scrollIntoView({\n        behavior: "auto",\n        block: "start",\n      });\n    });\n  }, [sent]);\n\n  return ('''
+
+          old_section = '<Sec py={96} bg="#F3EFE8">\n        <div style={{ display: "grid", gridTemplateColumns: "1.1fr 0.9fr", gap: 72 }} className="cg">'
+          new_section = '<Sec py={96} bg="#F3EFE8" className="contact-confirmation-section">\n        <div style={{ display: "grid", gridTemplateColumns: "1.1fr 0.9fr", gap: 72 }} className="cg">'
+
+          if text.count(old_state) != 1:
+              raise SystemExit(f"Expected one ContactPage state block, found {text.count(old_state)}")
+          if text.count(old_section) != 1:
+              raise SystemExit(f"Expected one contact section, found {text.count(old_section)}")
+
+          text = text.replace(old_state, new_state, 1)
+          text = text.replace(old_section, new_section, 1)
+          path.write_text(text, encoding="utf-8")
+          PY
+
+      - name: Commit contact confirmation scroll fix
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/App.jsx
+          git diff --cached --check
+          git commit -m "Scroll to contact confirmation after submit"
+          git push origin HEAD:main
