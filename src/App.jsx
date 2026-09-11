@@ -2308,6 +2308,16 @@ function AboutPage({ go }) {
 function ContactPage() {
   const [sent, setSent] = useState(false);
 
+  useEffect(() => {
+    if (!sent) return;
+    requestAnimationFrame(() => {
+      document.querySelector(".contact-confirmation-section")?.scrollIntoView({
+        behavior: "auto",
+        block: "start",
+      });
+    });
+  }, [sent]);
+
   return (
     <>
       <section className="contact-hero" style={{ background: C.black, padding: "160px 40px 100px", position: "relative", overflow: "hidden" }}>
@@ -2337,7 +2347,7 @@ function ContactPage() {
         </div>
       </section>
 
-      <Sec py={96} bg="#F3EFE8">
+      <Sec py={96} bg="#F3EFE8" className="contact-confirmation-section">
         <div style={{ display: "grid", gridTemplateColumns: "1.1fr 0.9fr", gap: 72 }} className="cg">
           <div>
             {sent ? (
