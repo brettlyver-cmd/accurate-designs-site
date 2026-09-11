@@ -1,0 +1,51 @@
+name: One-time copy typo fix
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/one-time-copy-fix.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  fix-copy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Fix two exact copy typos
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          path = Path("src/App.jsx")
+          text = path.read_text(encoding="utf-8")
+
+          replacements = {
+              "heritage districtarchitectural guidelines": "heritage district architectural guidelines",
+              "design-build propjects": "design-build projects",
+          }
+
+          for old, new in replacements.items():
+              count = text.count(old)
+              if count != 1:
+                  raise SystemExit(f"Expected exactly one occurrence of {old!r}, found {count}")
+              text = text.replace(old, new)
+
+          path.write_text(text, encoding="utf-8")
+          PY
+
+      - name: Commit corrected copy
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/App.jsx
+          git diff --cached --check
+          git commit -m "Fix two website copy typos"
+          git push origin HEAD:main
