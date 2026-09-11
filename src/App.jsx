@@ -218,7 +218,7 @@ const PROJECTS = [
     img: ph2,
     images: [ph2, ph1],
     imageLabels: ["Outcome", "Before"],
-    challenge: "This project began with a raised bungalow on a lot where zoning restrictions prohibited horizontal expansion, leaving vertical addition as the only viable path forward. Our design also had to satisfy strict heritage districtarchitectural guidelines while still delivering meaningful additional living space.",
+    challenge: "This project began with a raised bungalow on a lot where zoning restrictions prohibited horizontal expansion, leaving vertical addition as the only viable path forward. Our design also had to satisfy strict heritage district architectural guidelines while still delivering meaningful additional living space.",
     solution: "We carefully controlled proportions, rooflines, and exterior detailing so the second storey would feel consistent with both the original home and the surrounding neighbourhood. Extensive documentation of existing conditions was carried out before construction, including attic inspections to confirm framing configurations and selective openings in finished surfaces to verify structural connections and mechanical routing.",
     result: "The result is a seamless transformation from a constrained bungalow to a fully realized two-storey home, delivering increased living space while satisfying both the homeowner’s objectives and the requirements of the heritage authority.",
   },
@@ -261,7 +261,7 @@ const PROCESS_STEPS = [
   {
     n: "04",
     t: "Build Readiness",
-    d: "We ensure the builder has everything needed to price accurately and build confidently. Drawings answer most questions before they’re asked. The budget is validated against current trade pricing. Our design-build propjects carry this precision directly through construction.",
+    d: "We ensure the builder has everything needed to price accurately and build confidently. Drawings answer most questions before they’re asked. The budget is validated against current trade pricing. Our design-build projects carry this precision directly through construction.",
     img: processTradesFeatureWall,
   },
 ];
