@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
+import PrivacyPage from "./PrivacyPage.jsx";
 import heroModernDusk from "./assets/Landing-page-image-1.webp";
 import beforeAfterTraditionalToModern from "./assets/before-after-traditional-to-modern.jpg";
 import processExistingHouse from "./assets/process-existing-house.jpg";
@@ -2374,8 +2375,11 @@ function ContactPage() {
                 <Sel label="Current Builder Status" options={["Select...", "No builder yet", "Evaluating builders", "Builder selected — not signed", "Builder under contract", "Want Accurate Designs to build", "Not applicable"]} />
                 <Sel label="How Did You Hear About Us?" options={["Select...", "Referral", "Builder / Trade", "Google Search", "Instagram", "Facebook", "LinkedIn", "YouTube", "Repeat Client", "Other"]} />
                 <Inp label="Project Overview *" textarea />
-                <p style={{ ...sn, fontSize: 11, fontWeight: 400, color: C.smoke, marginBottom: 32, letterSpacing: 0.3, lineHeight: 1.7 }}>
+                <p style={{ ...sn, fontSize: 11, fontWeight: 400, color: C.smoke, marginBottom: 12, letterSpacing: 0.3, lineHeight: 1.7 }}>
                   Every inquiry is reviewed personally. We typically reply within one business day.
+                </p>
+                <p style={{ ...sn, fontSize: 10.5, fontWeight: 400, color: C.muted, marginBottom: 32, lineHeight: 1.7 }}>
+                  By submitting this form, you consent to Accurate Designs using the information you provide to respond to your inquiry, as described in our <a href="/privacy" style={{ color: C.orange, textDecoration: "underline", textUnderlineOffset: 3 }}>Privacy Policy</a>.
                 </p>
                 <Bt
   onClick={async () => {
@@ -2553,7 +2557,12 @@ function Footer({ go }) {
           </div>
         </div>
         <div style={{ borderTop: "1px solid rgba(245,241,235,0.08)", paddingTop: 36, display: "flex", justifyContent: "space-between", flexWrap: "wrap", gap: 16, alignItems: "center" }}>
-          <span style={{ ...sn, fontSize: 11, fontWeight: 400, color: "rgba(245,241,235,0.58)" }}>© 2026 Accurate Designs Inc.</span>
+          <div style={{ display: "flex", alignItems: "center", flexWrap: "wrap", gap: 18 }}>
+            <span style={{ ...sn, fontSize: 11, fontWeight: 400, color: "rgba(245,241,235,0.58)" }}>© 2026 Accurate Designs Inc.</span>
+            <a href="/privacy" onClick={(e) => { e.preventDefault(); go("privacy"); }} style={{ ...sn, fontSize: 11, fontWeight: 400, color: "rgba(245,241,235,0.58)", textDecoration: "none" }}>
+              Privacy Policy
+            </a>
+          </div>
           <span style={{ ...sf, fontSize: 12, fontWeight: 400, fontStyle: "italic", color: "rgba(245,241,235,0.52)", letterSpacing: 0.5 }}>Resolve complexity before it reaches the site.</span>
         </div>
       </div>
@@ -2597,6 +2606,7 @@ export default function App() {
     "owner-rep": <OwnerRepPage go={go} />,
     about: <AboutPage go={go} />,
     contact: <ContactPage go={go} />,
+    privacy: <PrivacyPage />,
   };
 
   return (

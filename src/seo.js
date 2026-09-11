@@ -61,6 +61,11 @@ const ROUTES = {
     description:
       "Discuss your custom home, addition, major renovation, feasibility review or owner representation needs with Accurate Designs in the Greater Toronto Area.",
   },
+  "/privacy": {
+    title: "Privacy Policy | Accurate Designs",
+    description:
+      "Learn how Accurate Designs collects, uses, protects and manages information submitted through its website, project inquiry form and website analytics.",
+  },
 };
 
 function normalizePath(pathname) {
