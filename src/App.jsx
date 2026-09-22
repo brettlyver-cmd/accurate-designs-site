@@ -2374,7 +2374,7 @@ function ContactPage() {
                 <Sel label="Target Start Timeline *" options={["Select...", "Within 3 months", "3–6 months", "6–12 months", "12+ months", "Already in progress"]} />
                 <Sel label="Current Drawing Status" options={["Select...", "Starting from scratch", "Conceptual / sketch stage", "Design development", "Permit-ready or permitted", "Have drawings — need revisions"]} />
                 <Sel label="Current Builder Status" options={["Select...", "No builder yet", "Evaluating builders", "Builder selected — not signed", "Builder under contract", "Want Accurate Designs to build", "Not applicable"]} />
-                <Sel label="How Did You Hear About Us?" options={["Select...", "Referral", "Builder / Trade", "Google Search", "Instagram", "Facebook", "LinkedIn", "YouTube", "Repeat Client", "Other"]} />
+                <Sel label="How did you first hear about us? *" options={["Select...", "Instagram", "LinkedIn", "Facebook", "Google Search", "AI assistant (ChatGPT, Gemini, etc.)", "Referral / Word of mouth", "Other"]} />
                 <Inp label="Project Overview *" textarea />
                 <p style={{ ...sn, fontSize: 11, fontWeight: 400, color: C.smoke, marginBottom: 12, letterSpacing: 0.3, lineHeight: 1.7 }}>
                   Every inquiry is reviewed personally. We typically reply within one business day.
