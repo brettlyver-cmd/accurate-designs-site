@@ -936,7 +936,7 @@ function HomePage({ go }) {
 </Sec>
 <Sec className="home-credibility" py={64} bg="#F3EFE8">
   <div style={{ maxWidth: 1000, margin: "0 auto" }}>
-    <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap:60 }}>
+    <div className="home-credibility-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap:60 }}>
       
       <div style={{ textAlign: "center" }}>
         <div style={{ ...sf, fontSize: 19.5, fontWeight: 500, marginBottom: 10 }}>
@@ -1301,7 +1301,7 @@ function HomePage({ go }) {
         </F>
       </Sec>
 
-      <style>{`@media(min-width:861px){.home-proof-intro{padding-top:72px!important;padding-bottom:64px!important}.home-transformation{padding-top:56px!important;padding-bottom:56px!important}.home-process-bridge{padding-top:52px!important;padding-bottom:48px!important}.home-credibility{padding-top:44px!important;padding-bottom:40px!important}.home-stats{padding-top:28px!important;padding-bottom:28px!important}.home-stats>div>div{padding-top:40px!important;padding-bottom:40px!important}.home-why{padding-top:72px!important;padding-bottom:68px!important}.home-design-outcome{padding-top:52px!important;padding-bottom:48px!important}.home-services{padding-top:60px!important;padding-bottom:60px!important}.home-fit{padding-top:60px!important;padding-bottom:64px!important}.home-selected-work{padding-top:110px!important;padding-bottom:80px!important}.home-testimonial{padding-top:48px!important;padding-bottom:44px!important}.home-how-we-work{padding-top:64px!important;padding-bottom:60px!important}.home-learn{padding-top:64px!important;padding-bottom:72px!important}}@media(max-width:1080px){.wdg,.prv{grid-template-columns:repeat(2,minmax(0,1fr))!important}}@media(max-width:860px){.wg,.og,.trg,.wdh,.midimg{grid-template-columns:1fr!important}.stg,.wdg,.prv{grid-template-columns:1fr!important}.orwg{grid-template-columns:1fr!important}.orwi{grid-template-columns:1fr!important}}`}</style>
+      <style>{`@media(min-width:861px){.home-proof-intro{padding-top:72px!important;padding-bottom:64px!important}.home-transformation{padding-top:56px!important;padding-bottom:56px!important}.home-process-bridge{padding-top:52px!important;padding-bottom:48px!important}.home-credibility{padding-top:44px!important;padding-bottom:40px!important}.home-stats{padding-top:28px!important;padding-bottom:28px!important}.home-stats>div>div{padding-top:40px!important;padding-bottom:40px!important}.home-why{padding-top:72px!important;padding-bottom:68px!important}.home-design-outcome{padding-top:52px!important;padding-bottom:48px!important}.home-services{padding-top:60px!important;padding-bottom:60px!important}.home-fit{padding-top:60px!important;padding-bottom:64px!important}.home-selected-work{padding-top:110px!important;padding-bottom:80px!important}.home-testimonial{padding-top:48px!important;padding-bottom:44px!important}.home-how-we-work{padding-top:64px!important;padding-bottom:60px!important}.home-learn{padding-top:64px!important;padding-bottom:72px!important}}@media(max-width:1080px){.wdg,.prv{grid-template-columns:repeat(2,minmax(0,1fr))!important}}@media(max-width:860px){.wg,.og,.trg,.wdh,.midimg{grid-template-columns:1fr!important}.stg,.wdg,.prv{grid-template-columns:1fr!important}.orwg{grid-template-columns:1fr!important}.orwi{grid-template-columns:1fr!important}}@media(max-width:640px){.home-credibility-grid{grid-template-columns:1fr!important;gap:36px!important}}`}</style>
     </>
   );
 }
@@ -2494,13 +2494,13 @@ function Footer({ go }) {
   return (
     <footer style={{ background: C.black, padding: "72px 40px 48px", borderTop: "1px solid rgba(201,106,43,0.06)" }}>
       <div style={{ maxWidth: 1120, margin: "0 auto" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(210px,1fr))", gap: 48, marginBottom: 56 }}>
-          <div>
-            <div style={{ display: "flex", alignItems: "center", gap: 14, marginBottom: 24 }}>
+        <div className="footer-main-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(210px,1fr))", gap: 48, marginBottom: 56 }}>
+          <div className="footer-brand">
+            <div className="footer-logo-row" style={{ display: "flex", alignItems: "center", gap: 14, marginBottom: 24 }}>
               <img src="/Logo.png" alt="Accurate Designs" style={{ height: 40, width: "auto", display: "block" }} />
               <span style={{ ...sn, fontSize: 9, fontWeight: 400, letterSpacing: 4, color: "rgba(245,241,235,0.62)", textTransform: "uppercase" }}></span>
             </div>
-            <p style={{ ...sn, fontSize: 12, fontWeight: 400, color: "rgba(245,241,235,0.72)", lineHeight: 1.75, maxWidth: 220 }}>
+            <p className="footer-brand-copy" style={{ ...sn, fontSize: 12, fontWeight: 400, color: "rgba(245,241,235,0.72)", lineHeight: 1.75, maxWidth: 220 }}>
               Construction-aware residential design since 2000.
             </p>
           </div>
@@ -2543,7 +2543,7 @@ function Footer({ go }) {
           </div>
           <div>
             <div style={{ ...sn, fontSize: 9, fontWeight: 500, letterSpacing: 3, color: "rgba(201,106,43,0.78)", marginBottom: 20, textTransform: "uppercase" }}>Contact</div>
-            <div style={{ ...sn, fontSize: 12, fontWeight: 400, color: "rgba(245,241,235,0.72)", lineHeight: 1.8 }}>
+            <div className="footer-address" style={{ ...sn, fontSize: 12, fontWeight: 400, color: "rgba(245,241,235,0.72)", lineHeight: 1.8 }}>
               Accurate Designs Inc.
               <br />
               1215 Queensway E, Unit 56
@@ -2574,6 +2574,7 @@ function Footer({ go }) {
           <span style={{ ...sf, fontSize: 12, fontWeight: 400, fontStyle: "italic", color: "rgba(245,241,235,0.52)", letterSpacing: 0.5 }}>Resolve complexity before it reaches the site.</span>
         </div>
       </div>
+      <style>{`@media(max-width:640px){.footer-brand{text-align:center!important}.footer-logo-row{justify-content:center!important}.footer-brand-copy{margin-left:auto!important;margin-right:auto!important;text-align:center!important}.footer-address{text-align:center!important;margin-left:auto!important;margin-right:auto!important}}`}</style>
     </footer>
   );
 }
