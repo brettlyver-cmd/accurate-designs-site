@@ -1,6 +1,6 @@
-const SITE_URL = "https://www.accuratedesigns.ca";
+export const SITE_URL = "https://www.accuratedesigns.ca";
 
-const ROUTES = {
+export const ROUTES = {
   "/": {
     title: "Accurate Designs | Custom Homes, Additions & Major Renovations",
     description:

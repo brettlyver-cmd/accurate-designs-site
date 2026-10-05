@@ -2579,9 +2579,9 @@ function Footer({ go }) {
   );
 }
 
-export default function App() {
+export default function App({ initialPath } = {}) {
   const [page, setPage] = useState(() => {
-    const path = window.location.pathname.replace("/", "");
+    const path = (initialPath ?? window.location.pathname).replace(/^\/+|\/+$/g, "");
     return path || "home";
   });
 
