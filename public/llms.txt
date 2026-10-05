@@ -1,0 +1,40 @@
+# Accurate Designs
+
+> Accurate Designs Inc. provides construction-aware residential design, design-build and owner representation across the Greater Toronto Area, Ontario, Canada.
+
+Founded in 2000. Founder and Principal: Brett Lyver. The website reports more than 500 residential projects completed or designed.
+
+Office: 1215 Queensway E, Unit 56, Mississauga, ON L4Y 0G4, Canada.
+Telephone: +1-416-768-1290. Email: blyver@accuratedesigns.ca.
+Service area: Mississauga, Oakville, Burlington, Milton, Toronto and the Greater Toronto Area.
+
+## Company
+
+- [Home](https://www.accuratedesigns.ca/): Company overview and construction-aware design approach.
+- [About](https://www.accuratedesigns.ca/about): Background, founding year and Founder + Principal Brett Lyver.
+- [Process](https://www.accuratedesigns.ca/process): Feasibility, coordinated design, approvals and build readiness.
+- [Contact](https://www.accuratedesigns.ca/contact): Project consultation and inquiry form.
+
+## Services
+
+- [Services](https://www.accuratedesigns.ca/services): Residential services overview.
+- [Custom Home Design + Build](https://www.accuratedesigns.ca/custom-home-design-build): GTA custom homes with design, permits and build readiness aligned early.
+- [Major Additions + Renovations](https://www.accuratedesigns.ca/major-additions-renovations): Existing conditions, structure, systems and residential approvals.
+- [Pre-Design Feasibility](https://www.accuratedesigns.ca/pre-design-feasibility): Lot review, zoning, site constraints and early project alignment.
+- [Second-Storey Addition Planning](https://www.accuratedesigns.ca/second-storey-addition): Existing structure, foundations, zoning and permit considerations.
+- [Committee of Adjustment](https://www.accuratedesigns.ca/committee-of-adjustment): Design and planning for projects requiring minor variance approval.
+- [Owner Representation](https://www.accuratedesigns.ca/owner-rep): Independent, technically informed homeowner representation before and during construction.
+
+## Project Case Studies
+
+- [Portfolio](https://www.accuratedesigns.ca/portfolio): Published project evidence and images.
+- [Country Heights Estate](https://www.accuratedesigns.ca/case-studies/country-heights-estate): 10,000 sq. ft. custom home in Richmond Hill; regulatory foresight and environmental stewardship.
+- [Expansive Glazing](https://www.accuratedesigns.ca/case-studies/expansive-glazing): 4,000 sq. ft. custom home in Oakville; structure, glazing and indoor-outdoor coordination.
+- [Protected Heritage Bungalow](https://www.accuratedesigns.ca/case-studies/protected-heritage-bungalow): 2,500 sq. ft. renovation and second-storey addition in Richmond Hill; heritage alignment and existing conditions.
+- [Narrow Toronto Lot](https://www.accuratedesigns.ca/case-studies/narrow-toronto-lot): 2,800 sq. ft. custom home and legal basement apartment in Toronto; urban infill and shoring strategy.
+
+## Technical References
+
+- [Sitemap](https://www.accuratedesigns.ca/sitemap.xml): Canonical public pages.
+- [Crawler Policy](https://www.accuratedesigns.ca/robots.txt): Current crawler access rules.
+- [Privacy Policy](https://www.accuratedesigns.ca/privacy): Inquiry information and optional website analytics.

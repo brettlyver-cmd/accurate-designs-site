@@ -24,18 +24,8 @@ import portfolioFoundationPoured from "./assets/portfolio-foundation-poured.webp
 import portfolioBeforeAfterGreyHouse from "./assets/portfolio-before-after-grey-house.jpg";
 
 
-import ch1 from "./assets/1. Case Study Image 1.jpg";
-import ch2 from "./assets/1. Case Study Image 2.jpg";
-import ch3 from "./assets/1. Case Study Image 3.webp";
-
-import eg1 from "./assets/2. Case Study Image 1.webp";
-import eg2 from "./assets/2. Case Study Image 2.jpg";
-
-import ph1 from "./assets/3. Case Study Image 1.jpg";
-import ph2 from "./assets/3. Case Study Image 2.webp";
-
-import nt1 from "./assets/4. Case Study Image 1.jpg";
-import nt2 from "./assets/4. Case Study Image 2.webp";
+import { PROJECTS } from "./projects.js";
+import { syncPageStructuredData } from "./structured-data.js";
 import processHero from "./assets/process-foundation-poured.jpg";
 import designBuildImage from "./assets/DesignBuild_1.webp";
 import architecturalDrawings from "./assets/Drawings_1.webp";
@@ -181,64 +171,7 @@ function HoverImage({
   );
 }
 
-const PROJECTS = [
-  {
-    id: "country-heights-estate",
-    name: "Country Heights Estate",
-    location: "Richmond Hill",
-    sqft: "10,000",
-    type: "Custom Home",
-    lens: "Regulatory Foresight + Environmental Stewardship",
-    img: ch1,
-    images: [ch1, ch2, ch3],
-    imageLabels: ["Outcome", "Constraint", "Exterior"],
-    challenge: "This project required early design decisions to be made before municipal regulations were finalized. Delaying would have stalled progress, but moving ahead without a disciplined strategy risked both the approval path and the integrity of the design.",
-    solution: "We studied the surrounding context and historical regulations in detail, allowing the design to proceed with confidence before the final framework was established. When the zoning framework was ultimately confirmed, only minimal revisions were required, preserving both the architectural vision and interior planning. Because the property bordered protected conservation lands, environmental controls were also planned to exacting standards so runoff and sediment would remain fully contained throughout construction.",
-    result: "The project maintained its original design intent from concept through approval, avoided major redesign, and saved the client approximately four months. Site control measures were reviewed and approved prior to construction, allowing the home to proceed responsibly and without compromise.",
-  },
-  {
-    id: "expansive-glazing",
-    name: "Expansive Glazing",
-    location: "Oakville",
-    sqft: "4,000",
-    type: "Custom Home",
-    lens: "Structural Transparency + Indoor-Outdoor Oversight",
-    img: eg1,
-    images: [eg1, eg2],
-    imageLabels: ["Outcome", "Connection"],
-    challenge: "The design intent was clear from the outset: uninterrupted glass, open sightlines, and a direct visual connection between the main living spaces and the backyard. Achieving that level of transparency required careful structural coordination, mechanical planning for large-format glazing.",
-    solution: "We coordinated the structural design to support expansive spans while minimizing visual obstructions, and engineered the mechanical systems to manage heat gain and loss without compromising the architecture. On the second level, fully custom window assemblies were integrated early to satisfy Ontario Building Code tempered glass requirements and avoid revisions during construction. The existing concrete pool, though in disrepair, was retained and used as an organizing element for the plan.",
-    result: "What could have been a constraint became a defining feature of the home. The result is a cohesive indoor-outdoor environment with expansive views, clear supervision of the pool from the Kitchen and Great Room, and a covered patio that supports both family oversight and everyday living.",
-  },
-  {
-    id: "protected-heritage-bungalow",
-    name: "Protected Heritage Bungalow",
-    location: "Richmond Hill",
-    sqft: "2,500",
-    type: "Renovation + Second Storey Addition",
-    lens: "Heritage Alignment + Existing Condition Intelligence",
-    img: ph2,
-    images: [ph2, ph1],
-    imageLabels: ["Outcome", "Before"],
-    challenge: "This project began with a raised bungalow on a lot where zoning restrictions prohibited horizontal expansion, leaving vertical addition as the only viable path forward. Our design also had to satisfy strict heritage district architectural guidelines while still delivering meaningful additional living space.",
-    solution: "We carefully controlled proportions, rooflines, and exterior detailing so the second storey would feel consistent with both the original home and the surrounding neighbourhood. Extensive documentation of existing conditions was carried out before construction, including attic inspections to confirm framing configurations and selective openings in finished surfaces to verify structural connections and mechanical routing.",
-    result: "The result is a seamless transformation from a constrained bungalow to a fully realized two-storey home, delivering increased living space while satisfying both the homeowner’s objectives and the requirements of the heritage authority.",
-  },
-  {
-    id: "narrow-toronto-lot",
-    name: "Narrow Toronto Lot",
-    location: "Toronto",
-    sqft: "2,800",
-    type: "Custom Home + Legal Basement Apartment",
-    lens: "Urban Infill Precision + Shoring Strategy",
-    img: nt2,
-    images: [nt2, nt1],
-    imageLabels: ["Outcome", "Shoring Strategy"],
-    challenge: "This project was set on a tightly constrained urban infill lot with neighbouring structures in close proximity on both sides. The limited working space required a highly controlled approach from the outset, with virtually no margin for error during excavation and foundation construction.",
-    solution: "To safely facilitate the work, full shoring systems were installed along both property lines. Excavation, support, and forming were sequenced with exacting control so the foundation could be constructed while maintaining the stability of the adjacent buildings and protecting worker safety throughout the process.",
-    result: "Within severe site constraints, precision became the defining requirement. The resulting home was designed to sit comfortably within its established streetscape while the construction process protected the surrounding properties at every stage.",
-  },
-];
+
 
 
 const PROCESS_STEPS = [
@@ -473,22 +406,23 @@ function Lbl({ children, light, style = {} }) {
   );
 }
 
-function Ttl({ children, light, size, style }) {
+function Ttl({ children, light, size, style, as: Tag = "h2" }) {
   return (
-    <h2
+    <Tag
       style={{
         ...sf,
         fontSize: size || "clamp(28px,3.2vw,38px)",
         fontWeight: 400,
         color: light ? C.cream : C.black,
         lineHeight: 1.14,
+        marginTop: 0,
         marginBottom: 20,
         letterSpacing: -0.25,
         ...style,
       }}
     >
       {children}
-    </h2>
+    </Tag>
   );
 }
 
@@ -784,6 +718,7 @@ function PInfo({ p }) {
           </p>
         </div>
       ))}
+      <a href={`/case-studies/${p.id}`} style={{ ...sn, fontSize: 12, color: C.orange, textUnderlineOffset: 4 }}>Read project case study →</a>
     </div>
   );
 }
@@ -1672,7 +1607,7 @@ function ServicesPage({ go }) {
         <div style={{ maxWidth: 580, margin: "0 auto", textAlign: "center" }}>
           <F>
             <Lbl light>What We Do</Lbl>
-            <Ttl light>Services</Ttl>
+            <Ttl as="h1" light>Services</Ttl>
           </F>
           <F delay={0.1}>
             <Bd light max={620}>Projects are shaped by how early the important decisions are resolved.</Bd>
@@ -1783,6 +1718,42 @@ function ServicesPage({ go }) {
   );
 }
 
+function CaseStudyPage({ project, go }) {
+  const relatedRoute = project.id === 'protected-heritage-bungalow' ? 'second-storey-addition' : 'custom-home-design-build';
+  return (
+    <article>
+      <section style={{ background: C.black, padding: '160px 40px 80px' }}>
+        <div style={{ maxWidth: 960, margin: '0 auto' }}>
+          <Lbl light>Residential Project Case Study</Lbl>
+          <Ttl as="h1" light>{project.name}</Ttl>
+          <Bd light style={{ margin: '0 auto 24px' }}>{project.type} · {project.location}, Ontario · {project.sqft} sq. ft.</Bd>
+          <a href="/portfolio" style={{ ...sn, fontSize: 12, color: C.stone, textUnderlineOffset: 4 }}>View all projects</a>
+        </div>
+      </section>
+      <Sec wide bg={C.warm}>
+        <div className="case-study-grid" style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: 48, alignItems: 'start' }}>
+          <ProjectGallery project={project} />
+          <div style={{ textAlign: 'left' }}>
+            <Lbl>{project.lens}</Lbl>
+            {[["The Challenge", project.challenge], ["Our Approach", project.solution], ["The Result", project.result]].map(([heading, body]) => (
+              <section key={heading} style={{ marginBottom: 32 }}>
+                <Ttl size="clamp(22px,2.4vw,28px)">{heading}</Ttl>
+                <Bd>{body}</Bd>
+              </section>
+            ))}
+          </div>
+        </div>
+      </Sec>
+      <Sec bg={C.deep}>
+        <Ttl light>Planning a similar project?</Ttl>
+        <p style={{ ...sn, color: C.stone, fontSize: 15, lineHeight: 1.8, marginBottom: 32 }}>Explore our <a href={`/${relatedRoute}`} style={{ color: C.stone, textUnderlineOffset: 4 }}>{relatedRoute === 'second-storey-addition' ? 'second-storey addition planning' : 'custom home design and build services'}</a>, or discuss your project with us.</p>
+        <Bt onClick={() => go('contact')}>Book a Project Consultation</Bt>
+      </Sec>
+      <style>{`@media(max-width:860px){.case-study-grid{grid-template-columns:1fr!important}}`}</style>
+    </article>
+  );
+}
+
 function PortfolioPage({ go }) {
   return (
     <>
@@ -1790,7 +1761,7 @@ function PortfolioPage({ go }) {
         <div style={{ maxWidth: 940, margin: "0 auto" }}>
           <F>
             <Lbl light>Our Work</Lbl>
-            <Ttl light>Portfolio</Ttl>
+            <Ttl as="h1" light>Portfolio</Ttl>
           </F>
           <F delay={0.08}>
             <div style={{ maxWidth: 900, margin: "40px auto 32px" }}>
@@ -1870,7 +1841,7 @@ function ProcessPage({ go }) {
         <div style={{ maxWidth: 1100, margin: "0 auto", paddingLeft: 24, paddingRight: 24, textAlign: "center" }}>
           <F>
             <Lbl light>How We Work</Lbl>
-            <Ttl light style={{ marginBottom: 18 }}>Process</Ttl>
+            <Ttl as="h1" light style={{ marginBottom: 18 }}>Process</Ttl>
           </F>
           <F delay={0.1}>
             <Bd light max={620} style={{ margin: "0 auto", textAlign: "center", lineHeight: 1.75 }}>
@@ -1962,7 +1933,7 @@ function OwnerRepPage({ go }) {
             <div style={{ marginBottom: 18 }}>
               <Lbl light>Independent Advisory</Lbl>
             </div>
-            <Ttl light style={{ marginBottom: 12 }}>Owner Representation</Ttl>
+            <Ttl as="h1" light style={{ marginBottom: 12 }}>Owner Representation</Ttl>
           </F>
           <F delay={0.1}>
             <Bd light max={620} style={{ margin: "0 auto", textAlign: "center", lineHeight: 1.75 }}>
@@ -2183,7 +2154,7 @@ function AboutPage({ go }) {
         <div style={{ maxWidth: 940, margin: "0 auto" }}>
           <F>
             <Lbl light>Our Story</Lbl>
-            <Ttl light>Built on Precision. Now Building as a Family.</Ttl>
+            <Ttl as="h1" light>Built on Precision. Now Building as a Family.</Ttl>
           </F>
         </div>
       </section>
@@ -2329,7 +2300,7 @@ function ContactPage() {
         <div style={{ position: "relative", maxWidth: 640, margin: "0 auto" }}>
           <F>
             <Lbl light>Begin Here</Lbl>
-            <Ttl light>Book a Project Consultation</Ttl>
+            <Ttl as="h1" light>Book a Project Consultation</Ttl>
           </F>
           <F delay={0.1}>
             <Bd light max={620} style={{ margin: "0 auto", textAlign: "center", lineHeight: 1.8 }}>
@@ -2585,6 +2556,10 @@ export default function App({ initialPath } = {}) {
     return path || "home";
   });
 
+  useEffect(() => {
+    syncPageStructuredData(page === "home" ? "/" : `/${page}`);
+  }, [page]);
+
   const go = useCallback((p) => {
     setPage(p);
     const url = p === "home" ? "/" : `/${p}`;
@@ -2594,7 +2569,7 @@ export default function App({ initialPath } = {}) {
 
   useEffect(() => {
     const onPop = () => {
-      const path = window.location.pathname.replace("/", "");
+      const path = window.location.pathname.replace(/^\/+|\/+$/g, "");
       setPage(path || "home");
       window.scrollTo({ top: 0, behavior: "auto" });
     };
@@ -2616,12 +2591,13 @@ export default function App({ initialPath } = {}) {
     about: <AboutPage go={go} />,
     contact: <ContactPage go={go} />,
     privacy: <PrivacyPage />,
+    ...Object.fromEntries(PROJECTS.map((project) => [`case-studies/${project.id}`, <CaseStudyPage key={project.id} project={project} go={go} />])),
   };
 
   return (
     <div style={{ ...sn, fontWeight: 400, color: C.text, background: C.cream, minHeight: "100vh" }}>
-      <Nav page={page} go={go} />
-      {pages[page] || pages.home}
+      <Nav page={page.startsWith("case-studies/") ? "portfolio" : page} go={go} />
+      <main>{pages[page] || pages.home}</main>
       <Footer go={go} />
       <CookieConsent />
     </div>
