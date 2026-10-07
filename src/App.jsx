@@ -610,7 +610,7 @@ function Sel({ label, options }) {
 function Stats({ light }) {
   const s = [
     { n: "25+", l: "Years in Practice" },
-    { n: "500+", l: "Residential Projects" },
+    { n: "800+", l: "Residential Projects" },
     { n: "2 – 3", l: "Typical Permit Review Comments" },
     { n: "$500K – $20M+", l: "Project Range" },
   ];
@@ -2216,7 +2216,7 @@ function AboutPage({ go }) {
         <F style={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center" }}>
           <div style={{ ...sn, fontSize: 9.5, fontWeight: 500, letterSpacing: 3.5, textTransform: "uppercase", color: C.orange, marginBottom: 20 }}>How Brett Works</div>
           <Bd max={820} style={{ textAlign: "center", margin: "0 auto" }}>
-            Over 500+ residential projects, from modest renovations to $20M+ estates. Brett has developed a consistent approach: coordinate every system on paper, anticipate construction realities during design, and produce documentation thorough enough that the builder’s job is to execute, not interpret.
+            Over 800 residential projects, from modest renovations to $20M+ estates. Brett has developed a consistent approach: coordinate every system on paper, anticipate construction realities during design, and produce documentation thorough enough that the builder’s job is to execute, not interpret.
           </Bd>
         </F>
         <F delay={0.08} style={{ display: "flex", justifyContent: "center" }}>
