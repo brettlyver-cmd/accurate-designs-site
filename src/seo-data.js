@@ -56,7 +56,7 @@ export const ROUTES = {
   "/about": {
     title: "About Accurate Designs | Residential Design-Build GTA",
     description:
-      "Accurate Designs has provided construction-aware residential design across the GTA since 2000, with more than 500 residential projects completed or designed.",
+      "Accurate Designs has provided construction-aware residential design across the GTA since 2000, with more than 800 residential projects completed or designed.",
   },
   "/contact": {
     title: "Book a Project Consultation | Accurate Designs",
