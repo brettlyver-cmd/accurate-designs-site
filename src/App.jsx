@@ -799,7 +799,7 @@ function HomePage({ go }) {
         <div style={{ maxWidth: 960, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(190px,1fr))", gap: 24, alignItems: "center" }}>
           {[
             { n: "25+", l: "Years in Practice" },
-            { n: "500+", l: "Residential Projects" },
+            { n: "800+", l: "Residential Projects" },
             { n: "Since 2000", l: "Construction-Aware Design" },
           ].map((item, i) => (
             <div key={i} style={{ textAlign: "center" }}>
