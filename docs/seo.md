@@ -6,7 +6,7 @@
 
 - `src/seo-data.js`: canonical routes, titles and descriptions.
 - `src/projects.js`: existing published project descriptions and photographs, shared by portfolio and case-study pages.
-- `src/structured-data.js`: business, founder, website, services, breadcrumbs, case-study articles and portfolio list. Business name, address, telephone and founding year reflect the published website. The project count remains 500+.
+- `src/structured-data.js`: business, founder, website, services, breadcrumbs, case-study articles and portfolio list. Business name, address, telephone and founding year reflect the published website. The public project count is 800+.
 - FAQ schema is extracted from the rendered, visible questions and answers; client navigation synchronizes it after the new page renders.
 - `public/sitemap.xml` and `public/llms.txt`: canonical page references. The build checks both against the route list.
 
@@ -18,7 +18,7 @@ The existing client rendering lifecycle is retained. React mounts the interactiv
 
 The build verifies all 17 routes, their headings and main landmarks, metadata, canonical tags, linked JSON-LD references, FAQ coverage, case-study article data, image asset paths, contact fields, sitemap and llms references. A successful build establishes technical HTML coverage, not search-engine indexing or rankings.
 
-No review ratings, professional credentials, project dates, social profile URLs or opening hours have been inferred. Add those only when verified. Do not change the public project count to 800+ without confirmation.
+No review ratings, professional credentials, project dates, social profile URLs or opening hours have been inferred. Add those only when verified. The public project count is 800+ (confirmed by the owner, Oct 2026); keep it consistent across the site, schema and llms.txt.
 
 ## Account-dependent follow-up
 
