@@ -236,6 +236,7 @@ function Nav({ page, go }) {
   useEffect(() => {
     const h = () => setSc(window.scrollY > 50);
     window.addEventListener("scroll", h);
+    h();
     return () => window.removeEventListener("scroll", h);
   }, []);
 
