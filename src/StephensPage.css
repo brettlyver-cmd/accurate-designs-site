@@ -15,3 +15,5 @@
 @media(max-width:808px){.stephens-cover{margin-left:24px;margin-right:24px}}
 @media(max-width:520px){.stephens-case{padding-top:105px}.stephens-case h1{font-size:27px}.stephens-case h2{font-size:21px}.stephens-story p{font-size:16px;line-height:1.85}.stephens-pair{grid-template-columns:1fr;gap:24px}.stephens-case blockquote{font-size:21px}.stephens-eyebrow{font-size:9px!important}}
 @media print{.stephens-download,.stephens-next,.stephens-back{display:none}.stephens-case{padding-top:20px;background:white}.stephens-cover img{max-height:300px;object-fit:contain}.stephens-section{break-inside:auto}.stephens-figure{break-inside:avoid}}
+
+body:has(.stephens-case) nav{background:#080808!important}.stephens-case section{padding-left:0!important;padding-right:0!important}
