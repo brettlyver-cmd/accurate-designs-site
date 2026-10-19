@@ -63,10 +63,10 @@ export function structuredData(path, { faqs = [] } = {}) {
       '@type': 'Article', '@id': `${url}#case-study`, headline: project.name,
       description: seo.description, url, inLanguage: 'en-CA',
       mainEntityOfPage: { '@id': `${url}#webpage` }, publisher: { '@id': businessId },
-      author: { '@id': businessId },
+      author: { '@id': project.authorName ? founderId : businessId },
       image: project.images.map((image) => new URL(image, SITE_URL).href),
       articleSection: project.type,
-      articleBody: `${project.challenge}\n\n${project.solution}\n\n${project.result}`,
+      articleBody: project.articleBody || `${project.challenge}\n\n${project.solution}\n\n${project.result}`,
       contentLocation: { '@type': 'Place', name: `${project.location}, Ontario, Canada` },
       about: { '@type': 'Thing', name: project.lens },
     });

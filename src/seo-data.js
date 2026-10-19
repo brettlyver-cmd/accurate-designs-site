@@ -77,3 +77,9 @@ for (const project of PROJECTS) {
     description: `${project.sqft} sq. ft. ${project.type.toLowerCase()} in ${project.location}. ${project.lens}. Explore the challenge, approach and result.`,
   };
 }
+
+ROUTES["/case-studies/587-stephens-crescent"] = {
+  title: "587 Stephens Crescent | Oakville Custom Home Case Study",
+  description: "Brett Lyver's Oakville custom home: privacy, natural light, stone selection and flush showers designed with construction cost and workmanship in mind.",
+  image: "/stephens/great-room-and-staircase-1200.webp",
+};

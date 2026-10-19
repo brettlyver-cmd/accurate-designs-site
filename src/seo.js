@@ -48,6 +48,9 @@ function applySeo({ track = false } = {}) {
   }
 
   document.title = seo.title;
+  const socialImage = new URL(seo.image || '/og-image.webp', SITE_URL).href;
+  upsertMeta('meta[property="og:image"]', { property: 'og:image', content: socialImage });
+  upsertMeta('meta[name="twitter:image"]', { name: 'twitter:image', content: socialImage });
   upsertMeta('meta[name="description"]', { name: "description", content: seo.description });
   upsertMeta('meta[property="og:title"]', { property: "og:title", content: seo.title });
   upsertMeta('meta[property="og:description"]', { property: "og:description", content: seo.description });
