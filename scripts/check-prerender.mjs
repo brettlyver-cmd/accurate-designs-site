@@ -48,7 +48,8 @@ for (const path of Object.keys(ROUTES)) {
       assert(html.includes('The Challenge') && html.includes('The Result'));
     }
   }
-  const detailsCount = (html.match(/<details\b/g) || []).length;
+  // Navigation disclosures are not questions and answers.
+  const detailsCount = (html.match(/<details\b[^>]*>\s*<summary\b[^>]*>[\s\S]*?<\/summary>\s*<p\b/g) || []).length;
   if (detailsCount) assert.equal(graph.find((node) => node['@type'] === 'FAQPage')?.mainEntity.length, detailsCount, `${path}: FAQ text coverage`);
   for (const match of html.matchAll(/(?:src|href)="(\/assets\/[^"?#]+)"/g)) {
     await readFile(`dist${decodeURIComponent(match[1])}`);
