@@ -1,3 +1,4 @@
+import StephensPage from './StephensPage.jsx';
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import PrivacyPage from "./PrivacyPage.jsx";
 import CookieConsent, { SETTINGS_EVENT } from "./CookieConsent.jsx";
@@ -235,6 +236,7 @@ function Nav({ page, go }) {
   useEffect(() => {
     const h = () => setSc(window.scrollY > 50);
     window.addEventListener("scroll", h);
+    h();
     return () => window.removeEventListener("scroll", h);
   }, []);
 
@@ -702,7 +704,7 @@ function PInfo({ p }) {
         <span style={{ color: C.stone }}>·</span>
         <span>{p.location}</span>
         <span style={{ color: C.stone }}>·</span>
-        <span>{p.sqft} sf</span>
+        <span>{p.sqft} {p.areaLabel || "sf"}</span>
       </div>
       {[
         { l: "Challenge", v: p.challenge },
@@ -2592,6 +2594,7 @@ export default function App({ initialPath } = {}) {
     contact: <ContactPage go={go} />,
     privacy: <PrivacyPage />,
     ...Object.fromEntries(PROJECTS.map((project) => [`case-studies/${project.id}`, <CaseStudyPage key={project.id} project={project} go={go} />])),
+    "case-studies/587-stephens-crescent": <StephensPage />,
   };
 
   return (

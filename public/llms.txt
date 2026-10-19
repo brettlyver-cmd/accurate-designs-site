@@ -33,6 +33,8 @@ Service area: Mississauga, Oakville, Burlington, Milton, Toronto and the Greater
 - [Protected Heritage Bungalow](https://www.accuratedesigns.ca/case-studies/protected-heritage-bungalow): 2,500 sq. ft. renovation and second-storey addition in Richmond Hill; heritage alignment and existing conditions.
 - [Narrow Toronto Lot](https://www.accuratedesigns.ca/case-studies/narrow-toronto-lot): 2,800 sq. ft. custom home and legal basement apartment in Toronto; urban infill and shoring strategy.
 
+- [587 Stephens Crescent](https://www.accuratedesigns.ca/case-studies/587-stephens-crescent): Brett Lyver's personally funded Oakville family home, with 4,200+ sq ft of living space including the finished basement. Privacy, natural light, stone selection and flush shower coordination.
+
 ## Technical References
 
 - [Sitemap](https://www.accuratedesigns.ca/sitemap.xml): Canonical public pages.
