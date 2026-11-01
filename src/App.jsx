@@ -63,7 +63,7 @@ function useFI() {
 
   useEffect(() => {
     const e = r.current;
-    if (!e) return;
+    if (!e || typeof IntersectionObserver === "undefined") return;
     const o = new IntersectionObserver(
       ([x]) => {
         if (x.isIntersecting) {
@@ -80,8 +80,9 @@ function useFI() {
   return {
     ref: r,
     style: {
-      opacity: v ? 1 : 0,
-      transform: v ? "translateY(0)" : "translateY(20px)",
+      // Keep prerendered content readable while scripts or media are loading.
+      opacity: 1,
+      transform: v ? "translateY(0)" : "translateY(6px)",
       transition:
         "opacity 0.9s cubic-bezier(.25,.46,.45,.94),transform 0.9s cubic-bezier(.25,.46,.45,.94)",
     },

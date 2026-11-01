@@ -115,6 +115,7 @@ export default function CookieConsent() {
 
   return (
     <div
+      className="privacy-consent"
       role="dialog"
       aria-modal="false"
       aria-labelledby="privacy-consent-title"
@@ -126,6 +127,9 @@ export default function CookieConsent() {
         bottom: 20,
         zIndex: 10000,
         maxWidth: 980,
+        boxSizing: "border-box",
+        maxHeight: "calc(100svh - 24px)",
+        overflowY: "auto",
         margin: "0 auto",
         background: C.black,
         border: "1px solid rgba(201,106,43,0.35)",
@@ -139,7 +143,7 @@ export default function CookieConsent() {
             We respect your privacy
           </div>
           <p id="privacy-consent-description" style={{ ...font, color: "rgba(245,241,235,0.72)", fontSize: 12.5, fontWeight: 400, lineHeight: 1.7, margin: 0, maxWidth: 620 }}>
-            We use Google Analytics to understand how visitors use our website and improve the experience. Analytics is optional and will only run if you accept. You can change your choice later in Privacy Settings. {" "}
+            Optional Google Analytics helps us improve this website and runs only if you accept. Change your choice anytime in Privacy Settings. {" "}
             <a href="/privacy" style={{ color: C.stone, textUnderlineOffset: 3 }}>
               Privacy Policy
             </a>
@@ -196,12 +200,14 @@ export default function CookieConsent() {
 
       <style>{`
         @media (max-width: 760px) {
-          .privacy-consent-layout { grid-template-columns: 1fr !important; gap: 18px !important; }
+          .privacy-consent { left: 12px !important; right: 12px !important; bottom: max(12px, env(safe-area-inset-bottom)) !important; padding: 16px !important; }
+          .privacy-consent-layout { grid-template-columns: 1fr !important; gap: 14px !important; }
+          #privacy-consent-title { font-size: 16px !important; line-height: 1.3; }
+          #privacy-consent-description { line-height: 1.5 !important; }
+          .privacy-consent-actions button { padding: 12px 6px !important; }
           .privacy-consent-actions { min-width: 0 !important; width: 100% !important; }
         }
-        @media (max-width: 440px) {
-          .privacy-consent-actions { grid-template-columns: 1fr !important; }
-        }
+
       `}</style>
     </div>
   );

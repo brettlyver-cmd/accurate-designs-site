@@ -2,7 +2,12 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { dirname } from 'node:path';
 import { render, ROUTES, SITE_URL, structuredData } from '../dist-ssr/prerender.js';
 
-const template = await readFile('dist/index.html', 'utf8');
+let template = await readFile('dist/index.html', 'utf8');
+// The small base stylesheet must not depend on a second mobile network request.
+for (const match of template.matchAll(/<link\b[^>]*rel="stylesheet"[^>]*href="(\/assets\/[^"]+\.css)"[^>]*>/g)) {
+  const css = await readFile(`dist${match[1]}`, 'utf8');
+  template = template.replace(match[0], () => `<style data-critical-styles>${css}</style>`);
+}
 if (!template.includes('<div id="root"></div>')) throw new Error('Run a fresh Vite build before prerendering.');
 const escape = (value) => value.replaceAll('&', '&amp;').replaceAll('"', '&quot;').replaceAll('<', '&lt;').replaceAll('>', '&gt;');
 const plainText = (html) => html.replace(/<[^>]*>/g, '').replace(/&#x([0-9a-f]+);/gi, (_, code) => String.fromCodePoint(parseInt(code, 16))).replace(/&#([0-9]+);/g, (_, code) => String.fromCodePoint(Number(code))).replaceAll('&amp;', '&').replaceAll('&quot;', '"').replaceAll('&lt;', '<').replaceAll('&gt;', '>').replaceAll('&nbsp;', ' ').replace(/\s+/g, ' ').trim();

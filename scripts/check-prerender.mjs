@@ -12,6 +12,8 @@ for (const path of Object.keys(ROUTES)) {
   const heading = html.match(/<h1\b[^>]*>([\s\S]*?)<\/h1>/)?.[1];
   assert.equal((html.match(/<h1\b/g) || []).length, 1, `${path}: exactly one main heading`);
   assert(html.includes('<main>'), `${path}: main landmark`);
+  assert(html.includes('<style data-critical-styles>'), `${path}: base styles must survive failed asset requests`);
+  assert(!/style="[^"]*opacity:0;/.test(html), `${path}: prerendered content must be visible before JavaScript runs`);
   assert(heading, `${path}: missing page heading`);
   headings.add(heading);
   assert(html.includes(`href="${SITE_URL}${path}"`), `${path}: canonical`);
