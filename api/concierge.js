@@ -52,6 +52,8 @@ export default async function handler(req, res) {
     }
   }
 
+  // Explicit opt-in protects the owner from unintended charges on previews.
+  if (process.env.CONCIERGE_AI_ENABLED !== "true") return res.status(503).json({ error: "Live AI is not enabled. Demo answers are available." });
   const key = process.env.OPENAI_API_KEY;
   if (!key) return res.status(503).json({ error: "Live AI is not configured. Demo answers are available." });
 
