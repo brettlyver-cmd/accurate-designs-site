@@ -26,6 +26,7 @@ Test whether a prominently placed, honest AI guide helps prospective clients get
 
 ## Optional live AI preview (requires authorization before adding expenses)
 Set Vercel environment variables on the **preview environment only**:
+- `CONCIERGE_AI_ENABLED` = `true` (explicit switch; remains disabled by default)
 - `OPENAI_API_KEY` = restricted API key with modest platform budget
 - `CONCIERGE_MODEL` = supported cost-efficient model (default: `gpt-4.1-mini`)
 - `UPSTASH_REDIS_REST_URL` and `UPSTASH_REDIS_REST_TOKEN` = rate-limit store
