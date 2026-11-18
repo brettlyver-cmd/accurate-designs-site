@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { CONCIERGE } from "./concierge/config.js";
+import { demoReply, leadHints } from "./concierge/demo.js";
 import "./Concierge.css";
 
 function metric(eventName) {
@@ -9,25 +10,9 @@ function metric(eventName) {
   }
 }
 
-function demoAnswer(text) {
-  const q = text.toLowerCase();
-  if (/area|location|where|milton|oakville|burlington|hamilton|muskoka|niagara|toronto|mississauga/.test(q))
-    return "Our core service area includes Toronto, Mississauga, Oakville, Milton and Burlington. Muskoka, Niagara and other areas are considered individually. What municipality is your project in?";
-  if (/add|second.storey|renovat|extension/.test(q))
-    return "Yes. Accurate Designs handles major additions, second-storey additions and structural renovations. Whether a particular addition is possible depends on zoning, the existing building and site conditions. You can describe your project in our consultation form.";
-  if (/permit|committee|approval|zoning|code|setback|variance/.test(q))
-    return "Accurate Designs prepares coordinated permit documentation and helps clients navigate approvals. Specific zoning, permit or building-code answers require a property-specific professional review. The first step is to share your project location and goals in a consultation inquiry.";
-  if (/budget|cost|price|fee|charge|expensive/.test(q))
-    return "The website notes that Accurate Designs typically works with projects starting at $500K in construction budgets. Design fees and construction costs depend on the project; I cannot quote them here. A project consultation can help determine the appropriate next step.";
-  if (/design|process|start|work|step|timeline/.test(q))
-    return "The usual process begins with discovery and feasibility, then design development, permit and approval documentation, and build readiness. Every property and scope is different. Would you be planning a new home, addition, or major renovation?";
-  if (/consult|book|appointment|contact|speak|phone|email/.test(q))
-    return "You can request a no-cost, no-obligation project consultation using the contact form. Each inquiry is reviewed by a person, usually with a response within one business day. Select 'Prepare an inquiry' below to get started.";
-  return "I only have a limited set of confirmed answers in this demonstration. Accurate Designs focuses on custom homes, major additions, structural renovations, permits and owner representation. For advice about your specific property, please request a human consultation.";
-}
-
 const initialMessages = [{ role: "assistant", content: CONCIERGE.greeting, mode: "static" }];
 const leadSubmissionEnabled = import.meta.env.VITE_CONCIERGE_LEADS_ENABLED === "true";
+const liveAIEnabled = import.meta.env.VITE_CONCIERGE_AI_ENABLED === "true";
 
 export default function Concierge() {
   const [open, setOpen] = useState(false);
@@ -65,23 +50,33 @@ export default function Concierge() {
     setBusy(true);
     metric("question");
     try {
+      if (!liveAIEnabled) {
+        // Explicit demo mode: use intent and previously provided context.
+        // Never pretend the scripted reply came from a live language model.
+        const reply = demoReply(text, history.slice(0, -1));
+        setMessages(previous => [...previous, { role: "assistant", content: reply.text, action: reply.action, mode: "demo" }]);
+        return;
+      }
       const response = await fetch("/api/concierge", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ messages: history }),
       });
-      if (!response.ok) throw new Error("AI not active");
+      if (!response.ok) throw new Error("AI is unavailable");
       const json = await response.json();
       if (!json.answer) throw new Error("No answer");
       setMessages(previous => [...previous, { role: "assistant", content: json.answer, mode: "ai" }]);
     } catch {
-      setMessages(previous => [...previous, { role: "assistant", content: demoAnswer(text), mode: "demo" }]);
+      // Do not silently substitute scripted answers when the live AI fails.
+      setMessages(previous => [...previous, { role: "assistant", content: "I'm having trouble connecting right now. You can use Prepare an inquiry and our team will follow up personally.", action: "prepare-inquiry", mode: "error" }]);
     } finally {
       setBusy(false);
     }
   }
 
   function switchToLead() {
+    const hints = leadHints(messages);
+    setLead(previous => ({ ...previous, projectType: previous.projectType || hints.projectType, location: previous.location || hints.location, description: previous.description || hints.description }));
     setTab("lead");
     setLeadResult("");
     metric("inquiry_started");
@@ -144,6 +139,7 @@ export default function Concierge() {
                   <div key={index} className={"ad-concierge-bubble " + (message.role === "user" ? "visitor" : "guide")}>
                     <div>{message.content}</div>
                     {message.mode === "demo" && <small>Prepared demonstration answer · Not live AI</small>}
+                    {message.action === "prepare-inquiry" && <button type="button" className="ad-concierge-next" onClick={switchToLead}>Prepare a consultation inquiry</button>}
                   </div>
                 ))}
                 {busy && <div className="ad-concierge-bubble guide">Reviewing your question…</div>}
