@@ -44,3 +44,7 @@
 @media (prefers-reduced-motion: reduce) {
   .ad-concierge * { scroll-behavior: auto !important; transition: none !important; }
 }
+
+/* Show the next action only after a visitor actually asks for a consultation. */
+.ad-concierge-next { display: block; width: 100%; margin-top: 10px; padding: 10px 12px; border: 1px solid #bc632a; border-radius: 3px; color: #fff; background: #b55b25; cursor: pointer; font-size: 11px; font-weight: 600; }
+.ad-concierge-next:hover { background: #94471c; }
