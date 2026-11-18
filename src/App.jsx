@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import PrivacyPage from "./PrivacyPage.jsx";
 import CookieConsent, { SETTINGS_EVENT } from "./CookieConsent.jsx";
+import Concierge from "./Concierge.jsx";
 import heroModernDusk from "./assets/Landing-page-image-1.webp";
 import beforeAfterTraditionalToModern from "./assets/before-after-traditional-to-modern.jpg";
 import processExistingHouse from "./assets/process-existing-house.jpg";
@@ -2601,6 +2602,7 @@ export default function App({ initialPath } = {}) {
       <main>{pages[page] || pages.home}</main>
       <Footer go={go} />
       <CookieConsent />
+      <Concierge />
     </div>
   );
 }
