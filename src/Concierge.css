@@ -1,0 +1,55 @@
+/* Isolated design system: does not alter the existing page styles. */
+.ad-concierge { font-family: 'Montserrat', sans-serif; }
+.ad-concierge *, .ad-concierge *::before, .ad-concierge *::after { box-sizing: border-box; }
+.ad-concierge button, .ad-concierge input, .ad-concierge select, .ad-concierge textarea { font: inherit; }
+.ad-concierge-launcher { position: fixed; bottom: 24px; right: 24px; z-index: 1400; display: flex; align-items: center; gap: 10px; padding: 15px 18px; border: 1px solid #c96a2b; border-radius: 4px; background: #161412; color: #fff; font-size: 12px; font-weight: 600; cursor: pointer; box-shadow: 0 10px 30px rgba(0,0,0,.25); }
+.ad-concierge-launcher:hover, .ad-concierge-launcher:focus-visible { background: #32271e; }
+.ad-concierge-launcher span { color: #eaa06e; font-size: 19px; line-height: 1; }
+.ad-concierge-panel { position: fixed; z-index: 1400; bottom: 85px; right: 24px; width: min(394px, calc(100vw - 24px)); max-height: min(665px, calc(100dvh - 118px)); display: flex; flex-direction: column; background: #faf8f4; color: #282521; border: 1px solid #d4c7b8; border-radius: 7px; box-shadow: 0 18px 70px rgba(0,0,0,.33); overflow: hidden; }
+.ad-concierge-head { display: flex; justify-content: space-between; gap: 12px; align-items: center; padding: 20px; background: #171512; color: #f8f2e8; }
+.ad-concierge-head strong { font-size: 13px; font-weight: 600; }
+.ad-concierge-head small { display: block; font-size: 10px; color: #d3c9bc; margin-top: 5px; line-height: 1.5; }
+.ad-concierge-close { color: #fff; background: transparent; border: none; font-size: 24px !important; cursor: pointer; min-height: 32px; min-width: 32px; }
+.ad-concierge-tabs { display: flex; background: #f2ebe2; border-bottom: 1px solid #ddd2c5; }
+.ad-concierge-tabs button { flex: 1; color: #62554b; border: 0; border-bottom: 2px solid transparent; background: transparent; padding: 13px 6px; font-size: 11px; cursor: pointer; }
+.ad-concierge-tabs button.selected { color: #29241d; border-bottom-color: #c96a2b; font-weight: 600; }
+.ad-concierge-messages { min-height: 150px; flex: 1; overflow-y: auto; padding: 17px 14px; display: flex; flex-direction: column; gap: 12px; }
+.ad-concierge-bubble { width: fit-content; max-width: 91%; padding: 12px 13px; line-height: 1.6; font-size: 12px; overflow-wrap: anywhere; }
+.ad-concierge-bubble.guide { background: #eee7dc; color: #2f2b27; border-radius: 3px 12px 12px 12px; align-self: flex-start; }
+.ad-concierge-bubble.visitor { background: #292621; color: white; border-radius: 12px 3px 12px 12px; align-self: flex-end; }
+.ad-concierge-bubble small { display: block; margin-top: 7px; font-size: 9px; color: #776451; }
+.ad-concierge-suggestions { display: flex; flex-direction: column; gap: 6px; padding: 0 14px 12px; }
+.ad-concierge-suggestions button { border: 1px solid #d5c7b7; border-radius: 4px; padding: 10px 12px; text-align: left; background: #fffdf9; color: #5b3c26; font-size: 11px; line-height: 1.4; cursor: pointer; }
+.ad-concierge-suggestions button:hover { border-color: #c96a2b; }
+.ad-concierge-input { display: flex; gap: 6px; padding: 12px; border-top: 1px solid #e4dacf; background: #fff; }
+.ad-concierge-input input { flex: 1; min-width: 0; border: 1px solid #d8cbbb; padding: 11px; font-size: 12px; border-radius: 3px; background: #fff; color: #2c2924; }
+.ad-concierge-input button, .ad-concierge-lead > button { border: 0; border-radius: 3px; padding: 10px 15px; background: #c96a2b; color: #fff; font-size: 11px; font-weight: 600; cursor: pointer; }
+.ad-concierge-input button:disabled, .ad-concierge-lead > button:disabled { opacity: .55; cursor: not-allowed; }
+.ad-concierge-foot { display: flex; justify-content: space-between; align-items: center; gap: 8px; padding: 10px 13px; background: #f2ebe2; border-top: 1px solid #e5dcd1; color: #65594e; font-size: 9px; line-height: 1.4; }
+.ad-concierge-foot a, .ad-concierge-lead a { color: #a6501c; }
+.ad-concierge-lead { overflow-y: auto; padding: 17px 18px; display: flex; flex-direction: column; gap: 11px; }
+.ad-concierge-lead p { font-size: 11px; line-height: 1.6; margin: 0 0 3px; }
+.ad-concierge-lead label { display: flex; flex-direction: column; gap: 6px; font-size: 11px; font-weight: 600; color: #3a342d; }
+.ad-concierge-lead label input:not([type='checkbox']), .ad-concierge-lead select, .ad-concierge-lead textarea { border: 1px solid #d8cbbb; border-radius: 3px; padding: 10px; color: #2f2b27; background: white; width: 100%; font-size: 12px; }
+.ad-concierge-lead label.ad-concierge-consent { flex-direction: row; align-items: flex-start; gap: 9px; font-size: 10px; font-weight: 400; line-height: 1.5; }
+.ad-concierge-lead label.ad-concierge-consent input { width: 15px; height: 15px; flex-shrink: 0; margin: 1px 0 0; }
+.ad-concierge-result { padding: 10px; background: #f0e5d7; font-weight: 600; }
+.ad-concierge-help { text-align: center; }
+.ad-concierge-sr { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+.ad-concierge button:focus-visible, .ad-concierge input:focus-visible, .ad-concierge select:focus-visible, .ad-concierge textarea:focus-visible { outline: 2px solid #c96a2b; outline-offset: 2px; }
+@media (max-width: 600px) {
+  .ad-concierge-launcher { right: 12px; bottom: 14px; }
+  .ad-concierge-panel { right: 12px; bottom: 74px; width: calc(100vw - 24px); max-height: calc(100dvh - 92px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ad-concierge * { scroll-behavior: auto !important; transition: none !important; }
+}
+
+/* Show the next action only after a visitor actually asks for a consultation. */
+.ad-concierge-next { display: block; width: 100%; margin-top: 10px; padding: 10px 12px; border: 1px solid #bc632a; border-radius: 3px; color: #fff; background: #b55b25; cursor: pointer; font-size: 11px; font-weight: 600; }
+.ad-concierge-next:hover { background: #94471c; }
+
+.ad-concierge-ai-consent { padding: 10px 14px; background: #f5eee5; border-top: 1px solid #e3d7cb; }
+.ad-concierge-ai-consent label { display: flex; gap: 9px; align-items: flex-start; color: #534638; font-size: 10px; line-height: 1.5; cursor: pointer; }
+.ad-concierge-ai-consent input { width: 16px; height: 16px; flex-shrink: 0; margin: 1px 0 0; accent-color: #b65d26; }
+.ad-concierge-ai-consent a { color: #a6501c; text-decoration: underline; }
