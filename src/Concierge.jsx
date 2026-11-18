@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { CONCIERGE } from "./concierge/config.js";
-import { demoReply, leadHints } from "./concierge/demo.js";
+import { demoReply, leadHints, conversationContext } from "./concierge/demo.js";
 import "./Concierge.css";
 
 function metric(eventName) {
@@ -20,6 +20,7 @@ export default function Concierge() {
   const [messages, setMessages] = useState(initialMessages);
   const [draft, setDraft] = useState("");
   const [busy, setBusy] = useState(false);
+  const [aiConsent, setAiConsent] = useState(false);
   const [leadBusy, setLeadBusy] = useState(false);
   const [leadResult, setLeadResult] = useState("");
   const [lead, setLead] = useState({ name: "", email: "", phone: "", projectType: "", location: "", description: "", consent: false });
@@ -43,8 +44,10 @@ export default function Concierge() {
 
   async function ask(question) {
     const text = String(question || "").trim().slice(0, 1200);
-    if (!text || busy) return;
-    const history = [...messages.filter(m => m.mode !== "static").map(m => ({ role: m.role, content: m.content })), { role: "user", content: text }].slice(-12);
+    if (!text || busy || (liveAIEnabled && !aiConsent)) return;
+    const fullHistory = [...messages.filter(m => m.mode !== "static").map(m => ({ role: m.role, content: m.content })), { role: "user", content: text }];
+    const history = fullHistory.slice(-16);
+    const context = conversationContext(fullHistory);
     setMessages(previous => [...previous, { role: "user", content: text }]);
     setDraft("");
     setBusy(true);
@@ -60,12 +63,13 @@ export default function Concierge() {
       const response = await fetch("/api/concierge", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ messages: history }),
+        body: JSON.stringify({ messages: history, context }),
       });
       if (!response.ok) throw new Error("AI is unavailable");
       const json = await response.json();
       if (!json.answer) throw new Error("No answer");
-      setMessages(previous => [...previous, { role: "assistant", content: json.answer, mode: "ai" }]);
+      const consultationRequested = /(?:arrange|schedule|book|request|set up|i'd like|i want).{0,90}(?:consultation|appointment|meeting|call)/i.test(text);
+      setMessages(previous => [...previous, { role: "assistant", content: json.answer, action: consultationRequested ? "prepare-inquiry" : undefined, mode: "ai" }]);
     } catch {
       // Do not silently substitute scripted answers when the live AI fails.
       setMessages(previous => [...previous, { role: "assistant", content: "I'm having trouble connecting right now. You can use Prepare an inquiry and our team will follow up personally.", action: "prepare-inquiry", mode: "error" }]);
@@ -150,10 +154,16 @@ export default function Concierge() {
                   <button key={question} type="button" disabled={busy} onClick={() => ask(question)}>{question}</button>
                 )}
               </div>}
+              {liveAIEnabled && <div className="ad-concierge-ai-consent">
+                <label>
+                  <input type="checkbox" checked={aiConsent} onChange={event => setAiConsent(event.target.checked)} />
+                  <span>I agree to have my chat messages processed by OpenAI to answer my questions. Please don't include confidential information. <a href={CONCIERGE.privacyPath}>Privacy</a></span>
+                </label>
+              </div>}
               <form className="ad-concierge-input" onSubmit={event => { event.preventDefault(); ask(draft); }}>
                 <label htmlFor="ad-concierge-question" className="ad-concierge-sr">Ask a question</label>
                 <input ref={inputRef} id="ad-concierge-question" type="text" value={draft} maxLength={1200} placeholder="Ask about your project…" onChange={event => setDraft(event.target.value)} disabled={busy}/>
-                <button type="submit" disabled={!draft.trim() || busy}>Send</button>
+                <button type="submit" disabled={!draft.trim() || busy || (liveAIEnabled && !aiConsent)}>Send</button>
               </form>
             </>
           ) : (
@@ -178,7 +188,7 @@ export default function Concierge() {
             </form>
           )}
           <footer className="ad-concierge-foot">
-            <span>{leadSubmissionEnabled ? "AI messages may be processed by a third-party provider. Avoid confidential information." : "TEST MODE · No inquiries sent. AI may be connected later."}</span>
+            <span>{!liveAIEnabled ? "SCRIPTED DEMO · No inquiries sent" : !leadSubmissionEnabled ? "AI-POWERED PREVIEW · No inquiries sent" : "AI-powered guide · Human review of inquiries"}</span>
             <a href={CONCIERGE.privacyPath}>Privacy</a>
           </footer>
         </section>
