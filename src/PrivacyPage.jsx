@@ -26,7 +26,7 @@ export default function PrivacyPage() {
             Privacy Policy
           </h1>
           <p style={{ ...font, fontSize: 14, fontWeight: 400, color: "rgba(245,241,235,0.68)", lineHeight: 1.8, margin: "22px auto 0" }}>
-            Effective September 11, 2026
+            Updated November 18, 2026
           </p>
         </div>
       </section>
@@ -50,6 +50,19 @@ export default function PrivacyPage() {
             </p>
             <p style={bodyStyle}>
               If you choose to accept analytics, Google Analytics may collect standard technical and website-usage information such as browser and device information, pages visited, session activity, and approximate geographic information. Analytics does not load when you decline or before you make a choice.
+            </p>
+          </div>
+
+          <div style={sectionStyle}>
+            <h2 style={headingStyle}>Optional AI Concierge</h2>
+            <p style={bodyStyle}>
+              We may offer an AI-powered website assistant that answers questions about our services and helps prepare project inquiries. Before a live AI conversation begins, we ask for separate consent to send chat messages to our AI technology provider, OpenAI, so the assistant can generate replies. You can choose not to use the AI assistant and contact us directly instead.
+            </p>
+            <p style={bodyStyle}>
+              Chat messages may include details you voluntarily provide, such as your intended project, municipality or budget. Please do not enter confidential plans, sensitive personal information, payment details or other information you would not want shared with an external processor. Information in the chat is processed to generate replies, and the assistant may use previous messages in the same open conversation to provide context. The website concierge does not intentionally save chat transcripts in its own database. The provider may retain or process information according to its applicable API data-handling terms and legal obligations, including processing outside Canada.
+            </p>
+            <p style={bodyStyle}>
+              Submitting a project inquiry is separate from chatting with the assistant. The inquiry form asks for your consent to use the information to respond to you and, when enabled, passes the submitted details to Formspree. During the demonstration period, test inquiries are not sent. Any analytics associated with concierge interactions follow the site's optional analytics-consent settings.
             </p>
           </div>
 
