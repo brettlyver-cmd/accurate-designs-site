@@ -182,7 +182,7 @@ export default function Concierge() {
             </form>
           )}
           <footer className="ad-concierge-foot">
-            <span>{leadSubmissionEnabled ? "AI responses may be processed by a third-party provider. Do not submit confidential documents." : "TEST MODE · No inquiry submissions"}</span>
+            <span>{leadSubmissionEnabled ? "AI messages may be processed by a third-party provider. Avoid confidential information." : "TEST MODE · No inquiries sent. AI may be connected later."}</span>
             <a href={CONCIERGE.privacyPath}>Privacy</a>
           </footer>
         </section>
