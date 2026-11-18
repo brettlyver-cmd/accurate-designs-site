@@ -26,7 +26,8 @@ Test whether a prominently placed, honest AI guide helps prospective clients get
 
 ## Optional live AI preview (requires authorization before adding expenses)
 Set Vercel environment variables on the **preview environment only**:
-- `CONCIERGE_AI_ENABLED` = `true` (explicit switch; remains disabled by default)
+- `VITE_CONCIERGE_AI_ENABLED` = `true` (client preview switch; remains disabled by default)
+- `CONCIERGE_AI_ENABLED` = `true` (server-side explicit switch; remains disabled by default)
 - `OPENAI_API_KEY` = restricted API key with modest platform budget
 - `CONCIERGE_MODEL` = supported cost-efficient model (default: `gpt-4.1-mini`)
 - `UPSTASH_REDIS_REST_URL` and `UPSTASH_REDIS_REST_TOKEN` = rate-limit store
@@ -45,3 +46,12 @@ The `/api/concierge` endpoint fails closed when a model key is set but the rate-
 
 ## Reuse for future customers
 Change `src/concierge/config.js` (name, greeting, questions, approved knowledge, contact options and form endpoints). Revise `src/Concierge.css` theme if needed. Adapt the intake fields in `src/Concierge.jsx` and server policies in `api/concierge.js`. Longer-term, separate schemas/configurations per client, move server knowledge into a database and centralize campaign attribution and reporting. This pilot deliberately keeps the architecture simple enough to validate the product.
+
+## November 17 test feedback and changes
+- Fixed incorrect keyword priority: `Oakville` no longer overrides second-storey feasibility, and `renovation` no longer overrides a consultation request.
+- Updated five demonstration answers to directly address architectural-design fees, second-storey additions, Committee of Adjustment applications, Muskoka projects and consultation requests.
+- Demo mode now reads prior visitor turns to retain named municipalities and relevant project details. It does not persist transcripts.
+- Consultation requests display a direct intake action. The inquiry form can prefill the mentioned project type, municipality and rough budget from the conversation, but will not send anything without explicit visitor consent and the owner's separate launch approval.
+- Included tests in `tests/concierge-demo.test.js`. Can run via `node --test tests/concierge-demo.test.js` from the project root.
+- The enhanced preview is still **scripted**. It cannot handle open-ended conversations like a real language model. Do not present this as the final client product.
+- Live AI remains OFF until the owner authorizes billing, confirms privacy disclosures and sets up Vercel environment access, request-rate controls, and spend alerts.
