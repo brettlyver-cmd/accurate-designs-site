@@ -35,7 +35,7 @@ export function conversationContext(messages = []) {
 }
 
 function floorArea(text) {
-  const m = text.match(/\b([\d,]{3,5})\s*(?:sq(?:uare)?\.?\s*(?:ft|feet|foot)|s\.?f\.?|square[\s-]*feet)\b/i);
+  const m = text.match(/\b([\d,]{3,5})[\s-]*(?:sq(?:uare)?\.?[\s-]*(?:ft|feet|foot)|s\.?f\.?|square[\s-]*feet)\b/i);
   const n = m ? Number(m[1].replace(/,/g, "")) : 0;
   return n >= 500 && n <= 20000 ? n : 0;
 }
